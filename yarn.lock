@@ -15187,7 +15187,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.2.1":
+"prettier@npm:2.5.0, prettier@npm:^2.2.1":
   version: 2.5.0
   resolution: "prettier@npm:2.5.0"
   bin:
@@ -15476,6 +15476,7 @@ __metadata:
     "@types/react-dom": ^17.0.0
     babel-loader: ^8.2.3
     eslint-config-react-app: ^6.0.0
+    prettier: 2.5.0
     react: ^17.0.2
     react-dom: ^17.0.2
     react-scripts: 4.0.3
