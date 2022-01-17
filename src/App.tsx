@@ -1,13 +1,17 @@
 import React from "react";
 import logo from "./logo.svg";
-import GlobalStyle from "./Styles/GlobalStyle";
-import { Global } from "@emotion/react";
+import GlobalStyle from "Styles/GlobalStyle";
+import { Global, ThemeProvider } from "@emotion/react";
+import {theme} from './Styles/theme';
 
 function App() {
   return (
-    <div className="App">
-      <Global styles={GlobalStyle}></Global>
-    </div>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Global styles={GlobalStyle} />
+        <Routes></Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
