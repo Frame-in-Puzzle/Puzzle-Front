@@ -1,14 +1,16 @@
 import React from "react";
 import logo from "./logo.svg";
 import GlobalStyle from "Styles/GlobalStyle";
-import { Global } from "@emotion/react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Global, ThemeProvider } from "@emotion/react";
+import {theme} from './Styles/theme';
 
 function App() {
   return (
     <BrowserRouter>
-      <Global styles={GlobalStyle} />
-      <Routes></Routes>
+      <ThemeProvider theme={theme}>
+        <Global styles={GlobalStyle} />
+        <Routes></Routes>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }
