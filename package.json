@@ -12,8 +12,8 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "eslint-config-react-app": "^6.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "rc",
+    "react-dom": "rc",
     "react-scripts": "4.0.3",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
@@ -66,6 +66,7 @@
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.4.0",
     "babel-loader": "^8.2.3",
+    "prettier": "2.5.0",
     "webpack-hot-middleware": "^2.25.1"
   }
 }
