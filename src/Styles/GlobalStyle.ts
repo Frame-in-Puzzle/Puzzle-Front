@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 
 const GlobalStyle = css`
- * {
+  * {
     margin: 0;
     padding: 0;
     border: 0;
@@ -10,6 +10,7 @@ const GlobalStyle = css`
   body {
     width: 100%;
     height: 100vh;
-  }`;
+  }
+`;
 
-  export default GlobalStyle;
+export default GlobalStyle;
