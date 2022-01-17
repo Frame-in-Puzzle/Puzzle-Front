@@ -7,15 +7,6 @@ function App() {
   return (
     <div className="App">
       <Global styles={GlobalStyle}></Global>
-      <body>
-        <h1
-          style={{
-            color: "red",
-          }}
-        >
-          hi
-        </h1>
-      </body>
     </div>
   );
 }
