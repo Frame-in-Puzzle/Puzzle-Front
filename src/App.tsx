@@ -10,7 +10,6 @@ function App() {
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <Global styles={GlobalStyle} />
-        <h1 style={{ color: "red" }}> hi</h1>
         <Routes></Routes>
       </ThemeProvider>
     </BrowserRouter>
