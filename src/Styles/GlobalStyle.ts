@@ -5,7 +5,7 @@ const GlobalStyle = css`
     font-family: "Poppins";
     src: url("../Fonts/Poppins-Black.ttf");
   }
-  
+
   * {
     margin: 0;
     padding: 0;
