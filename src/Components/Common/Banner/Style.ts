@@ -4,7 +4,7 @@ import { theme } from "../../../Styles/theme";
 export const Wrapper = css`
   width: 100%;
   height: 50%;
-  padding: 5%;
+  padding: 3%;
   background-color: #fbfbfb;
   opacity: 0.8;
   display: flex;
