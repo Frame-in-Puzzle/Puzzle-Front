@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { theme } from "../../../Styles/theme";
 
-export const Wrapper = css`
+export const Positioner = css`
   width: 100%;
   height: 50%;
   padding: 3%;
@@ -12,7 +12,7 @@ export const Wrapper = css`
   justify-content: space-between;
 `;
 
-export const TextWrapper = css`
+export const TextContainer = css`
   font-size: ${theme.fonts.h3};
 `;
 
@@ -20,7 +20,7 @@ export const BoldText = css`
   font-weight: bold;
 `;
 
-export const BottomText = css`
+export const BottomTextWrapper = css`
   display: flex;
 `;
 
