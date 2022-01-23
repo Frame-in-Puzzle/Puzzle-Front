@@ -12,26 +12,31 @@ export const Positioner = css`
 `;
 
 export const Container = css`
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   text-align: center;
-  justify-content: center;
   padding: 5%;
 `;
 
 export const Title = css`
+  width: 100%;
+  height: 13%;
   font-weight: bold;
   font-style: italic;
   font-size: ${theme.fonts.h4};
 `;
 
 export const Image = css`
-  margin-top: 3%;
+  width: 100%;
+  height: 75%;
 `;
 
 export const State = css`
-  margin-top: 10%;
-  margin-left: 80%;
+  margin-left: 82%;
+  height: 7%;
   font-size: ${theme.fonts.h6};
   color: #434343;
 `;
