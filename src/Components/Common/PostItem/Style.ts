@@ -35,7 +35,8 @@ export const Image = css`
 `;
 
 export const State = css`
-  margin-left: 82%;
+  display: flex;
+  justify-content: flex-end;
   height: 7%;
   font-size: ${theme.fonts.h6};
   color: #434343;
