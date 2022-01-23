@@ -14,13 +14,13 @@ interface ActiveProps {
   activeObj: activeItem;
 }
 
-const MainpageItem: React.FC<ActiveProps> = ({ activeObj }) => {
+const PostItem: React.FC = () => {
   return (
     <div css={S.Positioner}>
       <div css={S.Container}>
         <span css={S.Title}>PUZZLE</span>
         <span css={S.Image}>
-          <I.ActiveItemImg />
+          <I.PostItemImg />
         </span>
         <p css={S.State}>모집중</p>
       </div>
@@ -28,4 +28,4 @@ const MainpageItem: React.FC<ActiveProps> = ({ activeObj }) => {
   );
 };
 
-export default MainpageItem;
+export default PostItem;
