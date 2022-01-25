@@ -18,18 +18,18 @@ export const Container = css`
 `;
 
 export const rightbox = css`
-  width: 605px;
+  width: 48%;
   display: flex;
-  margin-top: 30px;
+  margin-top: 3%;
   flex-direction: column;
 `;
 
 export const Image = css`
-  width: 500px;
-  height: 340px;
-  margin-left: 25px;
-  margin-right: 60px;
-  margin-top: 27px;
+  width: 40%;
+  height: 86%;
+  margin-left: 2%;
+  margin-right: 4%;
+  margin-top: 2%;
   border-radius: 10px;
   background-color: gray;
 `;
@@ -43,13 +43,14 @@ export const Icon = css`
 `;
 
 export const Category = css`
+  width: 100%;
   color: #434343;
   font-style: italic;
   font-size: ${theme.fonts.h4};
 `;
 export const Title = css`
   width: 100%;
-  height: 53px;
+  height: 13%;
   font-weight: bold;
   font-style: italic;
   font-size: ${theme.fonts.h3};
@@ -57,17 +58,16 @@ export const Title = css`
 
 export const content = css`
   width: 100%;
-  height: 120px;
+  height: 30%;
   font-size: ${theme.fonts.h5};
   color: #787878;
-  margin-top: 37px;
+  margin-top: 7.5%;
 `;
 
 export const State = css`
-  width: 100%;
   display: flex;
   justify-content: flex-end;
   font-size: ${theme.fonts.h5};
   color: #434343;
-  margin-top: 70px;
+  margin-top: 17%;
 `;

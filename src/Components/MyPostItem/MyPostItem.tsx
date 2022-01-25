@@ -8,7 +8,6 @@ const MyPostItem: React.FC = () => {
     <div css={S.Positioner}>
       <div css={S.Container}>
         <div css={S.Image}></div>
-
         <div css={S.rightbox}>
           <FiX css={S.Icon} />
           <p css={S.Category}>Project</p>
