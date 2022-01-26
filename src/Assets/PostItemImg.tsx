@@ -14,11 +14,11 @@ function ActiveItemImg(props: React.SVGProps<SVGSVGElement>) {
         width={261.6}
         height={177.853}
         rx={10}
-        fill="url(#prefix__pattern0)"
+        fill="url(#prefix__pattern2)"
       />
       <defs>
         <pattern
-          id="prefix__pattern0"
+          id="prefix__pattern2"
           patternContentUnits="objectBoundingBox"
           width={1}
           height={1}

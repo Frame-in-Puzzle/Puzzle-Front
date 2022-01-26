@@ -4,8 +4,9 @@ import { theme } from "../../../Styles/theme";
 export const Positioner = css`
   width: 100%;
   height: 50%;
-  padding: 3%;
+  padding: 4% 6%;
   background-color: #fbfbfb;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 15%);
   opacity: 0.8;
   display: flex;
   align-items: center;
@@ -25,6 +26,6 @@ export const BottomTextWrapper = css`
 `;
 
 export const Text = css`
-  margin-top: 4%;
+  margin-top: 3%;
   margin-left: 2%;
 `;
