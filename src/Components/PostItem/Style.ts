@@ -1,11 +1,10 @@
 import { css } from "@emotion/react";
-import { theme } from "../../../Styles/theme";
+import { theme } from "../../Styles/theme";
 
 export const Positioner = css`
   width: 327px;
   height: 304px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 15%);
-
   border-radius: 15px;
   border: none;
   background-color: #ffffff;
