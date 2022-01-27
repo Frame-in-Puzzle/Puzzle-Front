@@ -18,3 +18,21 @@ export const ListStyle = css`
     margin: 0;
   }
 `;
+
+export const themes = {
+  interest: css``,
+  state: css``,
+  purpose: css``,
+  profile: css`
+    align-items: center;
+    li {
+      margin-top: 20px;
+    }
+  `,
+  Frontend: css``,
+  Backend: css``,
+  AI: css``,
+  Android: css``,
+  iOS: css``,
+  Game: css``,
+};

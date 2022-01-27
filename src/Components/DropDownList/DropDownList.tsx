@@ -96,7 +96,11 @@ const DropDownList: React.FC<ListProps> = ({ theme, width }) => {
     }
   };
 
-  return <div css={[S.ListStyle, { width }]}>{mappingDropDownList()}</div>;
+  return (
+    <div css={[S.ListStyle, { width }, S.themes[theme]]}>
+      {mappingDropDownList()}
+    </div>
+  );
 };
 
 export default DropDownList;
