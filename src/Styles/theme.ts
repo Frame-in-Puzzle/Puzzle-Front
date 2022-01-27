@@ -1,9 +1,13 @@
 export const theme = {
   buttons: {
-    Big: "width: 280px; height: 90px;",
-    Medium: "width: 150px; height: 60px;",
-    Regular: "width: 100px; height: 40px;",
-    Small: "width: 90px; height: 30px;",
+    widthBig: "280px;",
+    widthMedium: "150px;",
+    widthRegular: "100px;",
+    widthSmall: "90px;",
+    heightBig: "90px;",
+    heightMedium: "60px;",
+    heightRegular: "40px;",
+    heightSmall: "30px;",
   },
   fonts: {
     h1: "78px",
