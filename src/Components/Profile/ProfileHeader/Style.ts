@@ -74,8 +74,8 @@ export const DeleteBtn = css`
   font-weight: 600;
 
   &:hover {
-    background-color: #717171;
-    color: #000000;
+    background-color: #f7f7f7;
+    color: #717171;
     transition: 0.2s;
   }
 `;
