@@ -53,8 +53,7 @@ export const ButtonWrapper = css`
   height: 10%;
 `;
 export const UploadBtn = css`
-  width: ${theme.buttons.widthMedium};
-  height: ${theme.buttons.heightMedium};
+  ${theme.buttons.Medium};
   margin-top: 10%;
   border-radius: 10px;
   background-color: #000000;
@@ -64,8 +63,7 @@ export const UploadBtn = css`
 `;
 
 export const DeleteBtn = css`
-  width: ${theme.buttons.widthMedium};
-  height: ${theme.buttons.heightMedium};
+  ${theme.buttons.Medium};
   margin-top: 3%;
   border-radius: 10px;
   color: #717171;
