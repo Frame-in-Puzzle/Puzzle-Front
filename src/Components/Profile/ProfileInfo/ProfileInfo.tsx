@@ -34,7 +34,7 @@ const ProfileInfo = () => {
           <p css={S.SpanText}>이메일 수신 설정</p>
           <div css={S.ToggleButtonWrapper}>
             <div css={S.ToggleButton}>
-              <span className="topSpan">신청알림</span>
+              <span>신청알림</span>
               <ToggleButton />
             </div>
             <div css={S.ToggleButton}>
@@ -43,6 +43,7 @@ const ProfileInfo = () => {
             </div>
           </div>
         </div>
+        <hr css={S.Line} />
       </div>
     </div>
   );

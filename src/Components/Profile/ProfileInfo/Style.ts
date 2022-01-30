@@ -45,20 +45,14 @@ export const Line = css`
 export const ToggleButtonWrapper = css`
   width: 80%;
   display: grid;
-  margin-top: -2%;
 `;
 
 export const ToggleButton = css`
   display: flex;
-  margin-top: 1%;
 
   span {
     margin-right: 2%;
     color: #878787;
     font-size: ${theme.fonts.h5};
-  }
-
-  .topSpan {
-    margin-right: 12.9%;
   }
 `;
