@@ -3,7 +3,7 @@ import ProfileHeader from "./ProfileHeader";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/ProfileHeader",
+  title: "Components/LoginProfile/ProfileHeader",
   components: ProfileHeader,
 } as ComponentMeta<typeof ProfileHeader>;
 
