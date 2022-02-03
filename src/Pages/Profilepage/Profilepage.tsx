@@ -11,10 +11,17 @@ const Profilepage = () => {
   return (
     <div css={S.Positioner}>
       <Header />
-      <div css={S.ProfileContainer}>
-        <ProfileHeader />
-        <ProfileInfo />
-        <ProfileSelectBox />
+      <ProfileHeader />
+      <ProfileInfo />
+      <ProfileSelectBox />
+      <div css={S.BottomTextContainer}>
+        <div css={S.TextButtonWrapper}>
+          <label css={S.Text}>회원 탈퇴</label>
+          <button css={S.Button}>회원 탈퇴</button>
+        </div>
+        <p css={S.WarningMessage}>
+          탈퇴 시 작성하신 게시글 및 신청이 모두 삭제되며 복구되지 않습니다.
+        </p>
       </div>
     </div>
   );
