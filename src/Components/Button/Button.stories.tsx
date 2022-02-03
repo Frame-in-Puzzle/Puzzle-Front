@@ -28,7 +28,7 @@ export default {
           "BlackTextButtonWithUnderline",
         ],
       },
-      defaultValue: "Enroll",
+      defaultValue: "BlackButtonWithShadow",
     },
     disabled: {
       name: "disabled",
