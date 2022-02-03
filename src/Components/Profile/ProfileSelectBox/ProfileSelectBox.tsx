@@ -17,8 +17,7 @@ const ProfileSelectBox = () => {
       </div>
       <div css={S.LanguageWrapper}>
         <div css={S.Language}>
-          <p>Javascript</p>
-          <FiX css={S.Icon} />
+          Javascript <FiX css={S.Icon} />
         </div>
       </div>
       <hr css={S.Line} />

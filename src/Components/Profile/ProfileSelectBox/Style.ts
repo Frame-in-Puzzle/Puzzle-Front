@@ -18,20 +18,16 @@ export const DropDownWrapper = css`
 `;
 
 export const LanguageWrapper = css`
+  width: 20%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
 `;
 
 export const Language = css`
+  border: 1px solid #000000;
+  border-radius: 50px;
+  padding: 4% 6%;
   display: flex;
   justify-content: space-between;
-  border: 1px solid #000000;
-  box-sizing: border-box;
-  border-radius: 50px;
-  font-style: normal;
-  font-size: ${theme.fonts.h5};
-  padding: 10px 29px;
 `;
 
 export const Line = css`
@@ -42,6 +38,7 @@ export const Line = css`
 `;
 
 export const Icon = css`
-  position: absolute;
-  margin-left: 5%;
+  position: relative;
+  top: 4px;
+  left: 6px;
 `;
