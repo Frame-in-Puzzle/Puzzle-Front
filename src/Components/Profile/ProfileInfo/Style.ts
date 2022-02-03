@@ -4,6 +4,7 @@ import { theme } from "../../../Styles/theme";
 export const Positioner = css`
   width: 100%;
   height: 100%;
+  padding: 4% 12%;
 `;
 
 export const Container = css`
@@ -12,7 +13,7 @@ export const Container = css`
 `;
 
 export const ContentsWrapper = css`
-  width: 70%;
+  width: 100%;
   height: 0%;
   display: flex;
   justify-content: space-between;
@@ -33,18 +34,24 @@ export const Link = css`
 
 export const ModifyText = css`
   font-size: ${theme.fonts.h5};
+
+  &:hover {
+    color: #c2c2c2;
+    transition: 0.2s;
+  }
 `;
 
 export const Line = css`
-  width: 70%;
+  width: 100%;
   height: 0%;
   border: 1px solid #a5a5a5;
   margin-top: 0.5%;
 `;
 
 export const ToggleButtonWrapper = css`
-  width: 80%;
+  width: 86%;
   display: grid;
+  margin-bottom: 1.3%;
 `;
 
 export const ToggleButton = css`

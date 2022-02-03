@@ -4,25 +4,22 @@ import { theme } from "../../../Styles/theme";
 export const Positioner = css`
   width: 100%;
   height: 100%;
+  padding: 4% 12%;
 `;
 
 export const MainText = css`
-  width: 70%;
-  height: 0%;
   font-size: ${theme.fonts.h2};
   font-weight: bold;
 `;
 
 export const Line = css`
-  width: 70%;
-  height: 0%;
+  width: 100%;
   border: 1px solid #a5a5a5;
 `;
 
 export const EditImage = css`
   margin-top: 0.4%;
-  margin-left: 68.3%;
-  height: 0%;
+  margin-left: 98%;
 `;
 
 export const ItemContainer = css`
@@ -80,7 +77,7 @@ export const DeleteBtn = css`
 
 export const VerticalLine = css`
   border: 1px solid #a5a5a5;
-  margin-left: 1%;
+  margin-left: 3%;
 `;
 
 export const TextWrapper = css`
