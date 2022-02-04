@@ -7,7 +7,6 @@ interface ButtonProps {
   children: React.ReactNode;
   /** 버튼의 생김새를 설정합니다. */
   theme:
-    | "BlackButtonWithShadow"
     | "RedButton"
     | "TextButton"
     | "BlackButton"
@@ -15,8 +14,6 @@ interface ButtonProps {
     | "OutlinedButton"
     | "GrayButtonWithWhiteText"
     | "GrayButtonWithBlackText"
-    | "GrayButtonWithBlackTextShadow"
-    | "BlackButtonWithBlackTextShadow"
     | "GrayTextButton"
     | "DarkGrayTextButton"
     | "LightBlackTextButton"
@@ -27,6 +24,8 @@ interface ButtonProps {
   fontSize: "h6" | "h5" | "h4" | "h3" | "h2" | "h1";
   /** 버튼을 클릭했을 때 호출할 함수입니다. */
   onClick?: (e?: React.MouseEvent<HTMLButtonElement>) => void;
+  /** 버튼의 Box-Shadow 속성의 유무를 설정합니다. */
+  isShadow: "Yes" | "No";
   /** 버튼을 비활성화를 시킵니다. */
   disabled?: boolean;
   /** 버튼의 너비를 임의로 설정합니다. */
@@ -41,6 +40,7 @@ const Button: React.FC<ButtonProps> = ({
   fontSize,
   children,
   onClick,
+  isShadow,
   disabled,
   width,
   height,
@@ -52,6 +52,7 @@ const Button: React.FC<ButtonProps> = ({
         S.themes[theme],
         S.sizes[size],
         S.fontSizes[fontSize],
+        S.shadow[isShadow],
         { width, height },
       ]}
       onClick={onClick}

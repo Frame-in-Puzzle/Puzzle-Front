@@ -1,7 +1,6 @@
 import React from "react";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import Button from "./Button";
-import { sizes } from "./Style";
 
 export default {
   title: "Components/Button",
@@ -12,7 +11,6 @@ export default {
       type: {
         name: "enum",
         value: [
-          "BlackButtonWithShadow",
           "RedButton",
           "TextButton",
           "BlackButton",
@@ -20,8 +18,6 @@ export default {
           "OutlinedButton",
           "GrayButtonWithWhiteText",
           "GrayButtonWithBlackText",
-          "GrayButtonWithBlackTextShadow",
-          "BlackButtonWithBlackTextShadow",
           "GrayTextButton",
           "DarkGrayTextButton",
           "LightBlackTextButton",
@@ -50,6 +46,14 @@ export default {
         value: ["h6", "h5", "h4", "h3", "h2", "h1"],
       },
     },
+    isShadow: {
+      name: "isShadow",
+      type: {
+        name: "enum",
+        value: ["Yes", "No"],
+      },
+      defaultValue: "No",
+    },
     children: {
       name: "children",
       type: { name: "string", required: false },
@@ -58,10 +62,12 @@ export default {
     width: {
       name: "width",
       type: { name: "string", required: false },
+      defaultValue: "",
     },
     height: {
       name: "height",
       type: { name: "string", required: false },
+      defaultValue: "",
     },
   },
 } as ComponentMeta<typeof Button>;
@@ -74,6 +80,7 @@ export const vbutton: ComponentStory<typeof Button> = ({
   children,
   width,
   height,
+  isShadow,
 }) => (
   <Button
     theme={theme}
@@ -82,6 +89,7 @@ export const vbutton: ComponentStory<typeof Button> = ({
     disabled={disabled}
     width={width}
     height={height}
+    isShadow={isShadow}
   >
     {children}
   </Button>

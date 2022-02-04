@@ -8,15 +8,6 @@ export const ButtonStyle = css`
 `;
 
 export const themes = {
-  BlackButtonWithShadow: css`
-    background: #000000;
-    border-radius: 10px;
-    color: #ffffff;
-    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
-    &:hover {
-      background: #b2b2b2;
-    }
-  `,
   RedButton: css`
     background: #ec8080;
     border-radius: 10px;
@@ -75,25 +66,6 @@ export const themes = {
     &:hover {
       background: #4f4f4f;
       color: #ffffff;
-    }
-  `,
-  GrayButtonWithBlackTextShadow: css`
-    color: #000000;
-    background: #e3e3e3;
-    border-radius: 5px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
-    &:hover {
-      background: #4f4f4f;
-      color: #ffffff;
-    }
-  `,
-  BlackButtonWithBlackTextShadow: css`
-    color: #ffffff;
-    background: #000000;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
-    &:hover {
-      background: #b2b2b2;
     }
   `,
   GrayTextButton: css`
@@ -164,4 +136,11 @@ export const fontSizes = {
   h1: css`
     font-size: ${theme.fonts.h1};
   `,
+};
+
+export const shadow = {
+  Yes: css`
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  `,
+  No: css``,
 };
