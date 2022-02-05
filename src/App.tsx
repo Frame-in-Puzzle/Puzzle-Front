@@ -3,6 +3,7 @@ import { Global, ThemeProvider } from "@emotion/react";
 import { theme } from "./Styles/theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Mainpage from "./Pages/Mainpage/Mainpage";
+import Profilepage from "./Pages/Profilepage/Profilepage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Global styles={GlobalStyle} />
         <Routes>
           <Route path="/main" element={<Mainpage />} />
+          <Route path="/profile" element={<Profilepage />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
