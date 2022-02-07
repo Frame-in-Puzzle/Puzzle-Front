@@ -37,9 +37,14 @@ export const Image = css`
 export const Icon = css`
   position: absolute;
   font-size: 35px;
-  color: #787878;
+  color: #434343;
   right: 20px;
   top: 20px;
+
+  &:hover {
+    background-color: white;
+    color: #787878;
+  }
 `;
 
 export const Category = css`
