@@ -13,6 +13,9 @@ export const Container = css`
   display: flex;
   border-bottom: solid 1px #a5a5a5;
 `;
+export const ImgWrapper = css`
+  margin-right: 10px;
+`;
 
 export const rightbox = css`
   width: 80%;
@@ -33,8 +36,8 @@ export const Name = css`
 export const Icon = css`
   position: absolute;
   font-size: 35px;
-  left: 465px;
-  top: 65px;
+  left: 545px;
+  top: 70px;
 `;
 
 export const Introduction = css`
@@ -45,7 +48,7 @@ export const Introduction = css`
 `;
 
 export const LanguageWrapper = css`
-  width: 37%;
+  width: 42%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

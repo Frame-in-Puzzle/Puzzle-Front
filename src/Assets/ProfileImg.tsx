@@ -7,14 +7,14 @@ function ProfileImg(props: React.SVGProps<SVGSVGElement>) {
           cx={145}
           cy={145}
           r={123.5}
-          fill="url(#prefix__pattern0)"
+          fill="url(#prefix__pattern8)"
           stroke="#fff"
           strokeWidth={3}
         />
       </g>
       <defs>
         <pattern
-          id="prefix__pattern0"
+          id="prefix__pattern8"
           patternContentUnits="objectBoundingBox"
           width={1}
           height={1}

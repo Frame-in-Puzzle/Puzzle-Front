@@ -75,5 +75,5 @@ export const State = css`
   justify-content: flex-end;
   font-size: ${theme.fonts.h5};
   color: #434343;
-  margin-top: 17%;
+  margin-top: 14%;
 `;

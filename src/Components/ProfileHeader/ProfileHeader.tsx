@@ -9,7 +9,9 @@ const ProfileHeader: React.FC = () => {
   return (
     <div css={S.Positioner}>
       <div css={S.Container}>
-        <I.ProfileImg />
+        <div css={S.ImgWrapper}>
+          <I.ProfileImg />
+        </div>
         <div css={S.rightbox}>
           <FaGithubSquare css={S.Icon} />
           <p css={S.Name}>Yuseonii</p>
