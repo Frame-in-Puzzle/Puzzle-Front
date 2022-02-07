@@ -8,6 +8,7 @@ export const Positioner = css`
   border-radius: 15px;
   border: none;
   background-color: #ffffff;
+  margin-bottom: 90px;
 `;
 
 export const Container = css`
