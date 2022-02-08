@@ -3,7 +3,7 @@ import WriteInput from "./WriteInput";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/Input/WriteInput",
+  title: "Components/Write/WriteInput",
   components: WriteInput,
 } as ComponentMeta<typeof WriteInput>;
 
