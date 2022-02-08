@@ -1,5 +1,6 @@
 import React from "react";
 import PostItem from "./PostItem";
+import * as I from "../../Assets/index";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
@@ -7,6 +8,13 @@ export default {
   components: PostItem,
 } as ComponentMeta<typeof PostItem>;
 
-export const postitem: ComponentStory<typeof PostItem> = ({ postObj }) => (
+const postObj = {
+  id: 1,
+  title: "PUZZLE",
+  image: <I.PostItemImg />,
+  state: "모집중",
+};
+
+export const postitem: ComponentStory<typeof PostItem> = () => (
   <PostItem postObj={postObj} />
 );

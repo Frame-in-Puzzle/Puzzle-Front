@@ -4,6 +4,8 @@ import { theme } from "./Styles/theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Mainpage from "./Pages/Mainpage/Mainpage";
 import ProfileCheckPage from "./Pages/ProfileCheckPage/ProfileCheckPage";
+import Profilepage from "./Pages/Profilepage/Profilepage";
+
 
 function App() {
   return (
@@ -13,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/main" element={<Mainpage />} />
           <Route path="/profile/check" element={<ProfileCheckPage />} />
+          <Route path="/profile" element={<Profilepage />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>
