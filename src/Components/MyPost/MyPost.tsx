@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import MyPostItem from "../MyPostItem/MyPostItem";
+import * as S from "./Style";
 
 export const PostItemObj = [
   {
@@ -48,6 +49,9 @@ export const PostItemObj = [
 const Post = () => {
   return (
     <div>
+      <div css={S.Title}>
+        <h1>내 작성글</h1>
+      </div>
       {PostItemObj.map((item) => (
         <MyPostItem MyPostObj={item} key={item.id} />
       ))}

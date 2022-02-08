@@ -1,13 +1,17 @@
+/** @jsxImportSource @emotion/react */
 import { Header } from "../../Components";
 import ProfileHeader from "../../Components/ProfileHeader/ProfileHeader";
 import MyPost from "../../Components/MyPost/MyPost";
+import * as S from "./Style";
 
 const ProfileCheckPage = () => {
   return (
     <>
       <Header />
-      <ProfileHeader />
-      <MyPost />
+      <div css={S.Positioner}>
+        <ProfileHeader />
+        <MyPost />
+      </div>
     </>
   );
 };

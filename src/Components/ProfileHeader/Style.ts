@@ -36,7 +36,7 @@ export const Name = css`
 export const Icon = css`
   position: absolute;
   font-size: 35px;
-  left: 545px;
+  left: 505px;
   top: 70px;
 `;
 
