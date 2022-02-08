@@ -12,7 +12,7 @@ function App() {
         <Global styles={GlobalStyle} />
         <Routes>
           <Route path="/main" element={<Mainpage />} />
-          <Route path="/profilecheck" element={<ProfileCheckPage />} />
+          <Route path="/profile/check" element={<ProfileCheckPage />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

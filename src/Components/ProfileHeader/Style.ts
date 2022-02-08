@@ -7,7 +7,6 @@ export const Positioner = css`
 `;
 
 export const Container = css`
-  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -27,6 +26,11 @@ export const rightbox = css`
   margin-top: 5%;
 `;
 
+export const TitleWrapper = css`
+  display: flex;
+  align-items: center;
+`;
+
 export const Name = css`
   font-style: normal;
   font-weight: 700;
@@ -34,10 +38,8 @@ export const Name = css`
 `;
 
 export const Icon = css`
-  position: absolute;
   font-size: 35px;
-  left: 505px;
-  top: 70px;
+  margin-left: 10px;
 `;
 
 export const Introduction = css`
