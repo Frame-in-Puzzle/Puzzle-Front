@@ -63,8 +63,12 @@ export const Title = css`
 `;
 
 export const content = css`
-  width: 100%;
-  height: 30%;
+  width: 600px;
+  height: 130px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-size: ${theme.fonts.h5};
   color: #787878;
   margin-top: 7.5%;
