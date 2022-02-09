@@ -6,7 +6,6 @@ import Mainpage from "./Pages/Mainpage/Mainpage";
 import ProfileCheckPage from "./Pages/ProfileCheckPage/ProfileCheckPage";
 import Profilepage from "./Pages/Profilepage/Profilepage";
 
-
 function App() {
   return (
     <BrowserRouter>
