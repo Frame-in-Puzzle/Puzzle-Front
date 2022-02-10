@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Mainpage from "./Pages/Mainpage/Mainpage";
 import ProfileCheckPage from "./Pages/ProfileCheckPage/ProfileCheckPage";
 import Profilepage from "./Pages/Profilepage/Profilepage";
+import WritePage from "./Pages/WritePage/WritePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/main" element={<Mainpage />} />
           <Route path="/profile/check" element={<ProfileCheckPage />} />
           <Route path="/profile" element={<Profilepage />} />
+          <Route path="/write" element={<WritePage />} />
         </Routes>
       </ThemeProvider>
     </BrowserRouter>

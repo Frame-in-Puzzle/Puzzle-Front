@@ -1,11 +1,6 @@
 import { css } from "@emotion/react";
 import { theme } from "../../Styles/theme";
 
-export const Input = css`
-  width: 100%;
-  height: 100%;
-`;
-
 export const Themes = {
   ProfileRegistrationPageInput: css`
     border: 2px solid #6a6a6a;
@@ -44,5 +39,35 @@ export const fontSizes = {
   `,
   h1: css`
     font-size: ${theme.fonts.h1};
+  `,
+};
+
+export const fontWeight = {
+  100: css`
+    font-weight: 100;
+  `,
+  200: css`
+    font-weight: 200;
+  `,
+  300: css`
+    font-weight: 300;
+  `,
+  400: css`
+    font-weight: 400;
+  `,
+  500: css`
+    font-weight: 500;
+  `,
+  600: css`
+    font-weight: 600;
+  `,
+  700: css`
+    font-weight: 700;
+  `,
+  800: css`
+    font-weight: 800;
+  `,
+  900: css`
+    font-weight: 900;
   `,
 };
