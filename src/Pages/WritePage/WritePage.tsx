@@ -13,14 +13,16 @@ const WritePage = () => {
     <>
       <Header />
       <div css={S.Container}>
-        <Input
-          type="text"
-          theme="WritePageInput"
-          fontSize="h1"
-          placeholder="프로젝트 이름을 입력하세요"
-          fontWeight="600"
-          width="100%"
-        />
+        <div css={S.Input}>
+          <Input
+            type="text"
+            theme="WritePageInput"
+            fontSize="h1"
+            placeholder="프로젝트 이름을 입력하세요"
+            fontWeight="600"
+            width="100%"
+          />
+        </div>
         <WriteSelectItem />
         <WriteTextInput />
         <div css={S.ButtonContainer}>

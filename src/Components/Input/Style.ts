@@ -1,12 +1,6 @@
 import { css } from "@emotion/react";
 import { theme } from "../../Styles/theme";
 
-export const Input = css`
-  width: 100%;
-  height: 100%;
-  padding: 4% 12%;
-`;
-
 export const Themes = {
   ProfileRegistrationPageInput: css`
     border: 2px solid #6a6a6a;

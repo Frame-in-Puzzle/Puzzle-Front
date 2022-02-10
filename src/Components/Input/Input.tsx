@@ -44,18 +44,16 @@ const Input: React.FC<InputProps> = ({
   width,
 }) => {
   return (
-    <div css={S.Input}>
-      <input
-        css={[
-          S.Themes[theme],
-          S.fontSizes[fontSize],
-          S.fontWeight[fontWeight],
-          { width },
-        ]}
-        type={type}
-        placeholder={placeholder}
-      />
-    </div>
+    <input
+      css={[
+        S.Themes[theme],
+        S.fontSizes[fontSize],
+        S.fontWeight[fontWeight],
+        { width },
+      ]}
+      type={type}
+      placeholder={placeholder}
+    />
   );
 };
 

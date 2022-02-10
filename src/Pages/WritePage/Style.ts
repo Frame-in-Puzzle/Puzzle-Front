@@ -16,3 +16,9 @@ export const ButtonContainer = css`
     margin-left: 1.2%;
   }
 `;
+
+export const Input = css`
+  width: 100%;
+  height: 100%;
+  padding: 4% 12%;
+`;
