@@ -22,6 +22,8 @@ export default {
           "DarkGrayTextButton",
           "LightBlackTextButton",
           "BlackTextButtonWithUnderline",
+          "WhiteButtonWithBlackText",
+          "BlackButtonWithWhiteText",
         ],
       },
       defaultValue: "BlackButtonWithShadow",
@@ -44,6 +46,13 @@ export default {
       type: {
         name: "enum",
         value: ["h6", "h5", "h4", "h3", "h2", "h1"],
+      },
+    },
+    fontWeight: {
+      name: "fontWeight",
+      type: {
+        name: "enum",
+        value: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
       },
     },
     isShadow: {
@@ -76,6 +85,7 @@ export const vbutton: ComponentStory<typeof Button> = ({
   theme,
   disabled,
   fontSize,
+  fontWeight,
   size,
   children,
   width,
@@ -86,6 +96,7 @@ export const vbutton: ComponentStory<typeof Button> = ({
     theme={theme}
     size={size}
     fontSize={fontSize}
+    fontWeight={fontWeight}
     disabled={disabled}
     width={width}
     height={height}

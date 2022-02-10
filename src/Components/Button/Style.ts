@@ -99,6 +99,16 @@ export const themes = {
       border-bottom: 1px solid #c2c2c2;
     }
   `,
+  WhiteButtonWithBlackText: css`
+    color: #5d5d5d;
+    background-color: #ffffff;
+    border-radius: 5px;
+  `,
+  BlackButtonWithWhiteText: css`
+    color: #ffffff;
+    background-color: #5e5e5e;
+    border-radius: 5px;
+  `,
 };
 
 export const sizes = {
@@ -135,6 +145,36 @@ export const fontSizes = {
   `,
   h1: css`
     font-size: ${theme.fonts.h1};
+  `,
+};
+
+export const fontWeight = {
+  100: css`
+    font-weight: 100;
+  `,
+  200: css`
+    font-weight: 200;
+  `,
+  300: css`
+    font-weight: 300;
+  `,
+  400: css`
+    font-weight: 400;
+  `,
+  500: css`
+    font-weight: 500;
+  `,
+  600: css`
+    font-weight: 600;
+  `,
+  700: css`
+    font-weight: 700;
+  `,
+  800: css`
+    font-weight: 800;
+  `,
+  900: css`
+    font-weight: 900;
   `,
 };
 
