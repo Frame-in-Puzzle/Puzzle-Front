@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Header } from "../../Components";
-import ProfileHeader from "../../Components/ProfileHeader/ProfileHeader";
-import MyPost from "../../Components/MyPost/MyPost";
+import { ProfileHeader } from "../../Components";
+import { MyPost } from "../../Components";
 import * as S from "./Style";
 
 const ProfileCheckPage = () => {
