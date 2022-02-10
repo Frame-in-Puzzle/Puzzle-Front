@@ -54,6 +54,16 @@ export const themes = {
       background: #000000;
     }
   `,
+  GrayButtonWithBlackTextNoHover: css`
+    color: #000000;
+    background: #d8d8d8;
+    border-radius: 10px;
+  `,
+  BlackButtonWithWithTextNoHover: css`
+    color: #ffffff;
+    background: #000000;
+    border-radius: 10px;
+  `,
   GrayButtonWithGrayText: css`
     color: #ffffff;
     background: #ececec;
