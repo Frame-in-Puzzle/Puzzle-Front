@@ -46,3 +46,33 @@ export const fontSizes = {
     font-size: ${theme.fonts.h1};
   `,
 };
+
+export const fontWeight = {
+  100: css`
+    font-weight: 100;
+  `,
+  200: css`
+    font-weight: 200;
+  `,
+  300: css`
+    font-weight: 300;
+  `,
+  400: css`
+    font-weight: 400;
+  `,
+  500: css`
+    font-weight: 500;
+  `,
+  600: css`
+    font-weight: 600;
+  `,
+  700: css`
+    font-weight: 700;
+  `,
+  800: css`
+    font-weight: 800;
+  `,
+  900: css`
+    font-weight: 900;
+  `,
+};

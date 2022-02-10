@@ -18,6 +18,16 @@ interface InputProps {
     | "ProfileRegistrationPageInput"
     | "WritePageInput"
     | "ProfileModifyPageInput";
+  fontWeight:
+    | "100"
+    | "200"
+    | "300"
+    | "400"
+    | "500"
+    | "600"
+    | "700"
+    | "800"
+    | "900";
   /** Input의 placehoder값을 설정합니다 */
   placeholder?: string;
   /** Input의 폰트사이즈를 설정합니다. */
@@ -29,10 +39,11 @@ const Input: React.FC<InputProps> = ({
   type,
   placeholder,
   fontSize,
+  fontWeight,
 }) => {
   return (
     <input
-      css={[S.Themes[theme], S.fontSizes[fontSize]]}
+      css={[S.Themes[theme], S.fontSizes[fontSize], S.fontWeight[fontWeight]]}
       type={type}
       placeholder={placeholder}
     />
