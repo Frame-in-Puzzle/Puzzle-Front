@@ -1,5 +1,6 @@
 import React from "react";
 import MyPostItem from "./MyPostItem";
+import * as I from "../../Assets/index";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
@@ -9,6 +10,7 @@ export default {
 
 const MyPostObj = {
   id: 1,
+  image: <I.MyPostDefaultImg />,
   category: "WEB",
   title: "PUZZLE",
   content:
