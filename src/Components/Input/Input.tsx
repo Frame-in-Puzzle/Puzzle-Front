@@ -32,6 +32,7 @@ interface InputProps {
   placeholder?: string;
   /** Input의 폰트사이즈를 설정합니다. */
   fontSize: "h6" | "h5" | "h4" | "h3" | "h2" | "h1";
+  width?: string;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -40,13 +41,21 @@ const Input: React.FC<InputProps> = ({
   placeholder,
   fontSize,
   fontWeight,
+  width,
 }) => {
   return (
-    <input
-      css={[S.Themes[theme], S.fontSizes[fontSize], S.fontWeight[fontWeight]]}
-      type={type}
-      placeholder={placeholder}
-    />
+    <div css={S.Input}>
+      <input
+        css={[
+          S.Themes[theme],
+          S.fontSizes[fontSize],
+          S.fontWeight[fontWeight],
+          { width },
+        ]}
+        type={type}
+        placeholder={placeholder}
+      />
+    </div>
   );
 };
 

@@ -53,6 +53,11 @@ export default {
       type: { name: "string", required: false },
       defaultValue: "",
     },
+    width: {
+      name: "width",
+      type: { name: "string", required: false },
+      defaultValue: "",
+    },
   },
 } as ComponentMeta<typeof Input>;
 
@@ -63,5 +68,6 @@ export const input: ComponentStory<typeof Input> = (props) => (
     theme={props.theme}
     fontSize={props.fontSize}
     fontWeight={props.fontWeight}
+    width={props.width}
   />
 );
