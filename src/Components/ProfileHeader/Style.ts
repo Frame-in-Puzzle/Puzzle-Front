@@ -7,11 +7,13 @@ export const Positioner = css`
 `;
 
 export const Container = css`
-  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   border-bottom: solid 1px #a5a5a5;
+`;
+export const ImgWrapper = css`
+  margin-right: 10px;
 `;
 
 export const rightbox = css`
@@ -24,6 +26,11 @@ export const rightbox = css`
   margin-top: 5%;
 `;
 
+export const TitleWrapper = css`
+  display: flex;
+  align-items: center;
+`;
+
 export const Name = css`
   font-style: normal;
   font-weight: 700;
@@ -31,10 +38,8 @@ export const Name = css`
 `;
 
 export const Icon = css`
-  position: absolute;
   font-size: 35px;
-  left: 465px;
-  top: 65px;
+  margin-left: 10px;
 `;
 
 export const Introduction = css`
@@ -45,7 +50,7 @@ export const Introduction = css`
 `;
 
 export const LanguageWrapper = css`
-  width: 37%;
+  width: 42%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

@@ -8,6 +8,7 @@ export const Positioner = css`
   border-radius: 15px;
   border: none;
   background-color: #ffffff;
+  margin-bottom: 90px;
 `;
 
 export const Container = css`
@@ -37,9 +38,14 @@ export const Image = css`
 export const Icon = css`
   position: absolute;
   font-size: 35px;
-  color: #787878;
+  color: #434343;
   right: 20px;
   top: 20px;
+
+  &:hover {
+    background-color: white;
+    color: #787878;
+  }
 `;
 
 export const Category = css`
@@ -57,8 +63,12 @@ export const Title = css`
 `;
 
 export const content = css`
-  width: 100%;
-  height: 30%;
+  width: 600px;
+  height: 130px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   font-size: ${theme.fonts.h5};
   color: #787878;
   margin-top: 7.5%;
@@ -69,5 +79,5 @@ export const State = css`
   justify-content: flex-end;
   font-size: ${theme.fonts.h5};
   color: #434343;
-  margin-top: 17%;
+  margin-top: 14%;
 `;

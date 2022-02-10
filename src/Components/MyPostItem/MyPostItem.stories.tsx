@@ -7,6 +7,6 @@ export default {
   components: MyPostItem,
 } as ComponentMeta<typeof MyPostItem>;
 
-export const mypostitem: ComponentStory<typeof MyPostItem> = () => (
-  <MyPostItem />
-);
+export const mypostitem: ComponentStory<typeof MyPostItem> = ({
+  MyPostObj,
+}) => <MyPostItem MyPostObj={MyPostObj} />;

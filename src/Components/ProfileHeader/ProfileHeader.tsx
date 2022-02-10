@@ -9,10 +9,14 @@ const ProfileHeader: React.FC = () => {
   return (
     <div css={S.Positioner}>
       <div css={S.Container}>
-        <I.ProfileImg />
+        <div css={S.ImgWrapper}>
+          <I.ProfileImg />
+        </div>
         <div css={S.rightbox}>
-          <FaGithubSquare css={S.Icon} />
-          <p css={S.Name}>Yuseonii</p>
+          <div css={S.TitleWrapper}>
+            <p css={S.Name}>Yuseonii</p>
+            <FaGithubSquare css={S.Icon} />
+          </div>
           <p css={S.Introduction}>Figma를 이용하여 디자인을 할 수 있습니다.</p>
           <div css={S.LanguageWrapper}>
             <div css={S.Language}>JavaScript</div>
