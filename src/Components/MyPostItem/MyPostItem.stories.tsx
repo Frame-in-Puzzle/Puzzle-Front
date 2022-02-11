@@ -18,6 +18,6 @@ const MyPostObj = {
   state: "모집중",
 };
 
-export const mypostitem: ComponentStory<typeof MyPostItem> = ({
-  MyPostObj,
-}) => <MyPostItem MyPostObj={MyPostObj} />;
+export const mypostitem: ComponentStory<typeof MyPostItem> = () => (
+  <MyPostItem MyPostObj={MyPostObj} />
+);

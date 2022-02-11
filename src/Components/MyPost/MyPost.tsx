@@ -52,7 +52,7 @@ export const PostItemObj = [
   },
 ];
 
-const Post = () => {
+const MyPost = () => {
   return (
     <div>
       <div css={S.Title}>
@@ -65,4 +65,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default MyPost;
