@@ -1,6 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import * as S from "./Style";
+import { useSetRecoilState } from "recoil";
+import { isSelected } from "../../Atoms";
+
 const themeData = {
   interest: ["프론트엔드", "백엔드", "AI", "안드로이드", "iOS", "게임"],
   Frontend: ["Javascript", "Typescript", "React", "Vue", "Next"],
@@ -32,7 +35,8 @@ interface ListProps {
 }
 
 const DropDownList: React.FC<ListProps> = ({ theme, width }) => {
-  const [selected, setSelected] = useState("");
+  const setSelected = useSetRecoilState(isSelected);
+
   const mappingDropDownList = () => {
     switch (theme) {
       case "Frontend":
