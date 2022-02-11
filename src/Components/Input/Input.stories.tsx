@@ -41,8 +41,20 @@ export default {
         value: ["h6", "h5", "h4", "h3", "h2", "h1"],
       },
     },
+    fontWeight: {
+      name: "fontWeight",
+      type: {
+        name: "enum",
+        value: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+      },
+    },
     placeholder: {
       name: "placeholder",
+      type: { name: "string", required: false },
+      defaultValue: "",
+    },
+    width: {
+      name: "width",
       type: { name: "string", required: false },
       defaultValue: "",
     },
@@ -55,5 +67,7 @@ export const input: ComponentStory<typeof Input> = (props) => (
     placeholder={props.placeholder}
     theme={props.theme}
     fontSize={props.fontSize}
+    fontWeight={props.fontWeight}
+    width={props.width}
   />
 );
