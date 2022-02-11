@@ -10,7 +10,7 @@ import ProfileSelectBox from "../../Components/Profile/ProfileSelectBox/ProfileS
 const Profilepage = () => {
   return (
     <div css={S.Positioner}>
-      <Header />
+      <Header theme="Login" />
       <ProfileHeader />
       <ProfileInfo />
       <ProfileSelectBox />
