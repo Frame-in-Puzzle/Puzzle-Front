@@ -7,7 +7,7 @@ import Post from "../../Components/Post/Post";
 const Mainpage = () => {
   return (
     <>
-      <Header />
+      <Header theme="Login" />
       <Banner />
       <Post />
     </>
