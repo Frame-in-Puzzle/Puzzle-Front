@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Mainpage from "./Pages/Mainpage/Mainpage";
 import { ProfileCheckPage } from "./Pages";
 import Profilepage from "./Pages/Profilepage/Profilepage";
+import TestPage from "./Pages/TestPage/TestPage";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <Global styles={GlobalStyle} />
         <Routes>
+          <Route path="/" element={<TestPage />} />
           <Route path="/main" element={<Mainpage />} />
           <Route path="/profile/check" element={<ProfileCheckPage />} />
           <Route path="/profile" element={<Profilepage />} />
