@@ -7,11 +7,18 @@ import Input from "../../Components/Input/Input";
 import WriteSelectItem from "../../Components/Write/WriteSelectItem/WriteSelectItem";
 import WriteTextInput from "../../Components/Write/WriteTextInput/WriteTextInput";
 import Button from "../../Components/Button/Button";
+import { ProfileWrapper } from "../../Styles/GlobalStyle";
 
 const WritePage = () => {
   return (
     <>
-      <Header theme="Login" />
+      <Header theme="Write">
+        <div css={ProfileWrapper}>
+          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
+          <I.DownArrow />
+        </div>
+      </Header>
+
       <div css={S.Container}>
         <div css={S.Input}>
           <Input
