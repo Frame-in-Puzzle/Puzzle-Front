@@ -7,7 +7,7 @@ import * as S from "./Style";
 const ProfileCheckPage = () => {
   return (
     <>
-      <Header />
+      <Header theme="Login" />
       <div css={S.Positioner}>
         <ProfileHeader />
         <MyPost />

@@ -1,12 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { Header } from "../../Components";
-import { theme } from "../../Styles/theme";
 
-const ProfileCheckPage = () => {
+const TestPage = () => {
   return (
     <>
       <Header theme="NoneLogin" />
     </>
   );
 };
-export default ProfileCheckPage;
+export default TestPage;

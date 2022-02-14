@@ -3,7 +3,7 @@ import { theme } from "../../../Styles/theme";
 
 export const Positioner = css`
   display: flex;
-  padding: 4% 12%;
+  padding: 0 12% 0;
 `;
 
 export const Text = css`

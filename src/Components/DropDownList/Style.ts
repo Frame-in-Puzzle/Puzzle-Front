@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 import { theme } from "../../Styles/theme";
 
 export const ListStyle = css`
-  padding: 1% 1.5%;
+  padding: 20px 22px;
   width: 400px;
   font-size: ${theme.fonts.h5};
   border: 1px solid #c4c4c4;
