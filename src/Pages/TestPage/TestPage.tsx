@@ -5,6 +5,7 @@ import SigInModal from "../../Components/SigInModal/SiginModal";
 
 const TestPage = () => {
   const [modalState, setModalState] = useState(false);
+  
   const closeModal = (e: Event) => {
     e.preventDefault();
     setModalState(false);
@@ -22,9 +23,8 @@ const TestPage = () => {
         >
           로그인
         </Button>
-
-        <SigInModal modalState={modalState} closeModal={closeModal} />
       </Header>
+      <SigInModal modalState={modalState} closeModal={closeModal} />
     </>
   );
 };
