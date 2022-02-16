@@ -5,6 +5,7 @@ import { FiX } from "react-icons/fi";
 
 type MyPostItem = {
   id: number;
+  image: any;
   category: string;
   title: string;
   content: string;
@@ -19,7 +20,7 @@ const MyPostItem: React.FC<MyPostProps> = ({ MyPostObj }) => {
   return (
     <div css={S.Positioner}>
       <div css={S.Container}>
-        <div css={S.Image}></div>
+        <div css={S.Image}>{MyPostObj.image}</div>
         <div css={S.rightbox}>
           <FiX css={S.Icon} />
           <p css={S.Category}>{MyPostObj.category}</p>

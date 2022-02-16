@@ -4,8 +4,9 @@ import { theme } from "./Styles/theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Mainpage from "./Pages/Mainpage/Mainpage";
-import ProfileCheckPage from "./Pages/ProfileCheckPage/ProfileCheckPage";
+import { ProfileCheckPage } from "./Pages";
 import Profilepage from "./Pages/Profilepage/Profilepage";
+import TestPage from "./Pages/TestPage/TestPage";
 import WritePage from "./Pages/WritePage/WritePage";
 import { DetailPage } from "./Pages";
 
@@ -16,6 +17,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <Global styles={GlobalStyle} />
           <Routes>
+            <Route path="/" element={<TestPage />} />
             <Route path="/main" element={<Mainpage />} />
             <Route path="/profile/check" element={<ProfileCheckPage />} />
             <Route path="/profile" element={<Profilepage />} />
