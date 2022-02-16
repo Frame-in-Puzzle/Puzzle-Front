@@ -7,6 +7,7 @@ import Mainpage from "./Pages/Mainpage/Mainpage";
 import ProfileCheckPage from "./Pages/ProfileCheckPage/ProfileCheckPage";
 import Profilepage from "./Pages/Profilepage/Profilepage";
 import WritePage from "./Pages/WritePage/WritePage";
+import { DetailPage } from "./Pages";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/profile/check" element={<ProfileCheckPage />} />
             <Route path="/profile" element={<Profilepage />} />
             <Route path="/write" element={<WritePage />} />
+            <Route path="/detail" element={<DetailPage />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
