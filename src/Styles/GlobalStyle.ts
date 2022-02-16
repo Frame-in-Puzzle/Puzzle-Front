@@ -20,4 +20,12 @@ const GlobalStyle = css`
   }
 `;
 
+export const ProfileWrapper = css`
+  width: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+`;
+
 export default GlobalStyle;

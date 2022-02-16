@@ -2,7 +2,6 @@
 import React from "react";
 import * as S from "./Style";
 import * as I from "../../Assets/index";
-import { rightbox } from "../MyPostItem/Style";
 import { FaGithubSquare } from "react-icons/fa";
 
 const ProfileHeader: React.FC = () => {
