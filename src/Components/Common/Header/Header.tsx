@@ -10,8 +10,6 @@ interface HeaderProps {
   children: React.ReactNode;
 }
 
-const ReturnHeader = (theme: string) => {};
-
 const Header: React.FC<HeaderProps> = ({ children, theme }) => {
   return (
     <div css={S.Positioner}>
