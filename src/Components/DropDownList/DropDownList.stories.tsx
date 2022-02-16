@@ -2,7 +2,7 @@ import DropDownList from "./DropDownList";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/DropDownList",
+  title: "Components/DropDown/DropDownList",
   component: DropDownList,
   argTypes: {
     theme: [
@@ -16,6 +16,7 @@ export default {
       "purpose",
       "interest",
       "profile",
+      "detail",
     ],
     width: { control: { type: "range", min: 200, max: 1000, step: 1 } },
   },

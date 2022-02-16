@@ -15,6 +15,7 @@ const themeData = {
   state: ["모집중", "모집완료"],
   purpose: ["프로젝트", "대회", "서비스", "스터디"],
   profile: ["프로필", "내 작성글", "로그아웃"],
+  detail: ["게시물 수정", "게시물 삭제"],
 };
 
 interface ListProps {
@@ -29,7 +30,8 @@ interface ListProps {
     | "AI"
     | "Android"
     | "iOS"
-    | "Game";
+    | "Game"
+    | "detail";
   /** DropDown List의 너비를 설정합니다. */
   width: string | number;
 }
@@ -91,6 +93,12 @@ const DropDownList: React.FC<ListProps> = ({ theme, width }) => {
         ));
       case "profile":
         return themeData.profile.map((data, idx) => (
+          <li onClick={() => setSelected(data)} key={idx}>
+            {data}
+          </li>
+        ));
+      case "detail":
+        return themeData.detail.map((data, idx) => (
           <li onClick={() => setSelected(data)} key={idx}>
             {data}
           </li>
