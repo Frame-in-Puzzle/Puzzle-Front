@@ -119,6 +119,23 @@ export const themes = {
     background-color: #5e5e5e;
     border-radius: 5px;
   `,
+  GrayButtonWithWhiteTextGrayHover: css`
+    color: #535353;
+    background: #ececec;
+    border-radius: 5px;
+    &:hover {
+      background: #b2b2b2;
+      color: #ffffff;
+    }
+  `,
+  BlackButtonWith5radius: css`
+    color: #ffffff;
+    background: #000000;
+    border-radius: 5px;
+    &:hover {
+      background: #b2b2b2;
+    }
+  `,
 };
 
 export const sizes = {

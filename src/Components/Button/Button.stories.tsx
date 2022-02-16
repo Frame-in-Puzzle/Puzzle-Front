@@ -26,6 +26,8 @@ export default {
           "BlackButtonWithWhiteText",
           "GrayButtonWithBlackTextNoHover",
           "BlackButtonWithWithTextNoHover",
+          "GrayButtonWithWhiteTextGrayHover",
+          "BlackButtonWith5radius",
         ],
       },
       defaultValue: "BlackButtonWithShadow",

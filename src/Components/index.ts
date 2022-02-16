@@ -14,3 +14,5 @@ export { default as WriteTextInput } from "./Write/WriteTextInput/WriteTextInput
 export { default as DropDown } from "./DropDown/DropDown";
 export { default as DropDownList } from "./DropDownList/DropDownList";
 export { default as Button } from "./Button/Button";
+export { default as TagItem } from "./Tags/TagItem/TagItem";
+export { default as ApplyItem } from "./ApplyItem/ApplyItem";

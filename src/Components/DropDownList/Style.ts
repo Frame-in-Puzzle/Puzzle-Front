@@ -35,4 +35,10 @@ export const themes = {
   Android: css``,
   iOS: css``,
   Game: css``,
+  detail: css`
+    align-items: center;
+    position: absolute;
+    top: 70px;
+    right: -68px;
+  `,
 };
