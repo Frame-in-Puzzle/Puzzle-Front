@@ -11,7 +11,7 @@ import Button from "../../Components/Button/Button";
 const WritePage = () => {
   return (
     <>
-      <Header />
+      <Header theme="Write" />
       <div css={S.Container}>
         <div css={S.Input}>
           <Input
