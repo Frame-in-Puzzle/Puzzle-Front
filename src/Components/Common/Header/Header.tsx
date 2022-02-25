@@ -2,8 +2,6 @@
 import React from "react";
 import * as S from "./Style";
 import * as I from "../../../Assets";
-import { Button } from "../..";
-import SigInModal from "../../SigInModal/SiginModal";
 
 interface HeaderProps {
   theme: "NoneLogin" | "Login" | "Write";
