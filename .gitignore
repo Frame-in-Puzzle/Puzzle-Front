@@ -30,3 +30,6 @@ yarn-error.log*
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+#환경변수 파일
+.env
