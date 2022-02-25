@@ -1,8 +1,33 @@
-import React from "react";
-import logo from "./logo.svg";
+import GlobalStyle from "./Styles/GlobalStyle";
+import { Global, ThemeProvider } from "@emotion/react";
+import { theme } from "./Styles/theme";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { RecoilRoot } from "recoil";
+import Mainpage from "./Pages/Mainpage/Mainpage";
+import { ProfileCheckPage } from "./Pages";
+import Profilepage from "./Pages/Profilepage/Profilepage";
+import TestPage from "./Pages/TestPage/TestPage";
+import WritePage from "./Pages/WritePage/WritePage";
+import { DetailPage } from "./Pages";
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <RecoilRoot>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <Global styles={GlobalStyle} />
+          <Routes>
+            <Route path="/" element={<TestPage />} />
+            <Route path="/main" element={<Mainpage />} />
+            <Route path="/profile/check" element={<ProfileCheckPage />} />
+            <Route path="/profile" element={<Profilepage />} />
+            <Route path="/write" element={<WritePage />} />
+            <Route path="/detail" element={<DetailPage />} />
+          </Routes>
+        </ThemeProvider>
+      </BrowserRouter>
+    </RecoilRoot>
+  );
 }
 
 export default App;
