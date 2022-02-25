@@ -32,11 +32,10 @@ export const TextArea = css`
   width: 100%;
   height: 1000px;
   resize: none;
+  padding: 1.3% 2%;
   font-size: ${theme.fonts.h4};
-
-  p {
-    margin-left: 1%;
-    margin-top: 1%;
+  &:focus {
+    outline: none;
   }
 `;
 
