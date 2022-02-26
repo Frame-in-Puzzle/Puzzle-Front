@@ -33,6 +33,7 @@ export const TextArea = css`
   height: 1000px;
   resize: none;
   padding: 1.3% 2%;
+
   font-size: ${theme.fonts.h4};
   &:focus {
     outline: none;
