@@ -2,7 +2,8 @@
 import React from "react";
 import * as S from "./Style";
 import * as I from "../../Assets/index";
-import { Header } from "../../Components";
+import { Header, Button } from "../../Components";
+import { ProfileWrapper } from "../../Styles/GlobalStyle";
 import ProfileHeader from "../../Components/Profile/ProfileHeader/ProfileHeader";
 import ProfileInfo from "../../Components/Profile/ProfileInfo/ProfileInfo";
 import ProfileSelectBox from "../../Components/Profile/ProfileSelectBox/ProfileSelectBox";
@@ -10,7 +11,21 @@ import ProfileSelectBox from "../../Components/Profile/ProfileSelectBox/ProfileS
 const Profilepage = () => {
   return (
     <div css={S.Positioner}>
-      <Header theme="Login" />
+      <Header theme="Login">
+        <Button
+          theme="TextButton"
+          fontSize="h5"
+          fontWeight="400"
+          size="Custom"
+          isShadow="No"
+        >
+          새 글 쓰기
+        </Button>
+        <div css={ProfileWrapper}>
+          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
+          <I.DownArrow />
+        </div>
+      </Header>
       <ProfileHeader />
       <ProfileInfo />
       <ProfileSelectBox />

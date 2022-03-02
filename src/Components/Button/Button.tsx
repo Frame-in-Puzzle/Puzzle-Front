@@ -21,7 +21,9 @@ interface ButtonProps {
     | "WhiteButtonWithBlackText"
     | "BlackButtonWithWhiteText"
     | "GrayButtonWithBlackTextNoHover"
-    | "BlackButtonWithWithTextNoHover";
+    | "BlackButtonWithWithTextNoHover"
+    | "GrayButtonWithWhiteTextGrayHover"
+    | "BlackButtonWith5radius";
   /** 버튼의 사이즈를 설정합니다. */
   size: "Big" | "Medium" | "Regular" | "Small" | "Custom";
   /** 버튼의 폰트사이즈를 설정합니다. */

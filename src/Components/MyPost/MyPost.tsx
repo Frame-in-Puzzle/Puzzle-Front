@@ -1,11 +1,13 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import MyPostItem from "../MyPostItem/MyPostItem";
+import * as I from "../../Assets/index";
 import * as S from "./Style";
 
 export const PostItemObj = [
   {
     id: 1,
+    image: <I.MyPostDefaultImg />,
     category: "WEB",
     title: "PUZZLE",
     content:
@@ -14,6 +16,7 @@ export const PostItemObj = [
   },
   {
     id: 2,
+    image: <I.MyPostDefaultImg />,
     category: "ABC",
     title: "VARI",
     content:
@@ -22,6 +25,7 @@ export const PostItemObj = [
   },
   {
     id: 3,
+    image: <I.MyPostDefaultImg />,
     category: "WEB",
     title: "PUZZLE",
     content:
@@ -30,6 +34,7 @@ export const PostItemObj = [
   },
   {
     id: 4,
+    image: <I.MyPostDefaultImg />,
     category: "WEB",
     title: "PUZZLE",
     content:
@@ -38,6 +43,7 @@ export const PostItemObj = [
   },
   {
     id: 5,
+    image: <I.MyPostDefaultImg />,
     category: "WEB",
     title: "PUZZLE",
     content:
@@ -46,7 +52,7 @@ export const PostItemObj = [
   },
 ];
 
-const Post = () => {
+const MyPost = () => {
   return (
     <div>
       <div css={S.Title}>
@@ -59,4 +65,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default MyPost;

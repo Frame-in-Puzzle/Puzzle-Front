@@ -14,6 +14,6 @@ export default {
   },
 } as ComponentMeta<typeof Header>;
 
-export const header: ComponentStory<typeof Header> = ({ theme }) => (
-  <Header theme={theme} />
+export const header: ComponentStory<typeof Header> = ({ children, theme }) => (
+  <Header theme={theme}>{children}</Header>
 );
