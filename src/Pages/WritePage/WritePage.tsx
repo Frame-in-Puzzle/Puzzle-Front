@@ -18,7 +18,6 @@ const WritePage = () => {
           <I.DownArrow />
         </div>
       </Header>
-
       <div css={S.Container}>
         <div css={S.Input}>
           <Input

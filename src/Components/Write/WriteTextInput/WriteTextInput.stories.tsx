@@ -7,6 +7,6 @@ export default {
   components: WriteTextInput,
 } as ComponentMeta<typeof WriteTextInput>;
 
-export const postitem: ComponentStory<typeof WriteTextInput> = () => (
+export const wrtietextinput: ComponentStory<typeof WriteTextInput> = () => (
   <WriteTextInput />
 );

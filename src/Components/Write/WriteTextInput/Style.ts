@@ -32,6 +32,12 @@ export const TextArea = css`
   width: 100%;
   height: 1000px;
   resize: none;
+  padding: 1.3% 2%;
+
+  font-size: ${theme.fonts.h4};
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Line = css`
@@ -49,4 +55,8 @@ export const MarkdownContainer = css`
 
 export const MarkdownWrapper = css`
   margin-left: 20%;
+`;
+
+export const Markdown = css`
+  cursor: pointer;
 `;
