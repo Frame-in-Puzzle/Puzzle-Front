@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { Header, Button } from "../../Components";
 import { useState } from "react";
-import SigInModal from "../../Components/SigInModal/SiginModal";
+import SignInModal from "../../Components/SigInModal/SiginModal";
 
 const TestPage = () => {
   const [modalState, setModalState] = useState(false);
-  
+
   const closeModal = (e: Event) => {
     e.preventDefault();
     setModalState(false);
@@ -24,7 +24,7 @@ const TestPage = () => {
           로그인
         </Button>
       </Header>
-      <SigInModal modalState={modalState} closeModal={closeModal} />
+      <SignInModal modalState={modalState} closeModal={closeModal} />
     </>
   );
 };
