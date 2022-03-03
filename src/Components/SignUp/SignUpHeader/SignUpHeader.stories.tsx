@@ -1,9 +1,8 @@
-import React from "react";
 import SignUpHeader from "./SignUpHeader";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 export default {
-  title: "Components/SignUp/SignUpHeader",
+  title: "Components/SignUp",
   components: SignUpHeader,
 } as ComponentMeta<typeof SignUpHeader>;
 
