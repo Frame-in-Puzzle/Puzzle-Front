@@ -24,7 +24,7 @@ const TestPage = () => {
           로그인
         </Button>
       </Header>
-      <SignInModal modalState={modalState} closeModal={closeModal} />
+      {modalState && <SignInModal closeModal={closeModal} />}
     </>
   );
 };
