@@ -8,7 +8,7 @@ import { ProfileCheckPage } from "./Pages";
 import Profilepage from "./Pages/Profilepage/Profilepage";
 import TestPage from "./Pages/TestPage/TestPage";
 import WritePage from "./Pages/WritePage/WritePage";
-import { DetailPage, SignUpPage } from "./Pages";
+import { DetailPage, SignUpPage, CallbackPage } from "./Pages";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
             <Route path="/write" element={<WritePage />} />
             <Route path="/detail" element={<DetailPage />} />
             <Route path="/signup" element={<SignUpPage />} />
+            <Route path="/callback" element={<CallbackPage />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>
