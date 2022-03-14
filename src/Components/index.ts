@@ -16,3 +16,4 @@ export { default as DropDownList } from "./DropDownList/DropDownList";
 export { default as Button } from "./Button/Button";
 export { default as TagItem } from "./Tags/TagItem/TagItem";
 export { default as ApplyItem } from "./ApplyItem/ApplyItem";
+export { default as TagModal } from "./Tags/TagModal/TagModal";
