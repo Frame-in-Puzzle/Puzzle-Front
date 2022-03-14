@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React from "react";
+import { Button, Header } from "../../Components";
 import { ProfileWrapper } from "../../Styles/GlobalStyle";
-import * as I from "../../Assets/index";
-import { Header, Button } from "../../Components";
+import * as I from "../../Assets";
 import {
   DetailTitle,
   DetailContent,

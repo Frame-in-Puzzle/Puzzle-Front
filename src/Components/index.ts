@@ -16,6 +16,7 @@ export { default as DropDownList } from "./DropDownList/DropDownList";
 export { default as Button } from "./Button/Button";
 export { default as TagItem } from "./Tags/TagItem/TagItem";
 export { default as ApplyItem } from "./ApplyItem/ApplyItem";
+export { default as TagModal } from "./Tags/TagModal/TagModal";
 export { default as SignUpButton } from "./SignUp/SignUpButton/SignUpButton";
 export { default as SignUpHeader } from "./SignUp/SignUpHeader/SignUpHeader";
 export { default as SignUpInput } from "./SignUp/SignUpInput/SignUpInput";
