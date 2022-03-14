@@ -23,5 +23,9 @@ export default {
 } as ComponentMeta<typeof DropDownList>;
 
 export const DropDown: ComponentStory<typeof DropDownList> = (arg) => {
-  return <DropDownList theme={arg.theme} width={arg.width} />;
+  return (
+    <DropDownList theme={arg.theme} width={arg.width}>
+      <li>안녕하세요</li>
+    </DropDownList>
+  );
 };

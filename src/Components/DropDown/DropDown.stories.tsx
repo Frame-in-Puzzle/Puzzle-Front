@@ -22,5 +22,7 @@ export default {
 } as ComponentMeta<typeof DropDown>;
 
 export const dropDown: ComponentStory<typeof DropDown> = ({ width, theme }) => (
-  <DropDown width={width} theme={theme} />
+  <DropDown width={width} theme={theme} selected="안녕하세요">
+    <li>안녕하세요</li>
+  </DropDown>
 );

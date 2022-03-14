@@ -2,14 +2,16 @@ import { css } from "@emotion/react";
 import { theme } from "../../Styles/theme";
 
 export const ListStyle = css`
+  position: absolute;
   padding: 20px 22px;
   width: 400px;
+  background: #ffffff;
   font-size: ${theme.fonts.h5};
   border: 1px solid #c4c4c4;
   display: flex;
   flex-direction: column;
   list-style: none;
-  border-radius: 10px;
+  border-radius: 5px;
   li {
     margin-top: 15px;
     cursor: pointer;
