@@ -76,6 +76,7 @@ export const GithubContent = css`
   align-items: center;
   margin-top: 45px;
   cursor: pointer;
+  color: #000000;
 
   h2 {
     color: #494949;

@@ -7,6 +7,7 @@ export const Themes = {
     box-sizing: border-box;
     border-radius: 10px;
     color: #888888;
+    padding: 1%;
   `,
   WritePageInput: css`
     color: #6a6a6a;

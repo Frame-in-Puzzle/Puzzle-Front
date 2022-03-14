@@ -30,9 +30,9 @@ const TestPage = () => {
           로그인
         </Button>
       </Header>
-      <SigInModal modalState={modalState} closeModal={closeModal} />
       <button onClick={() => setTagModalState(true)}>확인</button>
       {tagModalState && <TagModal closeTagModal={closeTagModal} />}
+      {modalState && <SignInModal closeModal={closeModal} />}
     </>
   );
 };
