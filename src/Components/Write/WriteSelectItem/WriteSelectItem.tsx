@@ -7,7 +7,6 @@ const WriteSelectItem = () => {
   return (
     <div css={S.Positioner}>
       <label css={S.Text}>프로젝트 : </label>
-      <DropDownList theme="purpose" width="766px" />
     </div>
   );
 };
