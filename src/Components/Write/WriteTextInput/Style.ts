@@ -53,10 +53,14 @@ export const MarkdownContainer = css`
   margin-left: 55%;
 `;
 
-export const MarkdownWrapper = css`
-  margin-left: 20%;
+export const ToolbarBlock = css`
+  margin-left: 15%;
 `;
+
+export const ToolbarItem = css``;
 
 export const Markdown = css`
   cursor: pointer;
+  width: 25px;
+  height: 25px;
 `;
