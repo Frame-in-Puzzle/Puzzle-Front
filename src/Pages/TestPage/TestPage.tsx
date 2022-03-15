@@ -32,7 +32,7 @@ const TestPage = () => {
       </Header>
       <button onClick={() => setTagModalState(true)}>확인</button>
       {tagModalState && <TagModal closeTagModal={closeTagModal} />}
-      {modalState && <SignInModal closeModal={closeModal} />}
+      {modalState && <SigInModal closeModal={closeModal} />}
     </>
   );
 };

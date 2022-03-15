@@ -29,35 +29,35 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
     switch (markdown) {
       case "heading":
         innerRef.current.focus();
-        innerRef.current.selectionStart = "#";
+        innerRef.current.value += "#";
         break;
       case "bold":
         innerRef.current.focus();
-        innerRef.current.value = "** **";
+        innerRef.current.value += "** **";
         break;
       case "italic":
         innerRef.current.focus();
-        innerRef.current.value = "*** ***";
+        innerRef.current.value += "*** ***";
         break;
       case "list":
         innerRef.current.focus();
-        innerRef.current.value = "-";
+        innerRef.current.value += "-";
         break;
       case "numberlist":
         innerRef.current.focus();
-        innerRef.current.value = "1.";
+        innerRef.current.value += "1.";
         break;
       case "code":
         innerRef.current.focus();
-        innerRef.current.value = "` `";
+        innerRef.current.value += "` `";
         break;
       case "link":
         innerRef.current.focus();
-        innerRef.current.value = "[]()";
+        innerRef.current.value += "[]()";
         break;
       case "checkbox":
         innerRef.current.focus();
-        innerRef.current.value = "[]";
+        innerRef.current.value += "[]";
         break;
       default:
         break;
