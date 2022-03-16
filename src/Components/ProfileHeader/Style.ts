@@ -42,6 +42,34 @@ export const Icon = css`
   margin-left: 10px;
 `;
 
+export const Mail = css`
+  display: flex;
+  a {
+    display: flex;
+    color: #000;
+  }
+  p {
+    display: none;
+  }
+
+  &:hover {
+    p {
+      display: block;
+      margin-left: 10px;
+      color: #fff;
+      background-color: #707070;
+      border-radius: 5px;
+      padding: 6px;
+    }
+  }
+`;
+
+export const MailIcon = css`
+  font-size: 31px;
+  margin-left: 10px;
+  cursor: pointer;
+`;
+
 export const Introduction = css`
   color: #707070;
   font-style: normal;
