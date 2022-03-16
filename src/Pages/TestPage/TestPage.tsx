@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Header, Button } from "../../Components";
-import { useState } from "react";
-import SigInModal from "../../Components/SigInModal/SiginModal";
+import { useEffect, useState } from "react";
+import SiginModal from "../../Components/SigInModal/SiginModal";
 import { TagModal } from "../../Components";
 
 const TestPage = () => {
@@ -32,7 +32,7 @@ const TestPage = () => {
       </Header>
       <button onClick={() => setTagModalState(true)}>확인</button>
       {tagModalState && <TagModal closeTagModal={closeTagModal} />}
-      {modalState && <SignInModal closeModal={closeModal} />}
+      {modalState && <SiginModal closeModal={closeModal} />}
     </>
   );
 };
