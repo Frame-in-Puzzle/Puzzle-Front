@@ -51,12 +51,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:12.20.37"],
             ["@types/react", "npm:17.0.38"],
+            ["@types/react-beforeunload", "npm:2.1.1"],
             ["@types/react-dom", "npm:17.0.11"],
             ["axios", "npm:0.26.0"],
             ["babel-loader", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:8.2.3"],
             ["eslint-config-react-app", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:6.0.0"],
             ["prettier", "npm:2.5.1"],
             ["react", "npm:18.0.0-rc.0"],
+            ["react-beforeunload", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.5.2"],
             ["react-dom", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:18.0.0-rc.0"],
             ["react-icons", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:4.3.1"],
             ["react-remark", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.1.0"],
@@ -8416,6 +8418,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/prop-types", "npm:15.7.4"],
             ["@types/scheduler", "npm:0.16.2"],
             ["csstype", "npm:3.0.10"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/react-beforeunload", [
+        ["npm:2.1.1", {
+          "packageLocation": "./.yarn/cache/@types-react-beforeunload-npm-2.1.1-ad10677563-ca84ce4f93.zip/node_modules/@types/react-beforeunload/",
+          "packageDependencies": [
+            ["@types/react-beforeunload", "npm:2.1.1"],
+            ["@types/react", "npm:17.0.37"]
           ],
           "linkType": "HARD",
         }]
@@ -21716,12 +21728,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:26.0.24"],
             ["@types/node", "npm:12.20.37"],
             ["@types/react", "npm:17.0.38"],
+            ["@types/react-beforeunload", "npm:2.1.1"],
             ["@types/react-dom", "npm:17.0.11"],
             ["axios", "npm:0.26.0"],
             ["babel-loader", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:8.2.3"],
             ["eslint-config-react-app", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:6.0.0"],
             ["prettier", "npm:2.5.1"],
             ["react", "npm:18.0.0-rc.0"],
+            ["react-beforeunload", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.5.2"],
             ["react-dom", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:18.0.0-rc.0"],
             ["react-icons", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:4.3.1"],
             ["react-remark", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.1.0"],
@@ -21925,6 +21939,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["raf", "npm:3.4.1"],
             ["regenerator-runtime", "npm:0.13.9"],
             ["whatwg-fetch", "npm:3.6.2"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-beforeunload", [
+        ["npm:2.5.2", {
+          "packageLocation": "./.yarn/cache/react-beforeunload-npm-2.5.2-861d027868-cc73032cea.zip/node_modules/react-beforeunload/",
+          "packageDependencies": [
+            ["react-beforeunload", "npm:2.5.2"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.5.2", {
+          "packageLocation": "./.yarn/__virtual__/react-beforeunload-virtual-4804db6bc1/0/cache/react-beforeunload-npm-2.5.2-861d027868-cc73032cea.zip/node_modules/react-beforeunload/",
+          "packageDependencies": [
+            ["react-beforeunload", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.5.2"],
+            ["@types/react", "npm:17.0.38"],
+            ["prop-types", "npm:15.7.2"],
+            ["react", "npm:18.0.0-rc.0"],
+            ["tiny-invariant", "npm:1.2.0"]
+          ],
+          "packagePeers": [
+            "@types/react",
+            "react"
           ],
           "linkType": "HARD",
         }]
@@ -25080,6 +25118,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/timsort-npm-0.3.0-868a28166c-1a66cb897d.zip/node_modules/timsort/",
           "packageDependencies": [
             ["timsort", "npm:0.3.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["tiny-invariant", [
+        ["npm:1.2.0", {
+          "packageLocation": "./.yarn/cache/tiny-invariant-npm-1.2.0-024338c59c-e09a718a7c.zip/node_modules/tiny-invariant/",
+          "packageDependencies": [
+            ["tiny-invariant", "npm:1.2.0"]
           ],
           "linkType": "HARD",
         }]
