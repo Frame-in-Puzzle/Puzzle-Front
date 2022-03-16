@@ -12298,6 +12298,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jwt-decode@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "jwt-decode@npm:3.1.2"
+  checksum: 20a4b072d44ce3479f42d0d2c8d3dabeb353081ba4982e40b83a779f2459a70be26441be6c160bfc8c3c6eadf9f6380a036fbb06ac5406b5674e35d8c4205eeb
+  languageName: node
+  linkType: hard
+
 "killable@npm:^1.0.1":
   version: 1.0.1
   resolution: "killable@npm:1.0.1"
@@ -15587,6 +15594,7 @@ __metadata:
     axios: ^0.26.0
     babel-loader: ^8.2.3
     eslint-config-react-app: ^6.0.0
+    jwt-decode: ^3.1.2
     prettier: ^2.5.1
     react: rc
     react-dom: rc
