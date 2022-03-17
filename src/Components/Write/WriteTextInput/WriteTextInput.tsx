@@ -25,7 +25,24 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
     e.preventDefault();
   });
 
-  const onClicked = (markdown: string) => {
+  const handleDragEnter = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const handleDragLeave = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const handleDragOver = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  const handleDrop = (e: any) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+
+  const onToolbarClicked = (markdown: string) => {
     switch (markdown) {
       case "heading":
         innerRef.current.focus();
@@ -67,50 +84,64 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
   const MarkdownImg = [
     {
       id: "Heading",
-      image: (
-        <BiHeading css={S.Markdown} onClick={() => onClicked("heading")} />
+      icon: (
+        <BiHeading
+          css={S.Markdown}
+          onClick={() => onToolbarClicked("heading")}
+        />
       ),
     },
     {
       id: "Bold",
-      image: <BiBold css={S.Markdown} onClick={() => onClicked("bold")} />,
+      icon: (
+        <BiBold css={S.Markdown} onClick={() => onToolbarClicked("bold")} />
+      ),
     },
     {
       id: "Italic",
-      image: <BiItalic css={S.Markdown} onClick={() => onClicked("italic")} />,
+      icon: (
+        <BiItalic css={S.Markdown} onClick={() => onToolbarClicked("italic")} />
+      ),
     },
     {
       id: "List",
-      image: (
+      icon: (
         <AiOutlineUnorderedList
           css={S.Markdown}
-          onClick={() => onClicked("list")}
+          onClick={() => onToolbarClicked("list")}
         />
       ),
     },
     {
       id: "NumberList",
-      image: (
+      icon: (
         <AiOutlineOrderedList
           css={S.Markdown}
-          onClick={() => onClicked("numberlist")}
+          onClick={() => onToolbarClicked("numberlist")}
         />
       ),
     },
     {
       id: "Code",
-      image: <BsCodeSlash css={S.Markdown} onClick={() => onClicked("code")} />,
+      icon: (
+        <BsCodeSlash
+          css={S.Markdown}
+          onClick={() => onToolbarClicked("code")}
+        />
+      ),
     },
     {
       id: "Link",
-      image: <FiLink2 css={S.Markdown} onClick={() => onClicked("link")} />,
+      icon: (
+        <FiLink2 css={S.Markdown} onClick={() => onToolbarClicked("link")} />
+      ),
     },
     {
       id: "CheckBox",
-      image: (
+      icon: (
         <BiCheckboxChecked
           css={S.Markdown}
-          onClick={() => onClicked("checkbox")}
+          onClick={() => onToolbarClicked("checkbox")}
         />
       ),
     },
@@ -155,7 +186,7 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
             {MarkdownImg.map((item) => (
               <div css={S.ToolbarBlock}>
                 <div css={S.ToolbarItem} onClick={() => onClick(item.id)}>
-                  {item.image}
+                  {item.icon}
                 </div>
               </div>
             ))}
@@ -163,7 +194,13 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
         </nav>
         <hr css={S.Line} />
         {preview === false ? (
-          <div onSubmit={handleSubmit}>
+          <div
+            onSubmit={handleSubmit}
+            onDrop={(e) => handleDrop(e)}
+            onDragOver={(e) => handleDragOver(e)}
+            onDragEnter={(e) => handleDragEnter(e)}
+            onDragLeave={(e) => handleDragLeave(e)}
+          >
             <textarea
               css={S.TextArea}
               onChange={({ currentTarget }) => {
