@@ -17,7 +17,7 @@ const CallbackPage = () => {
     });
   }, []);
 
-  return <div>ㅗㅜㅑ</div>;
+  return <div></div>;
 };
 
 export default CallbackPage;
