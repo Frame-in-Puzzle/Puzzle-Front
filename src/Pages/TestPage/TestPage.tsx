@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { Header, Button } from "../../Components";
 import { useState } from "react";
-import SigInModal from "../../Components/SigInModal/SiginModal";
+import SignInModal from "../../Components/SigInModal/SiginModal";
 import { TagModal } from "../../Components";
 
 const TestPage = () => {
