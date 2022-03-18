@@ -37,13 +37,8 @@ const DetailPage = () => {
     apiClient.get,
   );
 
-  const { data: attend, error: attendError } = useSWR(
-    `/attend/board/${params.id}`,
-    apiClient.get,
-  );
-
-  if (!board || !attend) return <div />;
-  if (boardError || attendError) return <div />;
+  if (!board) return <div />;
+  if (boardError) return <div />;
   return (
     <>
       <Header theme="Login">
@@ -71,7 +66,29 @@ const DetailPage = () => {
       />
       <DetailContent contents={board.data.contents} />
       <DetailWriter name={board.data.name} githubId={board.data.githubId} />
-      <DetailApply apply={3} applyObj={attend} />
+      <DetailApply
+        apply={3}
+        applyObj={[
+          {
+            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
+            name: "ImChangGyu",
+            tag: ["프론트엔드", "TS", "React", "Next"],
+            date: "2022.1.10",
+          },
+          {
+            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
+            name: "ImChangGyu",
+            tag: ["프론트엔드", "TS", "React", "Next"],
+            date: "2022.1.10",
+          },
+          {
+            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
+            name: "ImChangGyu",
+            tag: ["프론트엔드", "TS", "React", "Next"],
+            date: "2022.1.10",
+          },
+        ]}
+      />
     </>
   );
 };
