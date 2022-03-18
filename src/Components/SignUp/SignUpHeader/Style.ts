@@ -2,6 +2,7 @@ import { css } from "@emotion/react";
 import { theme } from "../../../Styles/theme";
 
 export const Positioner = css`
+  margin-top: 5%;
   width: 100%;
   height: 150px;
 `;
