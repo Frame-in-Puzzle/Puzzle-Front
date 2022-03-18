@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Header } from "../../Components";
 import { ProfileWrapper } from "../../Styles/GlobalStyle";
 import * as I from "../../Assets";
@@ -9,8 +9,41 @@ import {
   DetailWriter,
   DetailApply,
 } from "../../Templates";
+import { useParams } from "react-router";
+import useSWR from "swr";
+import { apiClient } from "../../Lib/Api/apiClient";
+import axios from "axios";
+
+interface BoardProps {
+  data: {
+    contents: string;
+    fields: string[];
+    files: string[];
+    githubId: string;
+    createdAt: Date;
+    id: number;
+    languages: string[];
+    name: string;
+    purpose: string;
+    status: string;
+    title: string;
+  };
+}
 
 const DetailPage = () => {
+  const params = useParams();
+  const { data: board, error: boardError } = useSWR<BoardProps>(
+    `/board/${params.id}`,
+    apiClient.get,
+  );
+
+  const { data: attend, error: attendError } = useSWR(
+    `/attend/board/${params.id}`,
+    apiClient.get,
+  );
+
+  if (!board || !attend) return <div />;
+  if (boardError || attendError) return <div />;
   return (
     <>
       <Header theme="Login">
@@ -30,43 +63,15 @@ const DetailPage = () => {
       </Header>
       <DetailTitle
         TitleObj={{
-          title: "함께 PUZZLE 프로젝트 할 개발자 구해요",
-          name: "Yuseonii",
-          date: "2022.1.10",
-          tag: ["백엔드", "Spring", "Spring boot", "Go"],
+          title: board.data.title,
+          name: board.data.githubId,
+          date: board.data.createdAt,
+          tag: board.data.fields,
         }}
       />
-      <DetailContent />
-      <DetailWriter
-        writerObj={{
-          image: "https://avatars.githubusercontent.com/u/66630940?v=4",
-          name: "ImChangGyu",
-          description: "Front-End Developer가 되고싶습니다.",
-        }}
-      />
-      <DetailApply
-        apply={3}
-        applyObj={[
-          {
-            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
-            name: "ImChangGyu",
-            tag: ["프론트엔드", "TS", "React", "Next"],
-            date: "2022.1.10",
-          },
-          {
-            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
-            name: "ImChangGyu",
-            tag: ["프론트엔드", "TS", "React", "Next"],
-            date: "2022.1.10",
-          },
-          {
-            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
-            name: "ImChangGyu",
-            tag: ["프론트엔드", "TS", "React", "Next"],
-            date: "2022.1.10",
-          },
-        ]}
-      />
+      <DetailContent contents={board.data.contents} />
+      <DetailWriter name={board.data.name} githubId={board.data.githubId} />
+      <DetailApply apply={3} applyObj={attend} />
     </>
   );
 };
