@@ -9,6 +9,8 @@ import Profilepage from "./Pages/Profilepage/Profilepage";
 import TestPage from "./Pages/TestPage/TestPage";
 import WritePage from "./Pages/WritePage/WritePage";
 import { DetailPage, SignUpPage, CallbackPage } from "./Pages";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
 
 function App() {
   return (

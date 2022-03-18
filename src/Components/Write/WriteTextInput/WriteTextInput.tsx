@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../../Button/Button";
 import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
@@ -15,6 +15,23 @@ interface ToolbarProps {
   onClick?: Function;
 }
 
+const handleDragEnter = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+const handleDragLeave = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+const handleDragOver = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+const handleDrop = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+
 const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
@@ -25,56 +42,43 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
     e.preventDefault();
   });
 
-  const handleDragEnter = (e: any) => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
-    e.stopPropagation();
-  };
-  const handleDragLeave = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-  const handleDragOver = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-  const handleDrop = (e: any) => {
-    e.preventDefault();
-    e.stopPropagation();
   };
 
   const onToolbarClicked = (markdown: string) => {
     switch (markdown) {
       case "heading":
         innerRef.current.focus();
-        innerRef.current.value += "#";
+        innerRef.current.value += "# ";
         break;
       case "bold":
         innerRef.current.focus();
-        innerRef.current.value += "** **";
+        innerRef.current.value += "** ** ";
         break;
       case "italic":
         innerRef.current.focus();
-        innerRef.current.value += "*** ***";
+        innerRef.current.value += "*** *** ";
         break;
       case "list":
         innerRef.current.focus();
-        innerRef.current.value += "-";
+        innerRef.current.value += "- ";
         break;
       case "numberlist":
         innerRef.current.focus();
-        innerRef.current.value += "1.";
+        innerRef.current.value += "1. ";
         break;
       case "code":
         innerRef.current.focus();
-        innerRef.current.value += "` `";
+        innerRef.current.value += "` ` ";
         break;
       case "link":
         innerRef.current.focus();
-        innerRef.current.value += "[]()";
+        innerRef.current.value += "![]() ";
         break;
       case "checkbox":
         innerRef.current.focus();
-        innerRef.current.value += "[]";
+        innerRef.current.value += "[] ";
         break;
       default:
         break;
@@ -147,11 +151,6 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
     },
   ];
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(markdownValue);
-  };
-
   return (
     <div css={S.Positioner}>
       <div css={S.ContentsContainer}>
@@ -208,8 +207,6 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
                 setMarkdownValue(currentTarget.value);
               }}
               value={markdownValue}
-              cols={40}
-              rows={5}
               ref={innerRef}
             />
           </div>
