@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import Button from "../../Button/Button";
 import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
@@ -15,6 +15,23 @@ interface ToolbarProps {
   onClick?: Function;
 }
 
+const handleDragEnter = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+const handleDragLeave = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+const handleDragOver = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+const handleDrop = (e: any) => {
+  e.preventDefault();
+  e.stopPropagation();
+};
+
 const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
@@ -25,39 +42,43 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
     e.preventDefault();
   });
 
-  const onClicked = (markdown: string) => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+  };
+
+  const onToolbarClicked = (markdown: string) => {
     switch (markdown) {
       case "heading":
         innerRef.current.focus();
-        innerRef.current.value += "#";
+        innerRef.current.value += "# ";
         break;
       case "bold":
         innerRef.current.focus();
-        innerRef.current.value += "** **";
+        innerRef.current.value += "** ** ";
         break;
       case "italic":
         innerRef.current.focus();
-        innerRef.current.value += "*** ***";
+        innerRef.current.value += "*** *** ";
         break;
       case "list":
         innerRef.current.focus();
-        innerRef.current.value += "-";
+        innerRef.current.value += "- ";
         break;
       case "numberlist":
         innerRef.current.focus();
-        innerRef.current.value += "1.";
+        innerRef.current.value += "1. ";
         break;
       case "code":
         innerRef.current.focus();
-        innerRef.current.value += "` `";
+        innerRef.current.value += "` ` ";
         break;
       case "link":
         innerRef.current.focus();
-        innerRef.current.value += "[]()";
+        innerRef.current.value += "![]() ";
         break;
       case "checkbox":
         innerRef.current.focus();
-        innerRef.current.value += "[]";
+        innerRef.current.value += "[] ";
         break;
       default:
         break;
@@ -67,59 +88,68 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
   const MarkdownImg = [
     {
       id: "Heading",
-      image: (
-        <BiHeading css={S.Markdown} onClick={() => onClicked("heading")} />
+      icon: (
+        <BiHeading
+          css={S.Markdown}
+          onClick={() => onToolbarClicked("heading")}
+        />
       ),
     },
     {
       id: "Bold",
-      image: <BiBold css={S.Markdown} onClick={() => onClicked("bold")} />,
+      icon: (
+        <BiBold css={S.Markdown} onClick={() => onToolbarClicked("bold")} />
+      ),
     },
     {
       id: "Italic",
-      image: <BiItalic css={S.Markdown} onClick={() => onClicked("italic")} />,
+      icon: (
+        <BiItalic css={S.Markdown} onClick={() => onToolbarClicked("italic")} />
+      ),
     },
     {
       id: "List",
-      image: (
+      icon: (
         <AiOutlineUnorderedList
           css={S.Markdown}
-          onClick={() => onClicked("list")}
+          onClick={() => onToolbarClicked("list")}
         />
       ),
     },
     {
       id: "NumberList",
-      image: (
+      icon: (
         <AiOutlineOrderedList
           css={S.Markdown}
-          onClick={() => onClicked("numberlist")}
+          onClick={() => onToolbarClicked("numberlist")}
         />
       ),
     },
     {
       id: "Code",
-      image: <BsCodeSlash css={S.Markdown} onClick={() => onClicked("code")} />,
+      icon: (
+        <BsCodeSlash
+          css={S.Markdown}
+          onClick={() => onToolbarClicked("code")}
+        />
+      ),
     },
     {
       id: "Link",
-      image: <FiLink2 css={S.Markdown} onClick={() => onClicked("link")} />,
+      icon: (
+        <FiLink2 css={S.Markdown} onClick={() => onToolbarClicked("link")} />
+      ),
     },
     {
       id: "CheckBox",
-      image: (
+      icon: (
         <BiCheckboxChecked
           css={S.Markdown}
-          onClick={() => onClicked("checkbox")}
+          onClick={() => onToolbarClicked("checkbox")}
         />
       ),
     },
   ];
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(markdownValue);
-  };
 
   return (
     <div css={S.Positioner}>
@@ -155,7 +185,7 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
             {MarkdownImg.map((item) => (
               <div css={S.ToolbarBlock}>
                 <div css={S.ToolbarItem} onClick={() => onClick(item.id)}>
-                  {item.image}
+                  {item.icon}
                 </div>
               </div>
             ))}
@@ -163,7 +193,13 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
         </nav>
         <hr css={S.Line} />
         {preview === false ? (
-          <div onSubmit={handleSubmit}>
+          <div
+            onSubmit={handleSubmit}
+            onDrop={(e) => handleDrop(e)}
+            onDragOver={(e) => handleDragOver(e)}
+            onDragEnter={(e) => handleDragEnter(e)}
+            onDragLeave={(e) => handleDragLeave(e)}
+          >
             <textarea
               css={S.TextArea}
               onChange={({ currentTarget }) => {
@@ -171,8 +207,6 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
                 setMarkdownValue(currentTarget.value);
               }}
               value={markdownValue}
-              cols={40}
-              rows={5}
               ref={innerRef}
             />
           </div>
