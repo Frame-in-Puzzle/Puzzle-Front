@@ -13,5 +13,5 @@ export default {
 } as ComponentMeta<typeof DetailWriter>;
 
 export const detailWriter: ComponentStory<typeof DetailWriter> = () => (
-  <DetailWriter writerObj={writerObj} />
+  <DetailWriter name="ImChangGyu" githubId="ImChangGyu" />
 );

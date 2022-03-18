@@ -22,7 +22,7 @@ function App() {
             <Route path="/profile/check" element={<ProfileCheckPage />} />
             <Route path="/profile" element={<Profilepage />} />
             <Route path="/write" element={<WritePage />} />
-            <Route path="/detail" element={<DetailPage />} />
+            <Route path="/detail/:id" element={<DetailPage />} />
             <Route path="/signup" element={<SignUpPage />} />
             <Route path="/callback" element={<CallbackPage />} />
           </Routes>
