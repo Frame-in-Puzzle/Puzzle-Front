@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./Style";
 import * as I from "../../Assets/index";
 import { FaGithubSquare } from "react-icons/fa";
+import { ImMail } from "react-icons/im";
 
 const ProfileHeader: React.FC = () => {
   return (
@@ -15,6 +16,12 @@ const ProfileHeader: React.FC = () => {
           <div css={S.TitleWrapper}>
             <p css={S.Name}>Yuseonii</p>
             <FaGithubSquare css={S.Icon} />
+            <div css={S.Mail}>
+              <a href="mailto:s20063@gsm.hs.kr">
+                <ImMail css={S.MailIcon}></ImMail>
+              </a>
+              <p>yuseonii@naver.com</p>
+            </div>
           </div>
           <p css={S.Introduction}>Figma를 이용하여 디자인을 할 수 있습니다.</p>
           <div css={S.LanguageWrapper}>
