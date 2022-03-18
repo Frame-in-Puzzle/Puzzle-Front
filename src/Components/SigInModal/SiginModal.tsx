@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect } from "react";
+import React from "react";
 import * as S from "./Style";
 import * as I from "../../Assets";
 import { FiX } from "react-icons/fi";
