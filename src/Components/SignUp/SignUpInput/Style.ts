@@ -14,4 +14,8 @@ export const Title = css`
   font-weight: 600; ;
 `;
 
-export const TitleWrapper = css``;
+export const TitleWrapper = css`
+  input {
+    color: #000;
+  }
+`;
