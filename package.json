@@ -16,6 +16,7 @@
     "eslint-config-react-app": "^6.0.0",
     "react": "rc",
     "react-beforeunload": "^2.5.2",
+    "react-dnd": "^15.1.1",
     "react-dom": "rc",
     "react-icons": "^4.3.1",
     "react-remark": "^2.1.0",

@@ -59,6 +59,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.5.1"],
             ["react", "npm:18.0.0-rc.0"],
             ["react-beforeunload", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.5.2"],
+            ["react-dnd", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:15.1.1"],
             ["react-dom", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:18.0.0-rc.0"],
             ["react-icons", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:4.3.1"],
             ["react-remark", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.1.0"],
@@ -5518,6 +5519,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@popperjs-core-npm-2.11.0-13e8017699-84d6f197d3.zip/node_modules/@popperjs/core/",
           "packageDependencies": [
             ["@popperjs/core", "npm:2.11.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@react-dnd/asap", [
+        ["npm:4.0.0", {
+          "packageLocation": "./.yarn/cache/@react-dnd-asap-npm-4.0.0-f6b65c5b5b-4c37ef5c4e.zip/node_modules/@react-dnd/asap/",
+          "packageDependencies": [
+            ["@react-dnd/asap", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@react-dnd/invariant", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/@react-dnd-invariant-npm-3.0.0-8c1c2ab5b6-1e8f08ef1e.zip/node_modules/@react-dnd/invariant/",
+          "packageDependencies": [
+            ["@react-dnd/invariant", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@react-dnd/shallowequal", [
+        ["npm:3.0.0", {
+          "packageLocation": "./.yarn/cache/@react-dnd-shallowequal-npm-3.0.0-c971eb8b4f-18bcfc7410.zip/node_modules/@react-dnd/shallowequal/",
+          "packageDependencies": [
+            ["@react-dnd/shallowequal", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
@@ -12806,6 +12834,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["dir-glob", "npm:3.0.1"],
             ["path-type", "npm:4.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["dnd-core", [
+        ["npm:15.1.1", {
+          "packageLocation": "./.yarn/cache/dnd-core-npm-15.1.1-6052c84d04-11cc8dcbab.zip/node_modules/dnd-core/",
+          "packageDependencies": [
+            ["dnd-core", "npm:15.1.1"],
+            ["@react-dnd/asap", "npm:4.0.0"],
+            ["@react-dnd/invariant", "npm:3.0.0"],
+            ["redux", "npm:4.1.2"]
           ],
           "linkType": "HARD",
         }]
@@ -21736,6 +21776,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["prettier", "npm:2.5.1"],
             ["react", "npm:18.0.0-rc.0"],
             ["react-beforeunload", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.5.2"],
+            ["react-dnd", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:15.1.1"],
             ["react-dom", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:18.0.0-rc.0"],
             ["react-icons", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:4.3.1"],
             ["react-remark", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:2.1.0"],
@@ -22022,6 +22063,37 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["shell-quote", "npm:1.7.2"],
             ["strip-ansi", "npm:6.0.0"],
             ["text-table", "npm:0.2.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-dnd", [
+        ["npm:15.1.1", {
+          "packageLocation": "./.yarn/cache/react-dnd-npm-15.1.1-7a0ba0cce8-4b3f94bdbd.zip/node_modules/react-dnd/",
+          "packageDependencies": [
+            ["react-dnd", "npm:15.1.1"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:15.1.1", {
+          "packageLocation": "./.yarn/__virtual__/react-dnd-virtual-0f538e35ff/0/cache/react-dnd-npm-15.1.1-7a0ba0cce8-4b3f94bdbd.zip/node_modules/react-dnd/",
+          "packageDependencies": [
+            ["react-dnd", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:15.1.1"],
+            ["@react-dnd/invariant", "npm:3.0.0"],
+            ["@react-dnd/shallowequal", "npm:3.0.0"],
+            ["@types/hoist-non-react-statics", null],
+            ["@types/node", "npm:12.20.37"],
+            ["@types/react", "npm:17.0.38"],
+            ["dnd-core", "npm:15.1.1"],
+            ["fast-deep-equal", "npm:3.1.3"],
+            ["hoist-non-react-statics", "npm:3.3.2"],
+            ["react", "npm:18.0.0-rc.0"]
+          ],
+          "packagePeers": [
+            "@types/hoist-non-react-statics",
+            "@types/node",
+            "@types/react",
+            "react"
           ],
           "linkType": "HARD",
         }]
@@ -22781,6 +22853,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["redent", "npm:3.0.0"],
             ["indent-string", "npm:4.0.0"],
             ["strip-indent", "npm:3.0.0"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["redux", [
+        ["npm:4.1.2", {
+          "packageLocation": "./.yarn/cache/redux-npm-4.1.2-04cdbe7a08-6a839cee5b.zip/node_modules/redux/",
+          "packageDependencies": [
+            ["redux", "npm:4.1.2"],
+            ["@babel/runtime", "npm:7.16.3"]
           ],
           "linkType": "HARD",
         }]
