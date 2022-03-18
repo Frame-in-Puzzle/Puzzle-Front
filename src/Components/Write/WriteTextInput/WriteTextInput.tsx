@@ -2,41 +2,62 @@
 import React, { useEffect, useRef, useState } from "react";
 import Button from "../../Button/Button";
 import * as S from "./Style";
-import * as I from "../../../Assets/index";
+import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
+import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
+import { BsCodeSlash } from "react-icons/bs";
+import { FiLink2 } from "react-icons/fi";
 import { useRemark } from "react-remark";
 import { useRecoilState } from "recoil";
 import { isPreview } from "../../../Atoms";
+import { useBeforeunload } from "react-beforeunload";
 
-const WriteTextInput = () => {
-  const [reactContent, setMarkdownSource] = useRemark();
+interface ToolbarProps {
+  onClick?: Function;
+}
+
+const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
+  const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
+  const innerRef: any = useRef(null);
 
-  const setToolbarValue = (markdown: string) => {
+  useBeforeunload((e: any) => {
+    e.preventDefault();
+  });
+
+  const onClicked = (markdown: string) => {
     switch (markdown) {
-      case "Header":
-        setMarkdownValue(`${markdownValue} \n#`);
+      case "heading":
+        innerRef.current.focus();
+        innerRef.current.value += "#";
         break;
-      case "Bold":
-        setMarkdownValue(`${markdownValue}****`);
+      case "bold":
+        innerRef.current.focus();
+        innerRef.current.value += "** **";
         break;
-      case "Italic":
-        setMarkdownValue(`${markdownValue}******`);
+      case "italic":
+        innerRef.current.focus();
+        innerRef.current.value += "*** ***";
         break;
-      case "List":
-        setMarkdownValue(`\n - ${markdownValue} \n`);
+      case "list":
+        innerRef.current.focus();
+        innerRef.current.value += "-";
         break;
-      case "NumberList":
-        setMarkdownValue(`\n1. ${markdownValue}`);
+      case "numberlist":
+        innerRef.current.focus();
+        innerRef.current.value += "1.";
         break;
-      case "Code":
-        setMarkdownValue(`\n ${markdownValue + "``````"}`);
+      case "code":
+        innerRef.current.focus();
+        innerRef.current.value += "` `";
         break;
-      case "URL":
-        setMarkdownValue(`${markdownValue} \n#`);
+      case "link":
+        innerRef.current.focus();
+        innerRef.current.value += "[]()";
         break;
-      case "Verified":
-        setMarkdownValue(`[] ${markdownValue} \n#`);
+      case "checkbox":
+        innerRef.current.focus();
+        innerRef.current.value += "[]";
         break;
       default:
         break;
@@ -45,74 +66,51 @@ const WriteTextInput = () => {
 
   const MarkdownImg = [
     {
-      id: 1,
+      id: "Heading",
       image: (
-        <I.MarkdownHeader
+        <BiHeading css={S.Markdown} onClick={() => onClicked("heading")} />
+      ),
+    },
+    {
+      id: "Bold",
+      image: <BiBold css={S.Markdown} onClick={() => onClicked("bold")} />,
+    },
+    {
+      id: "Italic",
+      image: <BiItalic css={S.Markdown} onClick={() => onClicked("italic")} />,
+    },
+    {
+      id: "List",
+      image: (
+        <AiOutlineUnorderedList
           css={S.Markdown}
-          onClick={() => setToolbarValue("Header")}
+          onClick={() => onClicked("list")}
         />
       ),
     },
     {
-      id: 2,
+      id: "NumberList",
       image: (
-        <I.MarkdownBold
+        <AiOutlineOrderedList
           css={S.Markdown}
-          onClick={() => setToolbarValue("Bold")}
+          onClick={() => onClicked("numberlist")}
         />
       ),
     },
     {
-      id: 3,
-      image: (
-        <I.MarkdownItalic
-          css={S.Markdown}
-          onClick={() => setToolbarValue("Italic")}
-        />
-      ),
+      id: "Code",
+      image: <BsCodeSlash css={S.Markdown} onClick={() => onClicked("code")} />,
     },
     {
-      id: 4,
-      image: (
-        <I.MarkdownList
-          css={S.Markdown}
-          onClick={() => setToolbarValue("List")}
-        />
-      ),
+      id: "Link",
+      image: <FiLink2 css={S.Markdown} onClick={() => onClicked("link")} />,
     },
     {
-      id: 5,
+      id: "CheckBox",
       image: (
-        <I.MarkdownNumberList
+        <BiCheckboxChecked
           css={S.Markdown}
-          onClick={() => setToolbarValue("NumberList")}
-        />
-      ),
-    },
-    {
-      id: 6,
-      image: (
-        <I.MarkdownCode
-          css={S.Markdown}
-          onClick={() => setToolbarValue("Code")}
-        />
-      ),
-    },
-    {
-      id: 7,
-      image: (
-        <I.MarkdownURL
-          css={S.Markdown}
-          onClick={() => setToolbarValue("URL")}
-        />
-      ),
-    },
-    {
-      id: 8,
-      image: (
-        <I.MarkdownVerified
-          css={S.Markdown}
-          onClick={() => setToolbarValue("Verified")}
+          onClick={() => onClicked("checkbox")}
         />
       ),
     },
@@ -155,14 +153,15 @@ const WriteTextInput = () => {
           />
           <div css={S.MarkdownContainer}>
             {MarkdownImg.map((item) => (
-              <div css={S.MarkdownWrapper} key={item.id}>
-                {item.image}
+              <div css={S.ToolbarBlock}>
+                <div css={S.ToolbarItem} onClick={() => onClick(item.id)}>
+                  {item.image}
+                </div>
               </div>
             ))}
           </div>
         </nav>
         <hr css={S.Line} />
-
         {preview === false ? (
           <div onSubmit={handleSubmit}>
             <textarea
@@ -174,11 +173,12 @@ const WriteTextInput = () => {
               value={markdownValue}
               cols={40}
               rows={5}
+              ref={innerRef}
             />
           </div>
         ) : (
           <div css={S.TextArea} className="preview">
-            <p>{reactContent}</p>
+            {markdownSource}
           </div>
         )}
       </div>
