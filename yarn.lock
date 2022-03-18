@@ -4354,6 +4354,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-dnd-html5-backend@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@types/react-dnd-html5-backend@npm:3.0.2"
+  dependencies:
+    react-dnd-html5-backend: "*"
+  checksum: 3faf890098c6466fbc9b6fa0d11699f5b8bb16aa2f24d4e4aa390339fa209f92e0cbe9b7b09bb698afcb89d1f43f975974bd2640d4b1f94dca926cdf7af45383
+  languageName: node
+  linkType: hard
+
+"@types/react-dnd@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "@types/react-dnd@npm:3.0.2"
+  dependencies:
+    react-dnd: "*"
+  checksum: 3013caff425f1b3c0cd2b79e7b7763f88f100a6ef5aa5e5cec7636119a71976827ee7bd316d7724f3a179e1f076b1fa1726fefcb9743b780d4bec4f0cd8aacfb
+  languageName: node
+  linkType: hard
+
 "@types/react-dom@npm:^17.0.11":
   version: 17.0.11
   resolution: "@types/react-dom@npm:17.0.11"
@@ -15625,6 +15643,8 @@ __metadata:
     "@types/node": ^12.0.0
     "@types/react": ^17.0.38
     "@types/react-beforeunload": ^2.1.1
+    "@types/react-dnd": ^3.0.2
+    "@types/react-dnd-html5-backend": ^3.0.2
     "@types/react-dom": ^17.0.11
     axios: ^0.26.0
     babel-loader: ^8.2.3
@@ -15633,6 +15653,7 @@ __metadata:
     react: rc
     react-beforeunload: ^2.5.2
     react-dnd: ^15.1.1
+    react-dnd-html5-backend: ^15.1.2
     react-dom: rc
     react-icons: ^4.3.1
     react-remark: ^2.1.0
@@ -15849,7 +15870,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dnd@npm:^15.1.1":
+"react-dnd-html5-backend@npm:*, react-dnd-html5-backend@npm:^15.1.2":
+  version: 15.1.2
+  resolution: "react-dnd-html5-backend@npm:15.1.2"
+  dependencies:
+    dnd-core: 15.1.1
+  checksum: e6b0a8faad47ec4a7e0ef1da2a45a5f764b629fd216233e3791ef74b25bec27031e6dd4b6fabe9717925182c7b6ad242d6bf79eed5f39d72bb71dec076442017
+  languageName: node
+  linkType: hard
+
+"react-dnd@npm:*, react-dnd@npm:^15.1.1":
   version: 15.1.1
   resolution: "react-dnd@npm:15.1.1"
   dependencies:
