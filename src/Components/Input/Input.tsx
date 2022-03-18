@@ -34,7 +34,7 @@ interface InputProps {
   fontSize: "h6" | "h5" | "h4" | "h3" | "h2" | "h1";
   width?: string;
   value?: string;
-  onChange?: () => void;
+  onChange?: (e: any) => void;
 }
 
 const Input: React.FC<InputProps> = ({
