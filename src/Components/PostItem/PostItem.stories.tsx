@@ -9,12 +9,17 @@ export default {
 } as ComponentMeta<typeof PostItem>;
 
 const postObj = {
-  id: 1,
+  boardId: 1,
   title: "PUZZLE",
-  image: <I.PostItemImg />,
-  state: "모집중",
+  image_url: "",
+  status: "모집중",
 };
 
 export const postitem: ComponentStory<typeof PostItem> = () => (
-  <PostItem postObj={postObj} />
+  <PostItem
+    boardId={postObj.boardId}
+    title={postObj.title}
+    image_url={postObj.image_url}
+    status={postObj.status}
+  />
 );
