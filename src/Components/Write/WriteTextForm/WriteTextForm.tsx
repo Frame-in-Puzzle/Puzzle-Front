@@ -48,7 +48,7 @@ const handleDrop = (e: any) => {
 const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
-  const title = "";
+  const [title, setTitle] = useState("");
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const innerRef: any = useRef(null);
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
       ["SPRING", "REACT"],
       "PROJECT",
       "RECRUITMENT",
-      "제목",
+      title,
       [],
     ).then(() => {
       alert("글이 등록되었어요");
@@ -190,6 +190,9 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         placeholder="프로젝트 이름을 입력하세요"
         fontWeight="600"
         width="100%"
+        onChange={(currentTarget) => {
+          setTitle(currentTarget.target.value);
+        }}
         value={title}
       />
       <WriteSelectItem />

@@ -27,6 +27,11 @@ export const Title = css`
   font-weight: bold;
   font-style: italic;
   font-size: ${theme.fonts.h4};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
 `;
 
 export const Image = css`
