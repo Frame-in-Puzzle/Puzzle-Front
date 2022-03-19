@@ -10,9 +10,22 @@ import { useRemark } from "react-remark";
 import { useRecoilState } from "recoil";
 import { isPreview } from "../../../Atoms";
 import { useBeforeunload } from "react-beforeunload";
+import { postBoard } from "../../../Lib/Api/post/post";
+import Input from "../../Input/Input";
+import WriteSelectItem from "../WriteSelectItem/WriteSelectItem";
+import { useNavigate } from "react-router-dom";
 
-interface ToolbarProps {
+interface WriteProps {
   onClick?: Function;
+  data?: {
+    contents: string;
+    fieldList: ["BACKEND", "FRONTEND"];
+    fileUrlList: any;
+    languageList: ["SPRING", "REACT"];
+    purpose: ["프로젝트", "대회", "서비스", "스터디"];
+    status: ["모집중", "모집완료"];
+    title: string;
+  };
 }
 
 const handleDragEnter = (e: any) => {
@@ -32,11 +45,13 @@ const handleDrop = (e: any) => {
   e.stopPropagation();
 };
 
-const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
+const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
+  const [title, setTitle] = useState("");
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const innerRef: any = useRef(null);
+  const navigate = useNavigate();
 
   useBeforeunload((e: any) => {
     e.preventDefault();
@@ -44,6 +59,21 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+  };
+
+  const handlePost = () => {
+    postBoard(
+      markdownValue,
+      ["BACKEND", "FRONTEND"],
+      ["SPRING", "REACT"],
+      "PROJECT",
+      "RECRUITMENT",
+      title,
+      [],
+    ).then(() => {
+      alert("글이 등록되었어요");
+      navigate("/main");
+    });
   };
 
   const onToolbarClicked = (markdown: string) => {
@@ -153,6 +183,19 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
 
   return (
     <div css={S.Positioner}>
+      <Input
+        type="text"
+        theme="WritePageInput"
+        fontSize="h1"
+        placeholder="프로젝트 이름을 입력하세요"
+        fontWeight="600"
+        width="100%"
+        onChange={(currentTarget) => {
+          setTitle(currentTarget.target.value);
+        }}
+        value={title}
+      />
+      <WriteSelectItem />
       <div css={S.ContentsContainer}>
         <nav css={S.NavigationBar}>
           <Button
@@ -216,8 +259,28 @@ const WriteTextInput: React.FC<ToolbarProps> = ({ onClick = () => {} }) => {
           </div>
         )}
       </div>
+      <div css={S.ButtonContainer}>
+        <Button
+          theme="GrayButtonWithBlackTextNoHover"
+          children="취소"
+          size="Regular"
+          fontSize="h5"
+          fontWeight="400"
+          isShadow="No"
+          onClick={() => navigate("/main")}
+        />
+        <Button
+          theme="BlackButtonWithWithTextNoHover"
+          children="글 등록"
+          size="Regular"
+          fontSize="h5"
+          fontWeight="600"
+          isShadow="No"
+          onClick={() => handlePost()}
+        />
+      </div>
     </div>
   );
 };
 
-export default WriteTextInput;
+export default WriteTextForm;

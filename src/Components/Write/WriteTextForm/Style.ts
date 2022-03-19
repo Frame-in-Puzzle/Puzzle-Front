@@ -17,6 +17,16 @@ export const ContentsContainer = css`
   border-radius: 5px;
 `;
 
+export const Input = css`
+  width: 100%;
+  height: 100%;
+  padding: 4% 12%;
+
+  *:focus {
+    outline: none;
+  }
+`;
+
 export const NavigationBar = css`
   display: flex;
   width: 100%;
@@ -63,4 +73,16 @@ export const Markdown = css`
   cursor: pointer;
   width: 25px;
   height: 25px;
+`;
+
+export const ButtonContainer = css`
+  width: 100%;
+  height: 100%;
+  padding: 0 12% 0;
+  margin-left: 67.5%;
+  margin-top: 1%;
+
+  Button {
+    margin-left: 1.2%;
+  }
 `;

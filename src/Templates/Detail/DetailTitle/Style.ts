@@ -25,6 +25,8 @@ export const TitleContainer = css`
 
 export const Title = css`
   font-size: ${theme.fonts.h2};
+  word-break: break-all;
+  width: 95%;
 `;
 
 export const Name = css`
