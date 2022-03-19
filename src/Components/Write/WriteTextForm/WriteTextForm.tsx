@@ -13,7 +13,7 @@ import { useBeforeunload } from "react-beforeunload";
 import { postBoard } from "../../../Lib/Api/post/post";
 import Input from "../../Input/Input";
 import WriteSelectItem from "../WriteSelectItem/WriteSelectItem";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 interface WriteProps {
   onClick?: Function;
@@ -59,6 +59,21 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+  };
+
+  const handlePost = () => {
+    postBoard(
+      markdownValue,
+      ["BACKEND", "FRONTEND"],
+      ["SPRING", "REACT"],
+      "PROJECT",
+      "RECRUITMENT",
+      "제목",
+      [],
+    ).then(() => {
+      alert("글이 등록되었어요");
+      navigate("/main");
+    });
   };
 
   const onToolbarClicked = (markdown: string) => {
@@ -249,7 +264,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
           fontSize="h5"
           fontWeight="400"
           isShadow="No"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/main")}
         />
         <Button
           theme="BlackButtonWithWithTextNoHover"
@@ -258,17 +273,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
           fontSize="h5"
           fontWeight="600"
           isShadow="No"
-          onClick={() =>
-            postBoard(
-              markdownValue,
-              ["BACKEND", "FRONTEND"],
-              ["SPRING", "REACT"],
-              "PROJECT",
-              "RECRUITMENT",
-              "제목",
-              [],
-            )
-          }
+          onClick={() => handlePost()}
         />
       </div>
     </div>
