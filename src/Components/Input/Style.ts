@@ -1,6 +1,12 @@
 import { css } from "@emotion/react";
 import { theme } from "../../Styles/theme";
 
+export const Style = css`
+  &:focus {
+    outline: none;
+  }
+`;
+
 export const Themes = {
   ProfileRegistrationPageInput: css`
     border: 2px solid #6a6a6a;

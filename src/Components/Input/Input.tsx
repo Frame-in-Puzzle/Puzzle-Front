@@ -53,6 +53,7 @@ const Input: React.FC<InputProps> = ({
         S.Themes[theme],
         S.fontSizes[fontSize],
         S.fontWeight[fontWeight],
+        S.Style,
         { width },
       ]}
       type={type}
