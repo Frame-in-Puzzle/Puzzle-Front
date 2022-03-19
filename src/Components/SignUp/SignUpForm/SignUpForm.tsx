@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import useSWR from "swr";
 import { Button, Input } from "../..";
 import { useDecode } from "../../../Hooks/useDecode";
@@ -8,27 +9,41 @@ import { getUser, putUserInformation } from "../../../Lib/Api/member/member";
 import * as S from "./Style";
 
 interface UserInfo {
-  data: { name: string; bio: string; email: string };
+  data: {
+    name: string;
+    bio: string;
+    email: string;
+    imageUrl: string;
+    field: string;
+    language: string[];
+    url: string;
+  };
 }
 
 const SignUpForm: React.FC = () => {
   const { sub } = useDecode();
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [bio, setBio] = useState();
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [bio, setBio] = useState<string>("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUser(sub).then((res) => {
       setName(res.data.name);
       setEmail(res.data.email);
       setBio(res.data.bio);
-      console.log(res.data.name);
+      console.log(res.data);
     });
   }, []);
 
+  const onCancel = () => {
+    navigate("/");
+  };
+
   const onSubmit = () => {
-    if (name === "") {
+    if (name === "" || name === null) {
       alert("이름을 입력해주세요..");
       return;
     }
@@ -40,7 +55,17 @@ const SignUpForm: React.FC = () => {
       alert("한 줄 소개 을 입력해주세요..");
       return;
     }
-    // putUserInformation(name, email, bio, field, language, url);
+
+    putUserInformation(
+      name,
+      email,
+      "https://avatars.githubusercontent.com/u/68889872?v=4",
+      bio,
+      "FRONTEND",
+      ["JS"],
+      `https://github.com/${sub}`,
+    );
+    navigate("/main");
   };
 
   return (
@@ -102,6 +127,7 @@ const SignUpForm: React.FC = () => {
           size="Medium"
           isShadow="No"
           fontWeight="600"
+          onClick={onCancel}
         >
           취소
         </Button>
