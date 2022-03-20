@@ -62,18 +62,24 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   };
 
   const handlePost = () => {
-    postBoard(
-      markdownValue,
-      ["BACKEND", "FRONTEND"],
-      ["SPRING", "REACT"],
-      "PROJECT",
-      "RECRUITMENT",
-      title,
-      [],
-    ).then(() => {
-      alert("글이 등록되었어요");
-      navigate("/main");
-    });
+    if (title === "" || null) {
+      alert("제목을 입력해주세요.");
+    } else if (markdownValue === "" || null) {
+      alert("내용을 입력해주세요.");
+    } else {
+      postBoard(
+        markdownValue,
+        ["BACKEND", "FRONTEND"],
+        ["SPRING", "REACT"],
+        "PROJECT",
+        "RECRUITMENT",
+        title,
+        [],
+      ).then(() => {
+        alert("글이 등록되었어요");
+        navigate("/main");
+      });
+    }
   };
 
   const onToolbarClicked = (markdown: string) => {
@@ -276,7 +282,9 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
           fontSize="h5"
           fontWeight="600"
           isShadow="No"
-          onClick={() => handlePost()}
+          onClick={() => {
+            handlePost();
+          }}
         />
       </div>
     </div>
