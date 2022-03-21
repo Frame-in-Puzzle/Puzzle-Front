@@ -31,7 +31,7 @@ export const languageList = {
   Backend: [
     { name: "Java", value: "JAVA" },
     { name: "Spring", value: "SPRING" },
-    { name: "Spring_Boot", value: "SPRING_BOOT" },
+    { name: "Spring Boot", value: "SPRINGBOOT" },
     { name: "Go", value: "GO" },
     { name: "django", value: "DJANGO" },
     { name: "express", value: "EXPRESS" },
