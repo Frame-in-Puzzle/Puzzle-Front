@@ -46,7 +46,7 @@ const SignUpForm: React.FC = () => {
       alert("이름을 입력해주세요..");
       return;
     }
-    if (email === null || email === "") {
+    if (email === "" || email === null) {
       alert("Email을 입력해주세요..");
       return;
     }
