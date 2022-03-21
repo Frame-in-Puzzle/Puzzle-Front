@@ -34,7 +34,6 @@ const SignUpForm: React.FC = () => {
       setName(res.data.name);
       setEmail(res.data.email);
       setBio(res.data.bio);
-      console.log(res.data);
     });
   }, []);
 
