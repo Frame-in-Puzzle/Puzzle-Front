@@ -76,13 +76,11 @@ export const Markdown = css`
 `;
 
 export const ButtonContainer = css`
-  width: 100%;
-  height: 100%;
-  padding: 0 12% 0;
-  margin-left: 67.5%;
-  margin-top: 1%;
+  width: 50%;
+  padding: 1% 12% 2%;
+  margin-left: 70%;
 
   Button {
-    margin-left: 1.2%;
+    margin-left: 1.3%;
   }
 `;
