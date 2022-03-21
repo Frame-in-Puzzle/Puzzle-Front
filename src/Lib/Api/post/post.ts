@@ -26,3 +26,10 @@ export const postBoard = async (
   });
   return { data };
 };
+
+export const s3ImageUpload = async (file?: string) => {
+  const { data } = await apiClient.post("/board/create-url", {
+    file: file,
+  });
+  return { data };
+};
