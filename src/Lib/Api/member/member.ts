@@ -18,7 +18,7 @@ export const putUserInformation = async (
   email: string,
   imageUrl: string,
   bio: string,
-  field: string[],
+  field: string,
   language: string[],
   url: string,
 ) => {
