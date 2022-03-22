@@ -2,7 +2,7 @@
 import { Header, Button } from "../../Components";
 import { useEffect, useState } from "react";
 import Sign from "../../Components/SigInModal/SiginModal";
-import { TagModal } from "../../Components";
+import TagSelector from "../../Templates/Tag/TagSelector";
 
 const TestPage = () => {
   const [modalState, setModalState] = useState(false);
@@ -30,8 +30,7 @@ const TestPage = () => {
           로그인
         </Button>
       </Header>
-      <button onClick={() => setTagModalState(true)}>확인</button>
-      {tagModalState && <TagModal closeTagModal={closeTagModal} />}
+      <TagSelector />
       {modalState && <Sign closeModal={closeModal} />}
     </>
   );

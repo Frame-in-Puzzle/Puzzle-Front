@@ -1,12 +1,19 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import * as S from "./Style";
-import { Button, DropDown } from "../..";
+import { Button, DropDown, TagItem } from "../..";
 import { FiX } from "react-icons/fi";
+import { useRecoilState } from "recoil";
+import {
+  fieldSelected,
+  languageSelected,
+  purposeSelected,
+  stateSelected,
+} from "../../../Atoms/AtomContainer";
 
-const purposeList = ["프로젝트", "대회", "서비스", "스터디"];
+const purposeList = ["전체", "프로젝트", "대회", "서비스", "스터디"];
 
-const stateList = ["모집중", "모집완료"];
+const stateList = ["전체", "모집중", "모집완료"];
 
 const FieldList = [
   "전체",
@@ -32,17 +39,18 @@ type TagSearch = {
 };
 
 const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
-  const [purposeSelect, setPurposeSelect] = useState<string>("선택");
-  const [stateSelect, setStateSelect] = useState<string>("선택");
-  const [fieldSelect, setFieldSelect] = useState<string[]>(["전체"]);
-  const [languageSelect, setLanguageSelect] = useState<string[]>([]);
+  const [purposeSelect, setPurposeSelect] = useRecoilState(purposeSelected);
+  const [stateSelect, setStateSelect] = useRecoilState(stateSelected);
+  const [fieldSelect, setFieldSelect] = useRecoilState(fieldSelected);
+  const [languageSelect, setLanguageSelect] = useRecoilState(languageSelected);
   const [currentField, setCurrentField] = useState<string>("전체");
   const [currentLanguage, setCurrentLanguage] = useState<string>("전체");
+  console.log(fieldSelect);
   console.log(languageSelect);
 
   const handleSelect = (state: string[], setState: any, select: string) => {
-    if (state.indexOf(select)) {
-      setState([select, ...state.filter((el) => el !== "전체")]);
+    if (!state.includes(select)) {
+      setState([...state.filter((el) => el !== "전체"), select]);
     }
     if (select === "전체") {
       setState(["전체"]);
@@ -50,16 +58,45 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
     }
   };
 
+  const handleReset = () => {
+    setPurposeSelect("전체");
+    setStateSelect("전체");
+    setFieldSelect(["전체"]);
+    setLanguageSelect([]);
+    setCurrentField("전체");
+    setCurrentLanguage("전체");
+  };
+
+  const handleDelete = (state: string[], setState: any, select: string) => {
+    setState([...state.filter((el) => el !== select)]);
+  };
+
   const returnSelect = (
     state: string | any[],
-    select: any,
-    currentSelect: any,
+    select: string,
+    currentSelect: string,
   ) => {
     return state.includes(select)
       ? currentSelect === select
         ? "currentSelect selected"
         : "selected"
       : "";
+  };
+
+  const mappingField = (language: string) => {
+    if (languageList.Frontend.includes(language)) {
+      return "프론트엔드";
+    } else if (languageList.Backend.includes(language)) {
+      return "백엔드";
+    } else if (languageList.Game.includes(language)) {
+      return "게임";
+    } else if (languageList.iOS.includes(language)) {
+      return "iOS";
+    } else if (languageList.Android.includes(language)) {
+      return "Android";
+    } else if (languageList.AI.includes(language)) {
+      return "AI";
+    }
   };
 
   const mappingLanguageList = (currentField: string) => {
@@ -208,7 +245,18 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             </DropDown>
           </div>
         </div>
-        <div css={S.TagContainer}></div>
+        <div css={S.TagContainer}>
+          {languageSelect.map((language, idx) => (
+            <TagItem theme="WhiteTag" key={idx}>
+              {mappingField(language)} {language}
+              <FiX
+                onClick={() =>
+                  handleDelete(languageSelect, setLanguageSelect, language)
+                }
+              />
+            </TagItem>
+          ))}
+        </div>
         <div css={S.Button}>
           <Button
             theme="CircleButton"

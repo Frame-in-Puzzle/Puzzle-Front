@@ -2,8 +2,12 @@ import { apiClient } from "../apiClient";
 import useSWR from "swr";
 
 export const getPost = async () => {
-  const { data } = await apiClient.get("/board/all");
-  return { data };
+  try {
+    const { data } = await apiClient.get("/board/all");
+    return { data };
+  } catch (e: any) {
+    alert(e);
+  }
 };
 
 export const postBoard = async (
