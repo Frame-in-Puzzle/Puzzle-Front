@@ -9,7 +9,7 @@ export default {
       name: "theme",
       type: {
         name: "enum",
-        value: ["DarkGrayTag", "LightGrayTag"],
+        value: ["DarkGrayTag", "LightGrayTag", "WhiteTag"],
       },
     },
     children: {

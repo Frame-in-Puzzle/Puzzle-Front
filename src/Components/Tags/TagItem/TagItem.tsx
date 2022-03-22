@@ -4,7 +4,7 @@ import * as S from "./Style";
 
 type TagProps = {
   children: React.ReactNode;
-  theme: "DarkGrayTag" | "LightGrayTag";
+  theme: "DarkGrayTag" | "LightGrayTag" | "WhiteTag";
 };
 
 const TagItem: React.FC<TagProps> = ({ children, theme }) => {
