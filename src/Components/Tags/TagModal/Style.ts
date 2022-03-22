@@ -150,7 +150,15 @@ export const TagContainer = css`
   width: 100%;
   height: 15rem;
   background: #f5f5f5;
-  padding: 0 5%;
+  padding: 2% 5%;
+  overflow-y: scroll;
+  div {
+    margin-bottom: 0.5rem;
+    svg {
+      margin-left: 1rem;
+      cursor: pointer;
+    }
+  }
 `;
 
 export const DefaultMessage = css`
