@@ -2,11 +2,7 @@
 import React, { useState } from "react";
 import { TagModal } from "../../Components";
 import { useRecoilValue } from "recoil";
-import {
-  fieldSelected,
-  languageSelected,
-  purposeSelected,
-} from "../../Atoms/AtomContainer";
+import { fieldSelected, languageSelected, purposeSelected } from "../../Atoms";
 import * as S from "./Style";
 
 const TagSelector = () => {
