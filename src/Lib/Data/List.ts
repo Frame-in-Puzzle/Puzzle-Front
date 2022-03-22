@@ -1,4 +1,4 @@
-export const FieldList = [
+export const fieldList = [
   { name: "전체", value: "all" },
   { name: "프론트엔드", value: "FRONTEND" },
   { name: "백엔드", value: "BACKEND" },
