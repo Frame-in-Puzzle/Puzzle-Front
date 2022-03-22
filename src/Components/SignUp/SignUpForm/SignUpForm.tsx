@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import useSWR from "swr";
-import { Button, Input } from "../..";
+import { Button, DropDown, Input } from "../..";
 import { useDecode } from "../../../Hooks/useDecode";
-import { apiClient } from "../../../Lib/Api/apiClient";
 import { getUser, putUserInformation } from "../../../Lib/Api/member/member";
+import { fieldList, languageList } from "../../../Lib/Data/List";
 import * as S from "./Style";
 
 interface UserInfo {
@@ -20,20 +20,41 @@ interface UserInfo {
   };
 }
 
+interface purpose {
+  name: string;
+  value: string;
+}
+
 const SignUpForm: React.FC = () => {
   const { sub } = useDecode();
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [bio, setBio] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [fieldSelect, setFieldSelect] = useState<string>("선택");
+  const [languageSelect, setLanguageSelect] = useState<string[]>(["선택"]);
+  const [currentLanguage, setCurrentLanguage] = useState<string>("선택");
+  const [currentField, setCurrentField] = useState<string>("선택");
+  console.log(languageSelect);
 
   const navigate = useNavigate();
+
+  const handleSelect = (select: string) => {
+    if (!languageSelect.includes(select)) {
+      setLanguageSelect([
+        ...languageSelect.filter((el) => el !== "선택"),
+        select,
+      ]);
+    }
+  };
 
   useEffect(() => {
     getUser(sub).then((res) => {
       setName(res.data.name);
       setEmail(res.data.email);
       setBio(res.data.bio);
+      setImageUrl(res.data.imageUrl);
     });
   }, []);
 
@@ -58,13 +79,92 @@ const SignUpForm: React.FC = () => {
     putUserInformation(
       name,
       email,
-      "https://avatars.githubusercontent.com/u/68889872?v=4",
+      imageUrl,
       bio,
-      "FRONTEND",
-      ["JS"],
+      fieldSelect,
+      languageSelect,
       `https://github.com/${sub}`,
     );
     navigate("/main");
+  };
+
+  const mappingLanguageList = (currentField: string) => {
+    switch (currentField) {
+      case "FRONTEND":
+        return languageList.Frontend.map((language, idx) => (
+          <li
+            key={idx}
+            onClick={() => {
+              setCurrentLanguage(language.name);
+              handleSelect(language.value);
+            }}
+          >
+            {language.name}
+          </li>
+        ));
+      case "BACKEND":
+        return languageList.Backend.map((language, idx) => (
+          <li
+            key={idx}
+            onClick={() => {
+              setCurrentLanguage(language.name);
+              handleSelect(language.value);
+            }}
+          >
+            {language.name}
+          </li>
+        ));
+      case "GAME":
+        return languageList.Game.map((language, idx) => (
+          <li
+            key={idx}
+            onClick={() => {
+              setCurrentLanguage(language.name);
+              handleSelect(language.value);
+            }}
+          >
+            {language.name}
+          </li>
+        ));
+      case "IOS":
+        return languageList.iOS.map((language, idx) => (
+          <li
+            key={idx}
+            onClick={() => {
+              setCurrentLanguage(language.name);
+              handleSelect(language.value);
+            }}
+          >
+            {language.name}
+          </li>
+        ));
+      case "ANDROID":
+        return languageList.Android.map((language, idx) => (
+          <li
+            key={idx}
+            onClick={() => {
+              setCurrentLanguage(language.name);
+              handleSelect(language.value);
+            }}
+          >
+            {language.name}
+          </li>
+        ));
+      case "AI":
+        return languageList.AI.map((language, idx) => (
+          <li
+            key={idx}
+            onClick={() => {
+              setCurrentLanguage(language.name);
+              handleSelect(language.value);
+            }}
+          >
+            {language.name}
+          </li>
+        ));
+      default:
+        return <div>세부언어를 확인할 수 있습니다</div>;
+    }
   };
 
   return (
@@ -107,6 +207,29 @@ const SignUpForm: React.FC = () => {
           value={bio}
           onChange={(e: any) => setBio(e.target.value)}
         ></Input>
+      </div>
+      <div css={S.DropDown}>
+        <div css={S.Title}>분야</div>
+        <DropDown theme="purpose" width="550px" selected={currentField}>
+          {fieldList.map((field, idx) => (
+            <li
+              key={idx}
+              onClick={() => {
+                setFieldSelect(field.value);
+                setCurrentField(field.name);
+                if (fieldSelect !== field.value) setLanguageSelect([]);
+              }}
+            >
+              {field.name}
+            </li>
+          ))}
+        </DropDown>
+      </div>
+      <div css={S.TitleWrapper}>
+        <div css={S.Title}>세부언어</div>
+        <DropDown theme="purpose" width="550px" selected={currentLanguage}>
+          {mappingLanguageList(fieldSelect)}
+        </DropDown>
       </div>
 
       <div css={S.ButtonWrapper}>
