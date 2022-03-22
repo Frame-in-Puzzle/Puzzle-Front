@@ -34,13 +34,19 @@ const SignUpForm: React.FC = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
   const [fieldSelect, setFieldSelect] = useState<string>("선택");
   const [languageSelect, setLanguageSelect] = useState<string[]>(["선택"]);
-  const [currentSelect, setCurrentSelect] = useState<string>("선택");
+  const [currentLanguage, setCurrentLanguage] = useState<string>("선택");
+  const [currentField, setCurrentField] = useState<string>("선택");
+  console.log(languageSelect);
 
   const navigate = useNavigate();
 
   const handleSelect = (select: string) => {
-    console.log(languageSelect);
-    setLanguageSelect([...languageSelect, select]);
+    if (!languageSelect.includes(select)) {
+      setLanguageSelect([
+        ...languageSelect.filter((el) => el !== "선택"),
+        select,
+      ]);
+    }
   };
 
   useEffect(() => {
@@ -89,7 +95,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentSelect(language.name);
+              setCurrentLanguage(language.name);
               handleSelect(language.value);
             }}
           >
@@ -101,7 +107,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentSelect(language.name);
+              setCurrentLanguage(language.name);
               handleSelect(language.value);
             }}
           >
@@ -113,7 +119,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentSelect(language.name);
+              setCurrentLanguage(language.name);
               handleSelect(language.value);
             }}
           >
@@ -125,7 +131,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentSelect(language.name);
+              setCurrentLanguage(language.name);
               handleSelect(language.value);
             }}
           >
@@ -137,7 +143,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentSelect(language.name);
+              setCurrentLanguage(language.name);
               handleSelect(language.value);
             }}
           >
@@ -149,7 +155,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentSelect(language.name);
+              setCurrentLanguage(language.name);
               handleSelect(language.value);
             }}
           >
@@ -204,17 +210,24 @@ const SignUpForm: React.FC = () => {
       </div>
       <div css={S.DropDown}>
         <div css={S.Title}>분야</div>
-        <DropDown theme="purpose" width="550px" selected={fieldSelect}>
-          {fieldList.map((purpose, idx) => (
-            <li key={idx} onClick={() => setFieldSelect(purpose.value)}>
-              {purpose.name}
+        <DropDown theme="purpose" width="550px" selected={currentField}>
+          {fieldList.map((field, idx) => (
+            <li
+              key={idx}
+              onClick={() => {
+                setFieldSelect(field.value);
+                setCurrentField(field.name);
+                if (fieldSelect !== field.value) setLanguageSelect([]);
+              }}
+            >
+              {field.name}
             </li>
           ))}
         </DropDown>
       </div>
       <div css={S.TitleWrapper}>
         <div css={S.Title}>세부언어</div>
-        <DropDown theme="purpose" width="550px" selected={currentSelect}>
+        <DropDown theme="purpose" width="550px" selected={currentLanguage}>
           {mappingLanguageList(fieldSelect)}
         </DropDown>
       </div>
