@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
+import { FiX } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import useSWR from "swr";
-import { Button, DropDown, Input } from "../..";
+import { Button, DropDown, Input, TagItem } from "../..";
 import { useDecode } from "../../../Hooks/useDecode";
 import { getUser, putUserInformation } from "../../../Lib/Api/member/member";
 import { fieldList, languageList } from "../../../Lib/Data/List";
@@ -32,8 +33,8 @@ const SignUpForm: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [bio, setBio] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [fieldSelect, setFieldSelect] = useState<string>("선택");
-  const [languageSelect, setLanguageSelect] = useState<string[]>(["선택"]);
+  const [fieldSelect, setFieldSelect] = useState<string>("");
+  const [languageSelect, setLanguageSelect] = useState<string[]>([]);
   const [currentLanguage, setCurrentLanguage] = useState<string>("선택");
   const [currentField, setCurrentField] = useState<string>("선택");
   console.log(languageSelect);
@@ -42,11 +43,13 @@ const SignUpForm: React.FC = () => {
 
   const handleSelect = (select: string) => {
     if (!languageSelect.includes(select)) {
-      setLanguageSelect([
-        ...languageSelect.filter((el) => el !== "선택"),
-        select,
-      ]);
+      setLanguageSelect([...languageSelect, select]);
     }
+  };
+
+  // 태그 삭제 함수
+  const handleDelete = (state: string[], setState: any, select: string) => {
+    setState([...state.filter((el) => el !== select)]);
   };
 
   useEffect(() => {
@@ -73,6 +76,14 @@ const SignUpForm: React.FC = () => {
     }
     if (bio === "" || bio === null) {
       alert("한 줄 소개 을 입력해주세요..");
+      return;
+    }
+    if (fieldSelect === "선택") {
+      alert("분야를 선택해주세요..");
+      return;
+    }
+    if (languageSelect.length === 0) {
+      alert("언어를 선택해주세요..");
       return;
     }
 
@@ -230,6 +241,19 @@ const SignUpForm: React.FC = () => {
         <DropDown theme="purpose" width="550px" selected={currentLanguage}>
           {mappingLanguageList(fieldSelect)}
         </DropDown>
+      </div>
+
+      <div css={S.Tag}>
+        {languageSelect.map((language, idx) => (
+          <TagItem theme="WhiteTag" key={idx}>
+            {language}
+            <FiX
+              onClick={() =>
+                handleDelete(languageSelect, setLanguageSelect, language)
+              }
+            />
+          </TagItem>
+        ))}
       </div>
 
       <div css={S.ButtonWrapper}>

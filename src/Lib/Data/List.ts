@@ -22,8 +22,8 @@ export const stateList = [
 
 export const languageList = {
   Frontend: [
-    { name: "Javascript", value: "JAVASCRIPT" },
-    { name: "Typescript", value: "TYPESCRIPT" },
+    { name: "Javascript", value: "JS" },
+    { name: "Typescript", value: "TS" },
     { name: "React", value: "REACT" },
     { name: "Vue", value: "VUE" },
     { name: "Next", value: "NEXT" },
