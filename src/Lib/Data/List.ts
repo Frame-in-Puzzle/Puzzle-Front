@@ -1,4 +1,4 @@
-export const FieldList = [
+export const fieldList = [
   { name: "전체", value: "all" },
   { name: "프론트엔드", value: "FRONTEND" },
   { name: "백엔드", value: "BACKEND" },
@@ -22,8 +22,8 @@ export const stateList = [
 
 export const languageList = {
   Frontend: [
-    { name: "Javascript", value: "JAVASCRIPT" },
-    { name: "Typescript", value: "TYPESCRIPT" },
+    { name: "Javascript", value: "JS" },
+    { name: "Typescript", value: "TS" },
     { name: "React", value: "REACT" },
     { name: "Vue", value: "VUE" },
     { name: "Next", value: "NEXT" },
