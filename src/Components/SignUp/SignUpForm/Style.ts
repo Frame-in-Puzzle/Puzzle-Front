@@ -34,6 +34,10 @@ export const DropWarpper = css`
   justify-content: space-between;
 `;
 
+export const Tag = css`
+  margin-top: 1%;
+`;
+
 export const ButtonWrapper = css`
   margin-top: 100px;
   display: flex;
