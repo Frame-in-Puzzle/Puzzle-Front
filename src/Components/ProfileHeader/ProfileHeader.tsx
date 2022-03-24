@@ -1,33 +1,75 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./Style";
 import * as I from "../../Assets/index";
 import { FaGithubSquare } from "react-icons/fa";
 import { ImMail } from "react-icons/im";
+import { useDecode } from "../../Hooks/useDecode";
+import { getUser } from "../../Lib/Api/member/member";
+import { languageList } from "../../Lib/Data/List";
+import { TagItem } from "..";
+import { useParams } from "react-router";
+
+interface UserInfo {
+  data: {
+    name: string;
+    bio: string;
+    email: string;
+    imageUrl: string;
+    field: string;
+    language: string[];
+    url: string;
+  };
+}
 
 const ProfileHeader: React.FC = () => {
+  // const { sub } = useDecode();
+  const { sub } = useParams();
+
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [bio, setBio] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [language, setLanguage] = useState<string[]>([]);
+  const [url, setUrl] = useState<string>("");
+
+  useEffect(() => {
+    getUser(sub).then((res) => {
+      setName(res.data.name);
+      setEmail(res.data.email);
+      setBio(res.data.bio);
+      setImageUrl(res.data.imageUrl);
+      setLanguage(res.data.language);
+      setUrl(res.data.url);
+    });
+  }, []);
+
   return (
     <div css={S.Positioner}>
       <div css={S.Container}>
         <div css={S.ImgWrapper}>
-          <I.ProfileImg />
+          <img css={S.ImageUrl} src={imageUrl} />
         </div>
         <div css={S.rightbox}>
           <div css={S.TitleWrapper}>
-            <p css={S.Name}>Yuseonii</p>
-            <FaGithubSquare css={S.Icon} />
+            <p css={S.Name}>{name}</p>
+            <a href={url} target="_blank" css={S.Icon}>
+              <FaGithubSquare />
+            </a>
             <div css={S.Mail}>
-              <a href="mailto:s20063@gsm.hs.kr">
+              <a href={`mailto:${email}`}>
                 <ImMail css={S.MailIcon}></ImMail>
               </a>
-              <p>yuseonii@naver.com</p>
+              <p>{email}</p>
             </div>
           </div>
-          <p css={S.Introduction}>Figma를 이용하여 디자인을 할 수 있습니다.</p>
+          <p css={S.Introduction}>{bio}</p>
           <div css={S.LanguageWrapper}>
-            <div css={S.Language}>JavaScript</div>
-            <div css={S.Language}>C</div>
-            <div css={S.Language}>Swift</div>
+            {language.map((language, idx) => (
+              <TagItem theme="WhiteTag" key={idx}>
+                {language}
+              </TagItem>
+            ))}
           </div>
         </div>
       </div>
