@@ -8,7 +8,7 @@ export const postGithubLogin = async (code: string) => {
   return { data };
 };
 
-export const getUser = async (sub: string) => {
+export const getUser = async (sub: string | undefined) => {
   const { data } = await apiClient.get(`/profile/${sub}`);
   return { data };
 };
