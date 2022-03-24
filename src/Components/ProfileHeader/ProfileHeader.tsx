@@ -23,7 +23,6 @@ interface UserInfo {
 }
 
 const ProfileHeader: React.FC = () => {
-  // const { sub } = useDecode();
   const { sub } = useParams();
 
   const [name, setName] = useState<string>("");
