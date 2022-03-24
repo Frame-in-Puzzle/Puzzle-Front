@@ -16,6 +16,14 @@ export const ImgWrapper = css`
   margin-right: 10px;
 `;
 
+export const ImageUrl = css`
+  margin-top: 10%;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: solid #e5e5e5 4px;
+`;
+
 export const rightbox = css`
   width: 80%;
   height: 155px;
@@ -40,6 +48,11 @@ export const Name = css`
 export const Icon = css`
   font-size: 35px;
   margin-left: 10px;
+  cursor: pointer;
+  color: #000000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 `;
 
 export const Mail = css`
@@ -81,7 +94,6 @@ export const LanguageWrapper = css`
   width: 42%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 `;
 
 export const Language = css`
