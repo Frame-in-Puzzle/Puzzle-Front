@@ -1,28 +1,16 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
-import { Header, Button } from "../../Components";
+import React, { useState } from "react";
+import { Header, Button, DropDown, DropDownList } from "../../Components";
 import Banner from "../../Components/Common/Banner/Banner";
 import Post from "../../Components/Post/Post";
 import { ProfileWrapper } from "../../Styles/GlobalStyle";
-import * as I from "../../Assets/index";
+import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
 
 const Mainpage = () => {
   return (
     <>
       <Header theme="Login">
-        <Button
-          theme="TextButton"
-          fontSize="h5"
-          fontWeight="400"
-          size="Custom"
-          isShadow="No"
-        >
-          새 글 쓰기
-        </Button>
-        <div css={ProfileWrapper}>
-          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
-          <I.DownArrow />
-        </div>
+        <HeaderItem />
       </Header>
       <Banner />
       <Post />
