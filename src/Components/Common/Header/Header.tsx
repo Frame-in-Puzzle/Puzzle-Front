@@ -12,16 +12,8 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ children, theme }) => {
-  const { sub } = useDecode();
-  const [imageUrl, setImageUrl] = useState<string>("");
-
   const navigate = useNavigate();
 
-  useEffect(() => {
-    getUser(sub).then((res) => {
-      setImageUrl(res.data.imageUrl);
-    });
-  }, []);
   return (
     <div css={S.Positioner}>
       <I.PuzzleLogo onClick={() => navigate("/main")}></I.PuzzleLogo>
