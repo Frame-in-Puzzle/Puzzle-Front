@@ -7,12 +7,10 @@ import { ProfileWrapper } from "../../../Styles/GlobalStyle";
 import * as I from "../../../Assets/index";
 import * as S from "./style";
 import { useNavigate } from "react-router";
-import { useLogin } from "../../../Hooks/useLogin";
 
 const HeaderItem = () => {
   const { sub } = useDecode();
   const navigate = useNavigate();
-  const isLogin = useLogin();
 
   const [imageUrl, setImageUrl] = useState<string>("");
 
@@ -29,19 +27,22 @@ const HeaderItem = () => {
   }, []);
   return (
     <>
-      <Button
-        theme="TextButton"
-        fontSize="h5"
-        fontWeight="400"
-        size="Custom"
-        isShadow="No"
-        onClick={() => navigate("/write")}
-      >
-        새 글 쓰기
-      </Button>
-      <div css={ProfileWrapper} onClick={() => changeDrop()}>
-        <img src={imageUrl} />
-        <div css={S.ImgWrapper}>
+      <div css={S.ImgWrapper}>
+        <div css={S.ButtonWrapper}>
+          <Button
+            theme="TextButton"
+            fontSize="h5"
+            fontWeight="400"
+            size="Custom"
+            isShadow="No"
+            onClick={() => navigate("/write")}
+          >
+            새 글 쓰기
+          </Button>
+        </div>
+        <div css={ProfileWrapper} onClick={() => changeDrop()}>
+          <img css={S.DropImg} src={imageUrl} />
+
           <I.DownArrow onClick={() => changeDrop()} />
         </div>
       </div>
