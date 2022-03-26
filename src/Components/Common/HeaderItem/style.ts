@@ -1,7 +1,13 @@
 import { css } from "@emotion/react";
 
 export const ImgWrapper = css`
-  margin-left: 15px;
+  display: flex;
+`;
+
+export const ButtonWrapper = css`
+  margin-right: 30px;
+  display: flex;
+  text-align: center;
 `;
 
 export const Dropdown = css`
@@ -9,4 +15,9 @@ export const Dropdown = css`
   top: 120px;
   right: 210px;
   z-index: 5;
+`;
+export const DropImg = css`
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 `;
