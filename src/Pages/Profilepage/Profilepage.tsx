@@ -7,24 +7,14 @@ import { ProfileWrapper } from "../../Styles/GlobalStyle";
 import ProfileHeader from "../../Components/Profile/ProfileHeader/ProfileHeader";
 import ProfileInfo from "../../Components/Profile/ProfileInfo/ProfileInfo";
 import ProfileSelectBox from "../../Components/Profile/ProfileSelectBox/ProfileSelectBox";
+import { HeaderContainer } from "../../Components/Tags/TagModal/Style";
+import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
 
 const Profilepage = () => {
   return (
     <div css={S.Positioner}>
       <Header theme="Login">
-        <Button
-          theme="TextButton"
-          fontSize="h5"
-          fontWeight="400"
-          size="Custom"
-          isShadow="No"
-        >
-          새 글 쓰기
-        </Button>
-        <div css={ProfileWrapper}>
-          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
-          <I.DownArrow />
-        </div>
+        <HeaderItem />
       </Header>
       <ProfileHeader />
       <ProfileInfo />

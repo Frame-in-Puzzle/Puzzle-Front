@@ -13,6 +13,7 @@ import { useParams } from "react-router";
 import useSWR from "swr";
 import { apiClient } from "../../Lib/Api/apiClient";
 import axios from "axios";
+import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
 
 interface BoardProps {
   data: {
@@ -42,19 +43,7 @@ const DetailPage = () => {
   return (
     <>
       <Header theme="Login">
-        <Button
-          theme="TextButton"
-          fontSize="h5"
-          fontWeight="400"
-          size="Custom"
-          isShadow="No"
-        >
-          새 글 쓰기
-        </Button>
-        <div css={ProfileWrapper}>
-          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
-          <I.DownArrow />
-        </div>
+        <HeaderItem />
       </Header>
       <DetailTitle
         TitleObj={{
