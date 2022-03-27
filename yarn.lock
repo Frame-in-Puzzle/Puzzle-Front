@@ -15664,6 +15664,7 @@ __metadata:
     react-dnd-html5-backend: ^15.1.2
     react-dom: rc
     react-icons: ^4.3.1
+    react-intersection-observer: ^8.33.1
     react-remark: ^2.1.0
     react-router: ^6.2.1
     react-router-dom: ^6.2.1
@@ -16058,6 +16059,15 @@ __metadata:
   peerDependencies:
     react: ^16.8.4 || ^17.0.0
   checksum: ca9e4c1fedb94e4e956dd3142838c5a25a9d61375aee5e8a74dd623bae09a263098a93f220e8d84c7fd39e569e1fa4297d363ddbc91b15bca91baeb7281d7f4f
+  languageName: node
+  linkType: hard
+
+"react-intersection-observer@npm:^8.33.1":
+  version: 8.33.1
+  resolution: "react-intersection-observer@npm:8.33.1"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
+  checksum: 5feb0df01dd64f1fa0b8300fb4fc12db95350c1ae2514f66f0652371f65e5501758a662746000dc2584d24dcce07139590e5375d6c9920a60b282af83468d0c4
   languageName: node
   linkType: hard
 
