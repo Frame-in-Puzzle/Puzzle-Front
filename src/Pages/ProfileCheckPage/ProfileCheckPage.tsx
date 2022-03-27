@@ -5,25 +5,32 @@ import * as I from "../../Assets";
 import { ProfileWrapper } from "../../Styles/GlobalStyle";
 import { MyPost } from "../../Components";
 import * as S from "./Style";
+import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
+import { useLogin } from "../../Hooks/useLogin";
+import { useState } from "react";
+import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
+import Sign from "../../Components/SigInModal/SiginModal";
 
 const ProfileCheckPage = () => {
+  const isLogin = useLogin();
+
+  const [modalState, setModalState] = useState(false);
+
+  const closeModal = (e: Event) => {
+    e.preventDefault();
+    setModalState(false);
+  };
   return (
     <>
       <Header theme="Login">
-        <Button
-          theme="TextButton"
-          fontSize="h5"
-          fontWeight="400"
-          size="Custom"
-          isShadow="No"
-        >
-          새 글 쓰기
-        </Button>
-        <div css={ProfileWrapper}>
-          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
-          <I.DownArrow />
-        </div>
+        {isLogin ? (
+          <HeaderItem />
+        ) : (
+          <HeaderNotLoginItem setModalState={setModalState} />
+        )}
       </Header>
+      {modalState && <Sign closeModal={closeModal} />}
+
       <div css={S.Positioner}>
         <ProfileCheckHeader />
         <MyPost />

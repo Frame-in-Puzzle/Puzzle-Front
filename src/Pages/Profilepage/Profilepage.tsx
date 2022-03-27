@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
+import React, { useState } from "react";
 import * as S from "./Style";
 import * as I from "../../Assets/index";
 import { Header, Button } from "../../Components";
@@ -7,25 +7,32 @@ import { ProfileWrapper } from "../../Styles/GlobalStyle";
 import ProfileHeader from "../../Components/Profile/ProfileHeader/ProfileHeader";
 import ProfileInfo from "../../Components/Profile/ProfileInfo/ProfileInfo";
 import ProfileSelectBox from "../../Components/Profile/ProfileSelectBox/ProfileSelectBox";
+import Sign from "../../Components/SigInModal/SiginModal";
+import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
+import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
+import { useLogin } from "../../Hooks/useLogin";
 
 const Profilepage = () => {
+  const isLogin = useLogin();
+
+  const [modalState, setModalState] = useState(false);
+
+  const closeModal = (e: Event) => {
+    e.preventDefault();
+    setModalState(false);
+  };
+
   return (
     <div css={S.Positioner}>
       <Header theme="Login">
-        <Button
-          theme="TextButton"
-          fontSize="h5"
-          fontWeight="400"
-          size="Custom"
-          isShadow="No"
-        >
-          새 글 쓰기
-        </Button>
-        <div css={ProfileWrapper}>
-          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
-          <I.DownArrow />
-        </div>
+        {isLogin ? (
+          <HeaderItem />
+        ) : (
+          <HeaderNotLoginItem setModalState={setModalState} />
+        )}
       </Header>
+      {modalState && <Sign closeModal={closeModal} />}
+
       <ProfileHeader />
       <ProfileInfo />
       <ProfileSelectBox />
