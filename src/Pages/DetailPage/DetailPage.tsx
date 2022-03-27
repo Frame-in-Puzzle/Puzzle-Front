@@ -14,6 +14,9 @@ import useSWR from "swr";
 import { apiClient } from "../../Lib/Api/apiClient";
 import axios from "axios";
 import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
+import { useLogin } from "../../Hooks/useLogin";
+import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
+import Sign from "../../Components/SigInModal/SiginModal";
 
 interface BoardProps {
   data: {
@@ -38,13 +41,28 @@ const DetailPage = () => {
     apiClient.get,
   );
 
+  const isLogin = useLogin();
+
+  const [modalState, setModalState] = useState(false);
+
+  const closeModal = (e: Event) => {
+    e.preventDefault();
+    setModalState(false);
+  };
+
   if (!board) return <div />;
   if (boardError) return <div />;
   return (
     <>
       <Header theme="Login">
-        <HeaderItem />
+        {isLogin ? (
+          <HeaderItem />
+        ) : (
+          <HeaderNotLoginItem setModalState={setModalState} />
+        )}
       </Header>
+      {modalState && <Sign closeModal={closeModal} />}
+
       <DetailTitle
         TitleObj={{
           title: board.data.title,

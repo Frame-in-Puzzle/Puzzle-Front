@@ -5,13 +5,30 @@ import Banner from "../../Components/Common/Banner/Banner";
 import Post from "../../Components/Post/Post";
 import { ProfileWrapper } from "../../Styles/GlobalStyle";
 import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
+import { useLogin } from "../../Hooks/useLogin";
+import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
+import Sign from "../../Components/SigInModal/SiginModal";
 
 const Mainpage = () => {
+  const isLogin = useLogin();
+
+  const [modalState, setModalState] = useState(false);
+
+  const closeModal = (e: Event) => {
+    e.preventDefault();
+    setModalState(false);
+  };
   return (
     <>
       <Header theme="Login">
-        <HeaderItem />
+        {isLogin ? (
+          <HeaderItem />
+        ) : (
+          <HeaderNotLoginItem setModalState={setModalState} />
+        )}
       </Header>
+      {modalState && <Sign closeModal={closeModal} />}
+
       <Banner />
       <Post />
     </>
