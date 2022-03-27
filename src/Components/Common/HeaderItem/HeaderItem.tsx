@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
-import { Button, DropDown, DropDownList } from "../..";
+import { Button, DropDownList } from "../..";
 import { useDecode } from "../../../Hooks/useDecode";
-import { getUser } from "../../../Lib/Api/member/member";
+import { getUser, deleteUsertoken } from "../../../Lib/Api/member/member";
 import { ProfileWrapper } from "../../../Styles/GlobalStyle";
 import * as I from "../../../Assets/index";
 import * as S from "./style";
@@ -15,6 +15,13 @@ const HeaderItem = () => {
   const [imageUrl, setImageUrl] = useState<string>("");
 
   const [dropState, setDropState] = useState(false);
+
+  const deleteuser = () => {
+    deleteUsertoken();
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    navigate("/");
+  };
 
   const changeDrop = () => {
     setDropState(!dropState);
@@ -51,7 +58,7 @@ const HeaderItem = () => {
           <DropDownList theme="profile" width="160px">
             <li onClick={() => navigate("/profile")}>프로필</li>
             <li onClick={() => navigate(`/profile/${sub}`)}>내 작성글</li>
-            <li>로그아웃</li>
+            <li onClick={() => deleteuser()}>로그아웃</li>
           </DropDownList>
         )}
       </div>
