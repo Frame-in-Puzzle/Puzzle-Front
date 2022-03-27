@@ -37,7 +37,6 @@ const SignUpForm: React.FC = () => {
   const [languageSelect, setLanguageSelect] = useState<string[]>([]);
   const [currentLanguage, setCurrentLanguage] = useState<string>("선택");
   const [currentField, setCurrentField] = useState<string>("선택");
-  console.log(languageSelect);
 
   const navigate = useNavigate();
 
