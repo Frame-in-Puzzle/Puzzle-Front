@@ -8,7 +8,10 @@ export const Positioner = css`
 `;
 
 export const Text = css`
-  font-weight: 600;
-  font-size: ${theme.fonts.h4};
-  color: #000000;
+  display: flex;
+  p {
+    font-weight: 600;
+    font-size: ${theme.fonts.h4};
+    color: #000000;
+  }
 `;

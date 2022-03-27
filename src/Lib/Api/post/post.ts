@@ -30,3 +30,17 @@ export const postBoard = async (
   });
   return { data };
 };
+
+export const s3ImageUpload = async (files: File[]) => {
+  const { data } = await apiClient.post(
+    "/board/create-url",
+    { files: files },
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    },
+  );
+
+  return { data };
+};

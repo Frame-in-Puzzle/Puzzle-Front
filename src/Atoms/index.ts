@@ -5,6 +5,7 @@ import {
   stateSelected,
   languageSelected,
   purposeSelected,
+  isDragging,
 } from "./AtomContainer";
 
 export {
@@ -14,4 +15,5 @@ export {
   stateSelected,
   languageSelected,
   purposeSelected,
+  isDragging,
 };
