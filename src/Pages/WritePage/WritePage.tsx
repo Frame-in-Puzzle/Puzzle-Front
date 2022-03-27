@@ -8,15 +8,13 @@ import WriteSelectItem from "../../Components/Write/WriteSelectItem/WriteSelectI
 import WriteTextForm from "../../Components/Write/WriteTextForm/WriteTextForm";
 import Button from "../../Components/Button/Button";
 import { ProfileWrapper } from "../../Styles/GlobalStyle";
+import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
 
 const WritePage = () => {
   return (
     <>
       <Header theme="Write">
-        <div css={ProfileWrapper}>
-          <img src="https://avatars.githubusercontent.com/u/66630940?v=4" />
-          <I.DownArrow />
-        </div>
+        <HeaderItem />
       </Header>
       <div css={S.Container}>
         <WriteTextForm />

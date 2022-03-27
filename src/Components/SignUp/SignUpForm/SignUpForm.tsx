@@ -37,7 +37,6 @@ const SignUpForm: React.FC = () => {
   const [languageSelect, setLanguageSelect] = useState<string[]>([]);
   const [currentLanguage, setCurrentLanguage] = useState<string>("선택");
   const [currentField, setCurrentField] = useState<string>("선택");
-  console.log(languageSelect);
 
   const navigate = useNavigate();
 
@@ -78,7 +77,7 @@ const SignUpForm: React.FC = () => {
       alert("한 줄 소개 을 입력해주세요..");
       return;
     }
-    if (fieldSelect === "선택") {
+    if (fieldSelect.length === 0) {
       alert("분야를 선택해주세요..");
       return;
     }

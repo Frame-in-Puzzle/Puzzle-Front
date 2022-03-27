@@ -33,3 +33,7 @@ export const putUserInformation = async (
   });
   return { data };
 };
+
+export const deleteUsertoken = async () => {
+  await apiClient.delete("/user/delete");
+};
