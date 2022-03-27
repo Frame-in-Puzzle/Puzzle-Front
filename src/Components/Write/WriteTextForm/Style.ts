@@ -78,9 +78,20 @@ export const Markdown = css`
 export const ButtonContainer = css`
   width: 50%;
   padding: 1% 12% 2%;
-  margin-left: 70%;
+  margin-left: 68.5%;
 
   Button {
     margin-left: 1.3%;
   }
+`;
+
+export const InputPositioner = css`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
