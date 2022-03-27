@@ -29,3 +29,8 @@ export const languageSelected = atom<string[]>({
   key: "languageSelected",
   default: [],
 });
+
+export const isDragging = atom<boolean>({
+  key: "isDragging",
+  default: false,
+});
