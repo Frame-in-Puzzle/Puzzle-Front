@@ -19,7 +19,7 @@ interface PostProps {
 
 const Post = () => {
   const { data, error } = useSWR<PostProps>("/board/all", apiClient.get);
-
+  console.log(data?.data.content);
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
   return (
