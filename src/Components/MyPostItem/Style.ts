@@ -16,6 +16,7 @@ export const Container = css`
   width: 100%;
   height: 100%;
   display: flex;
+  cursor: pointer;
 `;
 
 export const rightbox = css`
@@ -46,30 +47,23 @@ export const Icon = css`
   }
 `;
 
-export const Category = css`
-  width: 100%;
-  color: #434343;
-  font-style: italic;
-  font-size: ${theme.fonts.h4};
-`;
 export const Title = css`
   width: 100%;
   height: 13%;
   font-weight: bold;
-  font-style: italic;
   font-size: ${theme.fonts.h3};
 `;
 
 export const content = css`
   width: 600px;
-  height: 130px;
+  height: 125px;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   font-size: ${theme.fonts.h5};
   color: #787878;
-  margin-top: 7.5%;
+  margin-top: 5%;
 `;
 
 export const State = css`

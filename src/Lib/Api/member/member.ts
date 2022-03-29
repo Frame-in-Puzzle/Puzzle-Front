@@ -5,6 +5,7 @@ export const postGithubLogin = async (code: string) => {
   const { data } = await apiClient.post("/oauth/login/github", {
     code: code,
   });
+  apiClient.defaults.headers.common["authorization"] = data.accessToken;
   return { data };
 };
 
