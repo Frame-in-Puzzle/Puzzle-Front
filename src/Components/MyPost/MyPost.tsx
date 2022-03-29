@@ -49,7 +49,7 @@ const MyPost = () => {
             contents={contents}
             fields={fields}
             date={date}
-            status={status}
+            status={status === "RECRUITMENT" ? "모집중" : "모집완료"}
             key={idx}
           />
         ),
