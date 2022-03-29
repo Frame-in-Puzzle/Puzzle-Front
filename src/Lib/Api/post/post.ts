@@ -34,3 +34,7 @@ export const s3ImageUpload = async (files: File[]) => {
 
   return { data };
 };
+
+export const deletePost = async (boardId: number) => {
+  await apiClient.delete(`board/${boardId}`);
+};

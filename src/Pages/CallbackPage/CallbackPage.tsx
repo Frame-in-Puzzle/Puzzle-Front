@@ -11,10 +11,8 @@ const CallbackPage = () => {
       localStorage.setItem("refreshToken", res.data.refreshToken);
       if (res.data.isFirstVisited) {
         navigate("/signup");
-        window.location.reload();
       } else {
         navigate("/main");
-        window.location.reload();
       }
     });
   }, []);
