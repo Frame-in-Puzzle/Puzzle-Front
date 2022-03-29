@@ -5,6 +5,7 @@ import * as I from "../../Assets/index";
 import { FiX } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { TagItem } from "..";
+import { deletePost } from "../../Lib/Api/post/post";
 
 type MyPostProps = {
   boardId: number;
@@ -25,6 +26,10 @@ const MyPostItem: React.FC<MyPostProps> = ({
   date,
   status,
 }) => {
+  const deletepost = () => {
+    deletePost(boardId);
+  };
+
   const navigate = useNavigate();
 
   return (
@@ -37,7 +42,7 @@ const MyPostItem: React.FC<MyPostProps> = ({
       >
         <div css={S.Image}>{thumbnail}</div>
         <div css={S.rightbox}>
-          <FiX css={S.Icon} />
+          <FiX css={S.Icon} onClick={() => deletepost()} />
           <span css={S.Title}>{title}</span>
           <p css={S.content}>{contents}</p>
           <div>
