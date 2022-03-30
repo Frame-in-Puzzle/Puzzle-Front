@@ -1,4 +1,14 @@
 import { apiClient } from "../apiClient";
+import useSWR from "swr";
+
+export const getPost = async (page?: number) => {
+  try {
+    const { data } = await apiClient.get(`/board/all/page=${page}`);
+    return data;
+  } catch (e: any) {
+    alert(e);
+  }
+};
 
 export const postBoard = async (
   contents: string,
