@@ -1,5 +1,12 @@
 import { atom } from "recoil";
 
+type post = {
+  boardId: number;
+  image_url: string;
+  status: string;
+  title: string;
+};
+
 export const isSelected = atom<string>({
   key: "isSelected",
   default: "선택",
