@@ -2,6 +2,8 @@ import { css } from "@emotion/react";
 import { theme } from "../../Styles/theme";
 
 export const Positioner = css`
+  position: relative;
+
   width: 1250px;
   height: 395px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
@@ -12,7 +14,6 @@ export const Positioner = css`
 `;
 
 export const Container = css`
-  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
