@@ -7,12 +7,17 @@ import { ProfileWrapper } from "../../../Styles/GlobalStyle";
 import * as I from "../../../Assets/index";
 import * as S from "./style";
 import { useNavigate } from "react-router";
+import useSWR from "swr";
+import { apiClient } from "../../../Lib/Api/apiClient";
+interface UserInfo {
+  data: {
+    imageUrl: string;
+  };
+}
 
 const HeaderItem = () => {
   const { sub } = useDecode();
   const navigate = useNavigate();
-
-  const [imageUrl, setImageUrl] = useState<string>("");
 
   const [dropState, setDropState] = useState(false);
 
@@ -26,12 +31,9 @@ const HeaderItem = () => {
   const changeDrop = () => {
     setDropState(!dropState);
   };
+  const { data, error } = useSWR<UserInfo>(`/profile/${sub}`, apiClient.get);
 
-  useEffect(() => {
-    getUser(sub).then((res) => {
-      setImageUrl(res.data.imageUrl);
-    });
-  }, []);
+  if (!data) return <div />;
   return (
     <>
       <div css={S.ImgWrapper}>
@@ -48,7 +50,7 @@ const HeaderItem = () => {
           </Button>
         </div>
         <div css={ProfileWrapper} onClick={() => changeDrop()}>
-          <img css={S.DropImg} src={imageUrl} />
+          <img css={S.DropImg} src={data.data.imageUrl} />
 
           <I.DownArrow onClick={() => changeDrop()} />
         </div>

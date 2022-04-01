@@ -3,9 +3,11 @@ import React from "react";
 import * as S from "./Style";
 import * as I from "../../Assets/index";
 import { FiX } from "react-icons/fi";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { TagItem } from "..";
 import { deletePost } from "../../Lib/Api/post/post";
+import { mutate } from "swr";
+import { useDecode } from "../../Hooks/useDecode";
 
 type MyPostProps = {
   boardId: number;
@@ -26,14 +28,25 @@ const MyPostItem: React.FC<MyPostProps> = ({
   date,
   status,
 }) => {
-  const deletepost = () => {
-    deletePost(boardId);
+  const deletepost = async () => {
+    await deletePost(boardId);
+    await mutate(`/profile/${sub}/board/?page=0`);
   };
 
+  const { sub } = useParams();
+  const { sub: id } = useDecode();
   const navigate = useNavigate();
 
   return (
     <div css={S.Positioner}>
+      {sub == id && (
+        <FiX
+          css={S.Icon}
+          onClick={() => {
+            deletepost();
+          }}
+        />
+      )}
       <div
         css={S.Container}
         onClick={() => {
@@ -41,8 +54,8 @@ const MyPostItem: React.FC<MyPostProps> = ({
         }}
       >
         <div css={S.Image}>{thumbnail}</div>
+
         <div css={S.rightbox}>
-          <FiX css={S.Icon} onClick={() => deletepost()} />
           <span css={S.Title}>{title}</span>
           <p css={S.content}>{contents}</p>
           <div>

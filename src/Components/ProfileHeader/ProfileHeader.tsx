@@ -5,10 +5,11 @@ import * as I from "../../Assets/index";
 import { FaGithubSquare } from "react-icons/fa";
 import { ImMail } from "react-icons/im";
 import { useDecode } from "../../Hooks/useDecode";
-import { getUser } from "../../Lib/Api/member/member";
 import { languageList } from "../../Lib/Data/List";
 import { TagItem } from "..";
 import { useParams } from "react-router";
+import useSWR from "swr";
+import { apiClient } from "../../Lib/Api/apiClient";
 
 interface UserInfo {
   data: {
@@ -25,46 +26,31 @@ interface UserInfo {
 const ProfileHeader: React.FC = () => {
   const { sub } = useParams();
 
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [bio, setBio] = useState<string>("");
-  const [imageUrl, setImageUrl] = useState<string>("");
-  const [language, setLanguage] = useState<string[]>([]);
-  const [url, setUrl] = useState<string>("");
+  const { data, error } = useSWR<UserInfo>(`/profile/${sub}`, apiClient.get);
 
-  useEffect(() => {
-    getUser(sub).then((res) => {
-      setName(res.data.name);
-      setEmail(res.data.email);
-      setBio(res.data.bio);
-      setImageUrl(res.data.imageUrl);
-      setLanguage(res.data.language);
-      setUrl(res.data.url);
-    });
-  }, []);
-
+  if (!data) return <div></div>;
   return (
     <div css={S.Positioner}>
       <div css={S.Container}>
         <div css={S.ImgWrapper}>
-          <img css={S.ImageUrl} src={imageUrl} />
+          <img css={S.ImageUrl} src={data.data.imageUrl} />
         </div>
         <div css={S.rightbox}>
           <div css={S.TitleWrapper}>
-            <p css={S.Name}>{name}</p>
-            <a href={url} target="_blank" css={S.Icon}>
+            <p css={S.Name}>{data.data.name}</p>
+            <a href={data.data.url} target="_blank" css={S.Icon}>
               <FaGithubSquare />
             </a>
             <div css={S.Mail}>
-              <a href={`mailto:${email}`}>
+              <a href={`mailto:${data.data.email}`}>
                 <ImMail css={S.MailIcon}></ImMail>
               </a>
-              <p>{email}</p>
+              <p>{data.data.email}</p>
             </div>
           </div>
-          <p css={S.Introduction}>{bio}</p>
+          <p css={S.Introduction}>{data.data.bio}</p>
           <div css={S.LanguageWrapper}>
-            {language.map((language, idx) => (
+            {data.data.language.map((language, idx) => (
               <TagItem theme="WhiteTag" key={idx}>
                 {language}
               </TagItem>
