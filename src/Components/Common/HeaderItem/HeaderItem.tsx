@@ -33,6 +33,7 @@ const HeaderItem = () => {
   };
   const { data, error } = useSWR<UserInfo>(`/profile/${sub}`, apiClient.get);
 
+  if (!data) return <div />;
   return (
     <>
       <div css={S.ImgWrapper}>
@@ -49,7 +50,7 @@ const HeaderItem = () => {
           </Button>
         </div>
         <div css={ProfileWrapper} onClick={() => changeDrop()}>
-          <img css={S.DropImg} src={data?.data.imageUrl} />
+          <img css={S.DropImg} src={data.data.imageUrl} />
 
           <I.DownArrow onClick={() => changeDrop()} />
         </div>
