@@ -12,7 +12,6 @@ import {
 import { useParams } from "react-router";
 import useSWR from "swr";
 import { apiClient } from "../../Lib/Api/apiClient";
-import axios from "axios";
 
 interface BoardProps {
   data: {
@@ -66,29 +65,7 @@ const DetailPage = () => {
       />
       <DetailContent contents={board.data.contents} />
       <DetailWriter name={board.data.name} githubId={board.data.githubId} />
-      <DetailApply
-        apply={3}
-        applyObj={[
-          {
-            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
-            name: "ImChangGyu",
-            tag: ["프론트엔드", "TS", "React", "Next"],
-            date: "2022.1.10",
-          },
-          {
-            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
-            name: "ImChangGyu",
-            tag: ["프론트엔드", "TS", "React", "Next"],
-            date: "2022.1.10",
-          },
-          {
-            Image: "https://avatars.githubusercontent.com/u/66630940?v=4",
-            name: "ImChangGyu",
-            tag: ["프론트엔드", "TS", "React", "Next"],
-            date: "2022.1.10",
-          },
-        ]}
-      />
+      <DetailApply board_idx={board.data.id} writer={board.data.githubId} />
     </>
   );
 };

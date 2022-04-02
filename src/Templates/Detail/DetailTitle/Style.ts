@@ -69,3 +69,21 @@ export const ListStyle = css`
     margin: 0;
   }
 `;
+
+export const List = css`
+  list-style: none;
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+  li {
+    color: #acacac;
+    cursor: pointer;
+  }
+  @media (max-width: 1200px) {
+    width: 100%;
+    justify-content: flex-start;
+    li:nth-of-type(2) {
+      margin-left: 1rem;
+    }
+  }
+`;
