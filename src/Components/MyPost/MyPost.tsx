@@ -1,66 +1,59 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
 import MyPostItem from "../MyPostItem/MyPostItem";
-import * as I from "../../Assets/index";
 import * as S from "./Style";
+import * as I from "../../Assets";
+import useSWR from "swr";
+import { apiClient } from "../../Lib/Api/apiClient";
+import { useParams } from "react-router";
 
-export const PostItemObj = [
-  {
-    id: 1,
-    image: <I.MyPostDefaultImg />,
-    category: "WEB",
-    title: "PUZZLE",
-    content:
-      "가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ",
-    state: "모집중",
-  },
-  {
-    id: 2,
-    image: <I.MyPostDefaultImg />,
-    category: "ABC",
-    title: "VARI",
-    content:
-      "가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라가나다라마사바바바바바파하가나다라마바사아자차카타파파하가나다라마바사아자차카타파파하가나다라마바사아자차카타파파하가나다라마바사아자차카타파",
-    state: "모집완료",
-  },
-  {
-    id: 3,
-    image: <I.MyPostDefaultImg />,
-    category: "WEB",
-    title: "PUZZLE",
-    content:
-      "가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라. . .",
-    state: "모집중",
-  },
-  {
-    id: 4,
-    image: <I.MyPostDefaultImg />,
-    category: "WEB",
-    title: "PUZZLE",
-    content:
-      "가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라",
-    state: "모집완료",
-  },
-  {
-    id: 5,
-    image: <I.MyPostDefaultImg />,
-    category: "WEB",
-    title: "PUZZLE",
-    content:
-      "가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라. . .",
-    state: "모집중",
-  },
-];
+type mypost = {
+  boardId: number;
+  title: string;
+  thumbnail: string;
+  contents: string;
+  fields: string[];
+  date: string;
+  status: string;
+};
+
+interface MyPostProps {
+  data: { content: mypost[] };
+}
 
 const MyPost = () => {
+  const { sub } = useParams();
+
+  const { data, error } = useSWR<MyPostProps>(
+    `/profile/${sub}/board/?page=0`,
+    apiClient.get,
+  );
+  console.log(data?.data.content);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
   return (
     <div>
       <div css={S.Title}>
         <h1>내 작성글</h1>
       </div>
-      {PostItemObj.map((item) => (
-        <MyPostItem MyPostObj={item} key={item.id} />
-      ))}
+      {data.data.content.map(
+        (
+          { boardId, title, thumbnail, contents, fields, date, status },
+          idx,
+        ) => (
+          <MyPostItem
+            boardId={boardId}
+            title={title}
+            thumbnail={thumbnail === null ? <I.MyPostDefaultImg /> : thumbnail}
+            contents={contents}
+            fields={fields}
+            date={date}
+            status={status === "RECRUITMENT" ? "모집중" : "모집완료"}
+            key={idx}
+          />
+        ),
+      )}
     </div>
   );
 };

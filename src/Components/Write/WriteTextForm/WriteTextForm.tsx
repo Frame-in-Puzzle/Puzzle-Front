@@ -1,5 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import React, { useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Button from "../../Button/Button";
 import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
@@ -8,13 +14,12 @@ import { BsCodeSlash } from "react-icons/bs";
 import { FiLink2 } from "react-icons/fi";
 import { useRemark } from "react-remark";
 import { useRecoilState } from "recoil";
-import { isPreview } from "../../../Atoms";
+import { isDragging, isPreview } from "../../../Atoms";
 import { useBeforeunload } from "react-beforeunload";
-import { postBoard } from "../../../Lib/Api/post/post";
+import { postBoard, s3ImageUpload } from "../../../Lib/Api/post/post";
 import Input from "../../Input/Input";
 import WriteSelectItem from "../WriteSelectItem/WriteSelectItem";
 import { useNavigate } from "react-router-dom";
-
 interface WriteProps {
   onClick?: Function;
   data?: {
@@ -27,31 +32,106 @@ interface WriteProps {
     title: string;
   };
 }
-
-const handleDragEnter = (e: any) => {
-  e.preventDefault();
-  e.stopPropagation();
-};
-const handleDragLeave = (e: any) => {
-  e.preventDefault();
-  e.stopPropagation();
-};
-const handleDragOver = (e: any) => {
-  e.preventDefault();
-  e.stopPropagation();
-};
-const handleDrop = (e: any) => {
-  e.preventDefault();
-  e.stopPropagation();
-};
+interface IFileTypes {
+  id: number;
+  object: File;
+}
 
 const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
   const [title, setTitle] = useState("");
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
-  const innerRef: any = useRef(null);
+  const [drag, setDrag] = useState<boolean>(false);
   const navigate = useNavigate();
+  const innerRef: any = useRef(null);
+  const [files, setFiles] = useState<IFileTypes[]>([]);
+  const fileId = useRef<number>(0);
+  const dragRef = useRef<HTMLLabelElement | null>(null);
+
+  const onChangeFiles = useCallback(
+    (e: ChangeEvent<HTMLInputElement> | any): void => {
+      let selectFiles: File[] = [];
+      let tempFiles: IFileTypes[] = files;
+      if (e.type === "drop") {
+        selectFiles = e.dataTransfer.files;
+        s3ImageUpload(selectFiles).then(() => {
+          console.log("success");
+        });
+      } else {
+        selectFiles = e.target.files;
+      }
+
+      for (const file of selectFiles) {
+        tempFiles = [
+          ...tempFiles,
+          {
+            id: fileId.current++,
+            object: file,
+          },
+        ];
+      }
+
+      setFiles(tempFiles);
+    },
+    [files],
+  );
+
+  const handleDragIn = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
+
+  const handleDragOut = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setDrag(false);
+  }, []);
+
+  const handleDragOver = useCallback((e: DragEvent): void => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (e.dataTransfer!.files) {
+      setDrag(true);
+    }
+  }, []);
+
+  const handleDrop = useCallback(
+    (e: DragEvent): void => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      onChangeFiles(e);
+      setDrag(false);
+    },
+    [onChangeFiles],
+  );
+
+  const initDragEvents = useCallback((): void => {
+    if (dragRef.current !== null) {
+      dragRef.current.addEventListener("dragenter", handleDragIn);
+      dragRef.current.addEventListener("dragleave", handleDragOut);
+      dragRef.current.addEventListener("dragover", handleDragOver);
+      dragRef.current.addEventListener("drop", handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  const resetDragEvents = useCallback((): void => {
+    if (dragRef.current !== null) {
+      dragRef.current.removeEventListener("dragenter", handleDragIn);
+      dragRef.current.removeEventListener("dragleave", handleDragOut);
+      dragRef.current.removeEventListener("dragover", handleDragOver);
+      dragRef.current.removeEventListener("drop", handleDrop);
+    }
+  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
+
+  useEffect(() => {
+    initDragEvents();
+
+    return () => resetDragEvents();
+  }, [initDragEvents, resetDragEvents]);
 
   useBeforeunload((e: any) => {
     e.preventDefault();
@@ -62,18 +142,24 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   };
 
   const handlePost = () => {
-    postBoard(
-      markdownValue,
-      ["BACKEND", "FRONTEND"],
-      ["SPRING", "REACT"],
-      "PROJECT",
-      "RECRUITMENT",
-      title,
-      [],
-    ).then(() => {
-      alert("글이 등록되었어요");
-      navigate("/main");
-    });
+    if (title === "" || null) {
+      alert("제목을 입력해주세요.");
+    } else if (markdownValue === "" || null) {
+      alert("내용을 입력해주세요.");
+    } else {
+      postBoard(
+        markdownValue,
+        ["BACKEND", "FRONTEND"],
+        ["SPRING", "REACT"],
+        "PROJECT",
+        "RECRUITMENT",
+        title,
+        [],
+      ).then(() => {
+        alert("글이 등록되었어요");
+        navigate("/main");
+      });
+    }
   };
 
   const onToolbarClicked = (markdown: string) => {
@@ -104,11 +190,10 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         break;
       case "link":
         innerRef.current.focus();
-        innerRef.current.value += "![]() ";
         break;
       case "checkbox":
         innerRef.current.focus();
-        innerRef.current.value += "[] ";
+        innerRef.current.value += "- [ ] ";
         break;
       default:
         break;
@@ -236,12 +321,13 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         </nav>
         <hr css={S.Line} />
         {preview === false ? (
+          // {drag === false ? (
           <div
             onSubmit={handleSubmit}
-            onDrop={(e) => handleDrop(e)}
-            onDragOver={(e) => handleDragOver(e)}
-            onDragEnter={(e) => handleDragEnter(e)}
-            onDragLeave={(e) => handleDragLeave(e)}
+            onDrop={(e: any) => handleDrop(e)}
+            onDragOver={(e: any) => handleDragOver(e)}
+            onDragEnter={(e: any) => handleDragIn(e)}
+            onDragLeave={(e: any) => handleDragOut(e)}
           >
             <textarea
               css={S.TextArea}
@@ -254,6 +340,18 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
             />
           </div>
         ) : (
+          //  ) : (
+          //   <div css={S.InputPositioner}>
+          //   <input type="file" id="fileUpload" multiple={true} />
+          //   <label
+          //     className={drag ? "DragDrop-File-Dragging" : "DragDrop-File"}
+          //     htmlFor="fileUpload"
+          //     ref={dragRef}
+          //   >
+          //     <div>파일 첨부</div>
+          //   </label>
+          // </div>
+          // )}
           <div css={S.TextArea} className="preview">
             {markdownSource}
           </div>
@@ -276,7 +374,9 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
           fontSize="h5"
           fontWeight="600"
           isShadow="No"
-          onClick={() => handlePost()}
+          onClick={() => {
+            handlePost();
+          }}
         />
       </div>
     </div>

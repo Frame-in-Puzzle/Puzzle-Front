@@ -21,7 +21,7 @@ function App() {
           <Routes>
             <Route path="/" element={<TestPage />} />
             <Route path="/main" element={<Mainpage />} />
-            <Route path="/profile/check" element={<ProfileCheckPage />} />
+            <Route path="/profile/:sub" element={<ProfileCheckPage />} />
             <Route path="/profile" element={<Profilepage />} />
             <Route path="/write" element={<WritePage />} />
             <Route path="/detail/:id" element={<DetailPage />} />
