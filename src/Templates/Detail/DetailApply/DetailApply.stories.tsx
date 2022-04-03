@@ -31,5 +31,5 @@ const Testobj = {
 };
 
 export const detailApply: ComponentStory<typeof DetailApply> = () => (
-  <DetailApply apply={Testobj.apply} applyObj={Testobj.applyObj} />
+  <DetailApply board_idx={1} writer="ImChangGyu" />
 );

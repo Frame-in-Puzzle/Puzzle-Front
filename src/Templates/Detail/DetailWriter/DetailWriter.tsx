@@ -1,7 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { Button } from "../../../Components";
+import { useDecode } from "../../../Hooks/useDecode";
+import { postAttend } from "../../../Lib/Api/attend/attend";
+import { mutate } from "swr";
 import * as S from "./Style";
 
 type DetailWriter = {
@@ -20,10 +24,18 @@ const GithubInfo = async (githubId: string | undefined) => {
 };
 
 const DetailWriter: React.FC<DetailWriter> = ({ name, githubId }) => {
+  const { id } = useParams();
   const [user, setUser] = useState<GithubType>();
+  const { sub } = useDecode();
+
   useEffect(() => {
     GithubInfo(githubId).then((res) => setUser(res.data));
   }, []);
+
+  const requestAttend = async () => {
+    await postAttend(id);
+    await mutate(`/attend/board/${id}`);
+  };
 
   return (
     <>
@@ -37,15 +49,20 @@ const DetailWriter: React.FC<DetailWriter> = ({ name, githubId }) => {
         </div>
         <div css={S.Line}></div>
         <div css={S.Button}>
-          <Button
-            size="Regular"
-            fontSize="h5"
-            isShadow="No"
-            theme="BlackButton"
-            fontWeight="400"
-          >
-            신청하기
-          </Button>
+          {sub !== githubId ? (
+            <Button
+              size="Regular"
+              fontSize="h5"
+              isShadow="No"
+              theme="BlackButton"
+              fontWeight="400"
+              onClick={() => requestAttend()}
+            >
+              신청하기
+            </Button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>
