@@ -2,12 +2,13 @@
 import { Header, Button } from "../../Components";
 import { useEffect, useState } from "react";
 import Sign from "../../Components/SigInModal/SiginModal";
-import TagSelector from "../../Templates/Tag/TagSelector";
 import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
 import { useLogin } from "../../Hooks/useLogin";
 import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
+import { Section1 } from "../../Components";
+import * as S from "./Style";
 
-const TestPage = () => {
+const PromotionPage = () => {
   const isLogin = useLogin();
 
   const [modalState, setModalState] = useState(false);
@@ -27,8 +28,8 @@ const TestPage = () => {
         )}
       </Header>
       {modalState && <Sign closeModal={closeModal} />}
-      <TagSelector />
+      <Section1 css={S.test} />
     </>
   );
 };
-export default TestPage;
+export default PromotionPage;
