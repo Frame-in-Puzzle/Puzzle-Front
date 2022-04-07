@@ -7,5 +7,5 @@ export default {
 } as ComponentMeta<typeof TagSelector>;
 
 export const tagSelector: ComponentStory<typeof TagSelector> = () => (
-  <TagSelector />
+  <TagSelector onSubmit={function (): void {}} />
 );
