@@ -10,7 +10,7 @@ const WriteSelectItem = () => {
       <label css={S.Text}>
         <p>프로젝트 :</p>
       </label>
-      <TagSelector />
+      <TagSelector onSubmit={function (): void {}} />
     </div>
   );
 };
