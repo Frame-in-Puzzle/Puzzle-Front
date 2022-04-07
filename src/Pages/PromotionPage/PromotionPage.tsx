@@ -5,7 +5,7 @@ import Sign from "../../Components/SigInModal/SiginModal";
 import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
 import { useLogin } from "../../Hooks/useLogin";
 import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
-import { Section1 } from "../../Components";
+import { Section1, Section2 } from "../../Components";
 import * as S from "./Style";
 
 const PromotionPage = () => {
@@ -29,6 +29,7 @@ const PromotionPage = () => {
       </Header>
       {modalState && <Sign closeModal={closeModal} />}
       <Section1 css={S.test} />
+      <Section2 />
     </>
   );
 };

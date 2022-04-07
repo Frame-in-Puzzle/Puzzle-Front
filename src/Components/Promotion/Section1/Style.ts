@@ -35,8 +35,8 @@ export const floating = keyframes`
     }
 
     to{
-      top: 120px;
-      right: 30px;
+      top: 200px;
+      right: 80px;
 
     }
  `;
