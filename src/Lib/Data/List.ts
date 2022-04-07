@@ -1,5 +1,7 @@
-export const fieldList = [
-  { name: "전체", value: "all" },
+import { selected } from "../../Type/types";
+
+export const fieldList: selected[] = [
+  { name: "전체", value: "ALL" },
   { name: "프론트엔드", value: "FRONTEND" },
   { name: "백엔드", value: "BACKEND" },
   { name: "게임", value: "GAME" },
@@ -8,14 +10,14 @@ export const fieldList = [
   { name: "AI", value: "AI" },
 ];
 
-export const purposeList = [
+export const purposeList: selected[] = [
   { name: "프로젝트", value: "PROJECT" },
   { name: "대회", value: "CONTEST" },
   { name: "서비스", value: "SERVICE" },
   { name: "스터디", value: "STUDY" },
 ];
 
-export const stateList = [
+export const stateList: selected[] = [
   { name: "모집중", value: "RECRUITMENT" },
   { name: "모집완료", value: "COMPLETE" },
 ];
