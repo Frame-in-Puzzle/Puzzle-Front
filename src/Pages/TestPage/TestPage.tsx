@@ -27,7 +27,6 @@ const TestPage = () => {
         )}
       </Header>
       {modalState && <Sign closeModal={closeModal} />}
-      <TagSelector />
     </>
   );
 };

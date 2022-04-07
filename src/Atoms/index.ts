@@ -6,6 +6,7 @@ import {
   languageSelected,
   purposeSelected,
   isDragging,
+  tagModalState,
 } from "./AtomContainer";
 
 export {
@@ -16,4 +17,5 @@ export {
   languageSelected,
   purposeSelected,
   isDragging,
+  tagModalState,
 };

@@ -3,78 +3,73 @@ import React, { useState } from "react";
 import * as S from "./Style";
 import { Button, DropDown, TagItem } from "../..";
 import { FiX } from "react-icons/fi";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import {
   fieldSelected,
   languageSelected,
   purposeSelected,
   stateSelected,
-} from "../../../Atoms/AtomContainer";
-
-const purposeList = ["전체", "프로젝트", "대회", "서비스", "스터디"];
-
-const stateList = ["전체", "모집중", "모집완료"];
-
-const FieldList = [
-  "전체",
-  "프론트엔드",
-  "백엔드",
-  "게임",
-  "iOS",
-  "Android",
-  "AI",
-];
-
-const languageList = {
-  Frontend: ["Javascript", "Typescript", "React", "Vue", "Next"],
-  Backend: ["Java", "Spring", "Spring boot", "Go", "django", "express", "nest"],
-  AI: ["Pytorch", "Tensorflow"],
-  Android: ["Kotlin"],
-  iOS: ["Swift"],
-  Game: ["Unity", "C#", "Unreal Engine"],
-};
+  tagModalState,
+} from "../../../Atoms";
+import {
+  languageList,
+  purposeList,
+  stateList,
+  fieldList,
+} from "../../../Lib/Data/List";
+import { selected } from "../../../Type/types";
 
 type TagSearch = {
-  closeTagModal?: () => void;
+  onSubmit?: () => void;
 };
 
-const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
+const TagModal: React.FC<TagSearch> = ({ onSubmit }) => {
   const [purposeSelect, setPurposeSelect] = useRecoilState(purposeSelected);
   const [stateSelect, setStateSelect] = useRecoilState(stateSelected);
   const [fieldSelect, setFieldSelect] = useRecoilState(fieldSelected);
   const [languageSelect, setLanguageSelect] = useRecoilState(languageSelected);
-  const [currentField, setCurrentField] = useState<string>("전체");
-  const [currentLanguage, setCurrentLanguage] = useState<string>("전체");
-  console.log(fieldSelect);
-  console.log(languageSelect);
+  const [currentField, setCurrentField] = useState<selected>({
+    name: "전체",
+    value: "ALL",
+  });
+  const [currentLanguage, setCurrentLanguage] = useState<selected>({
+    name: "전체",
+    value: "ALL",
+  });
 
-  const handleSelect = (state: string[], setState: any, select: string) => {
+  const setModalState = useSetRecoilState(tagModalState);
+
+  const handleSelect = (state: selected[], setState: any, select: selected) => {
     if (!state.includes(select)) {
-      setState([...state.filter((el) => el !== "전체"), select]);
+      setState([...state.filter((el) => el.value !== "ALL"), select]);
     }
-    if (select === "전체") {
-      setState(["전체"]);
+    if (select.value === "ALL") {
+      setState([{ name: "전체", value: "ALL" }]);
       setLanguageSelect([]);
     }
   };
 
-  const handleReset = () => {
-    setPurposeSelect("전체");
-    setStateSelect("전체");
-    setFieldSelect(["전체"]);
-    setLanguageSelect([]);
-    setCurrentField("전체");
-    setCurrentLanguage("전체");
+  const closeTagModal = () => {
+    setModalState(false);
   };
 
-  const handleDelete = (state: string[], setState: any, select: string) => {
+  const handleReset = () => {
+    setPurposeSelect({ name: "선택", value: "choice" });
+    setStateSelect({ name: "선택", value: "choice" });
+    setFieldSelect([{ name: "전체", value: "ALL" }]);
+    setLanguageSelect([]);
+    setCurrentField({ name: "전체", value: "ALL" });
+    setCurrentLanguage({ name: "전체", value: "ALL" });
+  };
+
+  const handleDelete = (state: selected[], setState: any, select: selected) => {
     setState([...state.filter((el) => el !== select)]);
   };
 
   const returnSelect = (
-    state: string | any[],
-    select: string,
-    currentSelect: string,
+    state: selected[],
+    select: selected,
+    currentSelect: selected,
   ) => {
     return state.includes(select)
       ? currentSelect === select
@@ -83,7 +78,7 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
       : "";
   };
 
-  const mappingField = (language: string) => {
+  const mappingField = (language: selected) => {
     if (languageList.Frontend.includes(language)) {
       return "프론트엔드";
     } else if (languageList.Backend.includes(language)) {
@@ -96,12 +91,16 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
       return "Android";
     } else if (languageList.AI.includes(language)) {
       return "AI";
+    } else if (language.name === "전체") {
+      return;
+    } else {
+      return "nothing";
     }
   };
 
-  const mappingLanguageList = (currentField: string) => {
-    switch (currentField) {
-      case "프론트엔드":
+  const mappingLanguageList = (currentField: selected) => {
+    switch (currentField.value) {
+      case "FRONTEND":
         return languageList.Frontend.map((language, idx) => (
           <li
             key={idx}
@@ -111,10 +110,10 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             }}
             className={returnSelect(languageSelect, language, currentLanguage)}
           >
-            {language}
+            {language.name}
           </li>
         ));
-      case "백엔드":
+      case "BACKEND":
         return languageList.Backend.map((language, idx) => (
           <li
             key={idx}
@@ -124,10 +123,10 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             }}
             className={returnSelect(languageSelect, language, currentLanguage)}
           >
-            {language}
+            {language.name}
           </li>
         ));
-      case "게임":
+      case "GAME":
         return languageList.Game.map((language, idx) => (
           <li
             key={idx}
@@ -137,10 +136,10 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             }}
             className={returnSelect(languageSelect, language, currentLanguage)}
           >
-            {language}
+            {language.name}
           </li>
         ));
-      case "iOS":
+      case "IOS":
         return languageList.iOS.map((language, idx) => (
           <li
             key={idx}
@@ -150,10 +149,10 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             }}
             className={returnSelect(languageSelect, language, currentLanguage)}
           >
-            {language}
+            {language.name}
           </li>
         ));
-      case "Android":
+      case "ANDROID":
         return languageList.Android.map((language, idx) => (
           <li
             key={idx}
@@ -163,7 +162,7 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             }}
             className={returnSelect(languageSelect, language, currentLanguage)}
           >
-            {language}
+            {language.name}
           </li>
         ));
       case "AI":
@@ -176,7 +175,7 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             }}
             className={returnSelect(languageSelect, language, currentLanguage)}
           >
-            {language}
+            {language.name}
           </li>
         ));
       default:
@@ -194,7 +193,9 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
     <div css={S.TagSearch}>
       <div css={S.Positioner}>
         <div css={S.HeaderContainer}>
-          <button css={S.Reset}>초기화</button>
+          <button css={S.Reset} onClick={handleReset}>
+            초기화
+          </button>
           <span css={S.Title}>태그 조회</span>
           <button css={S.Close} onClick={closeTagModal}>
             <FiX />
@@ -206,7 +207,7 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             <DropDown theme="purpose" width="450px" selected={purposeSelect}>
               {purposeList.map((purpose, idx) => (
                 <li key={idx} onClick={() => setPurposeSelect(purpose)}>
-                  {purpose}
+                  {purpose.name}
                 </li>
               ))}
             </DropDown>
@@ -215,7 +216,7 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             <div css={S.SelectWrapper}>
               <span css={S.Label}>분야</span>
               <ul css={S.SelectBox}>
-                {FieldList.map((field, idx) => (
+                {fieldList.map((field, idx) => (
                   <li
                     key={idx}
                     onClick={() => {
@@ -224,7 +225,7 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
                     }}
                     className={returnSelect(fieldSelect, field, currentField)}
                   >
-                    {field}
+                    {field.name}
                   </li>
                 ))}
               </ul>
@@ -239,16 +240,136 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             <DropDown theme="state" width="450px" selected={stateSelect}>
               {stateList.map((state, idx) => (
                 <li key={idx} onClick={() => setStateSelect(state)}>
-                  {state}
+                  {state.name}
                 </li>
               ))}
             </DropDown>
           </div>
         </div>
         <div css={S.TagContainer}>
+          {fieldSelect.map((field, idx) => {
+            switch (field.value) {
+              case "FRONTEND":
+                if (
+                  languageList.Frontend.filter((item) =>
+                    languageSelect.includes(item),
+                  ).length === 0
+                ) {
+                  return (
+                    <TagItem theme="WhiteTag" key={idx}>
+                      {field.name}
+                      <FiX
+                        onClick={() =>
+                          handleDelete(fieldSelect, setFieldSelect, field)
+                        }
+                      />
+                    </TagItem>
+                  );
+                }
+                break;
+              case "BACKEND":
+                if (
+                  languageList.Backend.filter((item) =>
+                    languageSelect.includes(item),
+                  ).length === 0
+                ) {
+                  return (
+                    <TagItem theme="WhiteTag" key={idx}>
+                      {field.name} 전체
+                      <FiX
+                        onClick={() =>
+                          handleDelete(fieldSelect, setFieldSelect, field)
+                        }
+                      />
+                    </TagItem>
+                  );
+                }
+                break;
+              case "GAME":
+                if (
+                  languageList.Game.filter((item) =>
+                    languageSelect.includes(item),
+                  ).length === 0
+                ) {
+                  return (
+                    <TagItem theme="WhiteTag" key={idx}>
+                      {field.name} 전체
+                      <FiX
+                        onClick={() =>
+                          handleDelete(fieldSelect, setFieldSelect, field)
+                        }
+                      />
+                    </TagItem>
+                  );
+                }
+                break;
+              case "IOS":
+                if (
+                  languageList.iOS.filter((item) =>
+                    languageSelect.includes(item),
+                  ).length === 0
+                ) {
+                  return (
+                    <TagItem theme="WhiteTag" key={idx}>
+                      {field.name} 전체
+                      <FiX
+                        onClick={() =>
+                          handleDelete(fieldSelect, setFieldSelect, field)
+                        }
+                      />
+                    </TagItem>
+                  );
+                }
+                break;
+              case "ANDROID":
+                if (
+                  languageList.Android.filter((item) =>
+                    languageSelect.includes(item),
+                  ).length === 0
+                ) {
+                  return (
+                    <TagItem theme="WhiteTag" key={idx}>
+                      {field.name} 전체
+                      <FiX
+                        onClick={() =>
+                          handleDelete(fieldSelect, setFieldSelect, field)
+                        }
+                      />
+                    </TagItem>
+                  );
+                }
+                break;
+              case "AI":
+                if (
+                  languageList.AI.filter((item) =>
+                    languageSelect.includes(item),
+                  ).length === 0
+                ) {
+                  return (
+                    <TagItem theme="WhiteTag" key={idx}>
+                      {field.name} 전체
+                      <FiX
+                        onClick={() =>
+                          handleDelete(fieldSelect, setFieldSelect, field)
+                        }
+                      />
+                    </TagItem>
+                  );
+                }
+                break;
+              case "ALL":
+                return (
+                  <TagItem theme="WhiteTag" key={idx}>
+                    {field.name}
+                  </TagItem>
+                );
+              default:
+                return;
+            }
+          })}
           {languageSelect.map((language, idx) => (
             <TagItem theme="WhiteTag" key={idx}>
-              {mappingField(language)} {language}
+              {mappingField(language)} {language.name}
               <FiX
                 onClick={() =>
                   handleDelete(languageSelect, setLanguageSelect, language)
@@ -266,7 +387,7 @@ const TagModal: React.FC<TagSearch> = ({ closeTagModal }) => {
             isShadow="No"
             width="100%"
             height="3rem"
-            onClick={closeTagModal}
+            onClick={onSubmit}
           >
             확인
           </Button>
