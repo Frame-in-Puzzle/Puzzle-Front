@@ -5,7 +5,7 @@ import * as S from "./Style";
 import { useRecoilState } from "recoil";
 import { isSelected } from "../../Atoms";
 import { DownArrow } from "../../Assets";
-
+import { selected } from "../../Type/types";
 interface DropDownProps {
   //** DropDown의 theme를 정합니다.*/
   theme:
@@ -22,7 +22,7 @@ interface DropDownProps {
   /** DropDown의 너비를 설정합니다. */
   width: string | number;
   children: React.ReactNode;
-  selected: string;
+  selected: selected;
 }
 
 const DropDown: React.FC<DropDownProps> = ({
@@ -37,7 +37,7 @@ const DropDown: React.FC<DropDownProps> = ({
   return (
     <div css={[{ width }]}>
       <div css={S.DropDownStyle} onClick={toggling}>
-        {selected}
+        {selected.name}
         <DownArrow />
       </div>
       {isOpen && (
