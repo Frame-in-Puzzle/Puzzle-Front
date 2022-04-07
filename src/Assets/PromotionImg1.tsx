@@ -17,7 +17,7 @@ function PromotionImg1(props: React.SVGProps<SVGSVGElement>) {
         >
           <path
             transform="rotate(85.071 83.625 138.5) skewX(.06)"
-            fill="url(#prefix__pattern0)"
+            fill="url(#prefix__pattern14)"
             d="M0 0h40v37.833H0z"
           />
         </mask>

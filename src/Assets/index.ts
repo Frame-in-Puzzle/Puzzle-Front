@@ -10,3 +10,4 @@ export { default as SigninModalImg } from "./SigninModalImg";
 export { default as SignUpHeaderImg } from "./SignUpHeaderImg";
 export { default as PromotionImg1 } from "./PromotionImg1";
 export { default as RoketImg } from "./RoketImg";
+export { default as PromotionManImg } from "./PromotionManImg";
