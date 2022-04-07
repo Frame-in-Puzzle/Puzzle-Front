@@ -8,6 +8,7 @@ import { useDecode } from "../../../Hooks/useDecode";
 import { getUser, putUserInformation } from "../../../Lib/Api/member/member";
 import { fieldList, languageList } from "../../../Lib/Data/List";
 import * as S from "./Style";
+import { selected } from "../../../Type/types";
 
 interface UserInfo {
   data: {
@@ -33,10 +34,17 @@ const SignUpForm: React.FC = () => {
   const [email, setEmail] = useState<string>("");
   const [bio, setBio] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [fieldSelect, setFieldSelect] = useState<string>("");
-  const [languageSelect, setLanguageSelect] = useState<string[]>([]);
-  const [currentLanguage, setCurrentLanguage] = useState<string>("선택");
-  const [currentField, setCurrentField] = useState<string>("선택");
+  const [fieldSelect, setFieldSelect] = useState<string>("선택");
+  const [languageSelect, setLanguageSelect] = useState<string[]>(["선택"]);
+  const [currentLanguage, setCurrentLanguage] = useState<selected>({
+    name: "선택",
+    value: "선택",
+  });
+  const [currentField, setCurrentField] = useState<selected>({
+    name: "선택",
+    value: "선택",
+  });
+  console.log(languageSelect);
 
   const navigate = useNavigate();
 
@@ -105,7 +113,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentLanguage(language.name);
+              setCurrentLanguage(language);
               handleSelect(language.value);
             }}
           >
@@ -117,7 +125,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentLanguage(language.name);
+              setCurrentLanguage(language);
               handleSelect(language.value);
             }}
           >
@@ -129,7 +137,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentLanguage(language.name);
+              setCurrentLanguage(language);
               handleSelect(language.value);
             }}
           >
@@ -141,7 +149,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentLanguage(language.name);
+              setCurrentLanguage(language);
               handleSelect(language.value);
             }}
           >
@@ -153,7 +161,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentLanguage(language.name);
+              setCurrentLanguage(language);
               handleSelect(language.value);
             }}
           >
@@ -165,7 +173,7 @@ const SignUpForm: React.FC = () => {
           <li
             key={idx}
             onClick={() => {
-              setCurrentLanguage(language.name);
+              setCurrentLanguage(language);
               handleSelect(language.value);
             }}
           >
@@ -226,7 +234,7 @@ const SignUpForm: React.FC = () => {
               key={idx}
               onClick={() => {
                 setFieldSelect(field.value);
-                setCurrentField(field.name);
+                setCurrentField(field);
                 if (fieldSelect !== field.value) setLanguageSelect([]);
               }}
             >
