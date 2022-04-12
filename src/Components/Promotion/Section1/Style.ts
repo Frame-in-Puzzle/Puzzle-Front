@@ -12,6 +12,19 @@ export const Positioner = css`
   overflow: hidden;
 `;
 
+export const MainWarpper = css`
+  width: 1300px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10%;
+`;
+
+export const MainSectionWrapper = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 export const MainSection = css`
   color: #fff;
   font-size: ${theme.fonts.h4};
@@ -24,20 +37,14 @@ export const ButtonWrapper = css`
   justify-content: space-between;
 `;
 
-export const ImgWarpper = css`
-  margin-left: 5%;
-`;
 export const floating = keyframes`
     from {
-
       top: 600px;
       right: -300px;
     }
-
     to{
       top: 200px;
       right: 80px;
-
     }
  `;
 

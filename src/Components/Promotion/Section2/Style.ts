@@ -16,7 +16,6 @@ export const MainWarpper = css`
   width: 1300px;
   display: flex;
   justify-content: space-between;
-  margin-right: 10%;
 `;
 
 export const MainSectionWrapper = css`
@@ -26,8 +25,6 @@ export const MainSectionWrapper = css`
 `;
 
 export const MainSection = css`
-  display: flex;
-  align-items: center;
   font-size: ${theme.fonts.h4};
   font-weight: 700;
 `;
