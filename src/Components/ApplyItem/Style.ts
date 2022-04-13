@@ -60,3 +60,7 @@ export const ButtonWrapper = css`
   display: flex;
   justify-content: space-between;
 `;
+
+export const attend = css`
+  color: #b1b1b1;
+`;

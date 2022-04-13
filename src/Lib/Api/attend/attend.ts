@@ -19,7 +19,7 @@ export const patchAttend = async (
   attendStatus: string,
 ) => {
   try {
-    const { data } = await apiClient.patch(`/attend/board/${boardId}`, {
+    const { data } = await apiClient.patch(`/attend/${boardId}`, {
       attendId: attendId,
       attendStatus: attendStatus,
     });

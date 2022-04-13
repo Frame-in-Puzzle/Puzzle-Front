@@ -45,8 +45,8 @@ const ApplyItem: React.FC<AttendProps> = ({ attend, writer }) => {
           </div>
         </div>
         <div css={S.ButtonWrapper}>
-          {sub === writer ? (
-            attend.attendStatus === "WAIT" ? (
+          {sub === writer &&
+            (attend.attendStatus === "WAIT" ? (
               <>
                 <Button
                   theme="GrayButtonWithWhiteTextGrayHover"
@@ -76,13 +76,10 @@ const ApplyItem: React.FC<AttendProps> = ({ attend, writer }) => {
                 </Button>
               </>
             ) : attend.attendStatus === "ACCEPT" ? (
-              <span>수락되었습니다.</span>
+              <span css={S.attend}>수락되었습니다.</span>
             ) : (
-              <span>거절되었습니다.</span>
-            )
-          ) : (
-            ""
-          )}
+              <span css={S.attend}>거절되었습니다.</span>
+            ))}
         </div>
       </div>
       <div css={S.Line}></div>
