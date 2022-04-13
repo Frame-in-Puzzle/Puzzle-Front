@@ -9,6 +9,7 @@ export const Positioner = css`
   justify-content: center;
   align-items: center;
   top: 0;
+  z-index: 100;
 `;
 
 export const Container = css`
@@ -76,6 +77,7 @@ export const GithubContent = css`
   align-items: center;
   margin-top: 45px;
   cursor: pointer;
+  color: #000000;
 
   h2 {
     color: #494949;

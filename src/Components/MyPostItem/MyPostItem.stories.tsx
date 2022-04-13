@@ -9,15 +9,23 @@ export default {
 } as ComponentMeta<typeof MyPostItem>;
 
 const MyPostObj = {
-  id: 1,
-  image: <I.MyPostDefaultImg />,
-  category: "WEB",
+  boardId: 1,
   title: "PUZZLE",
-  content:
-    "가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ가아ㅓ라어랑러아ㅓㄹ나어래저머햐ㅐㅓㅇ랴ㅐㅓ야ㅐ",
-  state: "모집중",
+  thumbnail: "",
+  contents: "123456789abcdefghijklmnop",
+  field: ["fron-end", "fron-end"],
+  date: "2022.05.09",
+  status: "모집중",
 };
 
 export const mypostitem: ComponentStory<typeof MyPostItem> = () => (
-  <MyPostItem MyPostObj={MyPostObj} />
+  <MyPostItem
+    boardId={MyPostObj.boardId}
+    title={MyPostObj.title}
+    thumbnail={MyPostObj.thumbnail}
+    contents={MyPostObj.contents}
+    fields={MyPostObj.field}
+    date={MyPostObj.date}
+    status={MyPostObj.status}
+  />
 );

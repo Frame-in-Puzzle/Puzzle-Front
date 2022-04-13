@@ -8,6 +8,9 @@ export const Positioner = css`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  svg {
+    cursor: pointer;
+  }
 `;
 
 export const RightContainer = {
@@ -36,5 +39,3 @@ export const RightContainer = {
     }
   `,
 };
-
-

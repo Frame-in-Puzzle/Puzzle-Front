@@ -23,5 +23,5 @@ export const ApplyDescription = css`
 `;
 
 export const ApplyContainer = css`
-  margin-bottom: 2rem;
+  height: 100px;
 `;

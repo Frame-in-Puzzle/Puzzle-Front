@@ -8,5 +8,4 @@ export const apiClient = axios.create({
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET,POST,DELETE,PATCH,PUT,OPTIONS",
   },
-  withCredentials: true,
 });

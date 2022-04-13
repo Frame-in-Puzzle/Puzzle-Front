@@ -33,6 +33,8 @@ interface InputProps {
   /** Input의 폰트사이즈를 설정합니다. */
   fontSize: "h6" | "h5" | "h4" | "h3" | "h2" | "h1";
   width?: string;
+  value?: string;
+  onChange?: (e: any) => void;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -42,6 +44,8 @@ const Input: React.FC<InputProps> = ({
   fontSize,
   fontWeight,
   width,
+  value,
+  onChange,
 }) => {
   return (
     <input
@@ -49,10 +53,13 @@ const Input: React.FC<InputProps> = ({
         S.Themes[theme],
         S.fontSizes[fontSize],
         S.fontWeight[fontWeight],
+        S.Style,
         { width },
       ]}
       type={type}
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
     />
   );
 };

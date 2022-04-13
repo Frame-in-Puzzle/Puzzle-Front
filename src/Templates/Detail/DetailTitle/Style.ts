@@ -25,6 +25,8 @@ export const TitleContainer = css`
 
 export const Title = css`
   font-size: ${theme.fonts.h2};
+  word-break: break-all;
+  width: 95%;
 `;
 
 export const Name = css`
@@ -65,5 +67,23 @@ export const ListStyle = css`
   }
   li:nth-of-type(1) {
     margin: 0;
+  }
+`;
+
+export const List = css`
+  list-style: none;
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+  li {
+    color: #acacac;
+    cursor: pointer;
+  }
+  @media (max-width: 1200px) {
+    width: 100%;
+    justify-content: flex-start;
+    li:nth-of-type(2) {
+      margin-left: 1rem;
+    }
   }
 `;

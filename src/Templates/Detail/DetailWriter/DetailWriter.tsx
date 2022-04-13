@@ -1,40 +1,68 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { Button } from "../../../Components";
+import { useDecode } from "../../../Hooks/useDecode";
+import { postAttend } from "../../../Lib/Api/attend/attend";
+import { mutate } from "swr";
 import * as S from "./Style";
 
 type DetailWriter = {
-  image: string;
   name: string;
-  description: string;
+  githubId: string;
 };
 
-interface DetailWriterProps {
-  writerObj: DetailWriter;
-}
+type GithubType = {
+  avatar_url: string;
+  bio: string;
+};
 
-const DetailWriter: React.FC<DetailWriterProps> = ({ writerObj }) => {
+const GithubInfo = async (githubId: string | undefined) => {
+  const user = await axios.get(`https://api.github.com/users/${githubId}`);
+  return user;
+};
+
+const DetailWriter: React.FC<DetailWriter> = ({ name, githubId }) => {
+  const { id } = useParams();
+  const [user, setUser] = useState<GithubType>();
+  const { sub } = useDecode();
+
+  useEffect(() => {
+    GithubInfo(githubId).then((res) => setUser(res.data));
+  }, []);
+
+  const requestAttend = async () => {
+    await postAttend(id);
+    await mutate(`/attend/board/${id}`);
+  };
+
   return (
     <>
       <div css={S.Positioner}>
         <div css={S.RightContainer}>
-          <img src={writerObj.image} alt="작성자 이미지" css={S.Image} />
+          <img src={user?.avatar_url} alt="작성자 이미지" css={S.Image} />
           <div css={S.RightWrapper}>
-            <span css={S.Name}>{writerObj.name}</span>
-            <span css={S.Description}>{writerObj.description}</span>
+            <span css={S.Name}>{name}</span>
+            <span css={S.Description}>{user?.bio}</span>
           </div>
         </div>
         <div css={S.Line}></div>
         <div css={S.Button}>
-          <Button
-            size="Regular"
-            fontSize="h5"
-            isShadow="No"
-            theme="BlackButton"
-            fontWeight="400"
-          >
-            신청하기
-          </Button>
+          {sub !== githubId ? (
+            <Button
+              size="Regular"
+              fontSize="h5"
+              isShadow="No"
+              theme="BlackButton"
+              fontWeight="400"
+              onClick={() => requestAttend()}
+            >
+              신청하기
+            </Button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </>

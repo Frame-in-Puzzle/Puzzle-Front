@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from "@storybook/react";
 const TitleDummy = {
   title: "함께 Puzzle 프로젝트 할 개발자 구해요",
   name: "ImChangGyu",
-  date: "2022.1.10",
+  date: new Date(),
   tag: ["백엔드", "Spring", "Spring boot", "Go"],
 };
 

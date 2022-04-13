@@ -17,6 +17,16 @@ export const ContentsContainer = css`
   border-radius: 5px;
 `;
 
+export const Input = css`
+  width: 100%;
+  height: 100%;
+  padding: 4% 12%;
+
+  *:focus {
+    outline: none;
+  }
+`;
+
 export const NavigationBar = css`
   display: flex;
   width: 100%;
@@ -32,6 +42,12 @@ export const TextArea = css`
   width: 100%;
   height: 1000px;
   resize: none;
+  padding: 1.3% 2%;
+
+  font-size: ${theme.fonts.h4};
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const Line = css`
@@ -47,6 +63,35 @@ export const MarkdownContainer = css`
   margin-left: 55%;
 `;
 
-export const MarkdownWrapper = css`
-  margin-left: 20%;
+export const ToolbarBlock = css`
+  margin-left: 15%;
+`;
+
+export const ToolbarItem = css``;
+
+export const Markdown = css`
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+`;
+
+export const ButtonContainer = css`
+  width: 50%;
+  padding: 1% 12% 2%;
+  margin-left: 68.5%;
+
+  Button {
+    margin-left: 1.3%;
+  }
+`;
+
+export const InputPositioner = css`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

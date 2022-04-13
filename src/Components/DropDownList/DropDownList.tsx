@@ -1,8 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { useState } from "react";
 import * as S from "./Style";
-import { useSetRecoilState } from "recoil";
-import { isSelected } from "../../Atoms";
 
 const themeData = {
   interest: ["프론트엔드", "백엔드", "AI", "안드로이드", "iOS", "게임"],
@@ -34,83 +32,19 @@ interface ListProps {
     | "detail";
   /** DropDown List의 너비를 설정합니다. */
   width: string | number;
+  children: React.ReactNode;
+  onClick?: () => void;
 }
 
-const DropDownList: React.FC<ListProps> = ({ theme, width }) => {
-  const setSelected = useSetRecoilState(isSelected);
-
-  const mappingDropDownList = () => {
-    switch (theme) {
-      case "Frontend":
-        return themeData.Frontend.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "Backend":
-        return themeData.Backend.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "AI":
-        return themeData.AI.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "Android":
-        return themeData.Android.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "iOS":
-        return themeData.iOS.map((data, idx) => <li key={idx}>{data}</li>);
-      case "Game":
-        return themeData.Game.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "interest":
-        return themeData.interest.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "state":
-        return themeData.state.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "purpose":
-        return themeData.purpose.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "profile":
-        return themeData.profile.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      case "detail":
-        return themeData.detail.map((data, idx) => (
-          <li onClick={() => setSelected(data)} key={idx}>
-            {data}
-          </li>
-        ));
-      default:
-        return <li>선택</li>;
-    }
-  };
-
+const DropDownList: React.FC<ListProps> = ({
+  theme,
+  width,
+  children,
+  onClick,
+}) => {
   return (
-    <div css={[S.ListStyle, { width }, S.themes[theme]]}>
-      {mappingDropDownList()}
+    <div css={[S.ListStyle, { width }, S.themes[theme]]} onClick={onClick}>
+      {children}
     </div>
   );
 };

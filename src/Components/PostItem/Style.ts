@@ -8,6 +8,7 @@ export const Positioner = css`
   border-radius: 15px;
   border: none;
   background-color: #ffffff;
+  cursor: pointer;
 `;
 
 export const Container = css`
@@ -26,6 +27,11 @@ export const Title = css`
   font-weight: bold;
   font-style: italic;
   font-size: ${theme.fonts.h4};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
 `;
 
 export const Image = css`
