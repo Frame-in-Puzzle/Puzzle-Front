@@ -1,7 +1,8 @@
 import axios from "axios";
+import { baseURL } from "../../Shared/config";
 
 export const apiClient = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: baseURL,
   headers: {
     Authorization: localStorage.getItem("accessToken") ?? "",
     "Content-Type": "application/json",
