@@ -28,9 +28,12 @@ const PromotionPage = () => {
         )}
       </Header>
       {modalState && <Sign closeModal={closeModal} />}
-      <Section1 css={S.test} />
-      <Section2 />
-      <Section3 />
+
+      <div css={S.parent}>
+        <Section1 css={S.child} />
+        <Section2 css={S.child} />
+        <Section3 css={S.child} />
+      </div>
     </>
   );
 };
