@@ -58,8 +58,8 @@ const HeaderItem = () => {
       <div css={S.Dropdown}>
         {dropState && (
           <DropDownList theme="profile" width="160px">
-            <li onClick={() => navigate("/profile")}>프로필</li>
-            <li onClick={() => navigate(`/profile/${sub}`)}>내 작성글</li>
+            <li onClick={() => navigate(`/profile/${sub}`)}>내 퍼즐</li>
+            <li onClick={() => navigate("/profilesetting")}>프로필 설정</li>
             <li onClick={() => deleteuser()}>로그아웃</li>
           </DropDownList>
         )}
