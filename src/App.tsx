@@ -22,7 +22,7 @@ function App() {
             <Route path="/" element={<PromotionPage />} />
             <Route path="/main" element={<Mainpage />} />
             <Route path="/profile/:sub" element={<ProfileCheckPage />} />
-            <Route path="/profile" element={<Profilepage />} />
+            <Route path="/profilesetting" element={<Profilepage />} />
             <Route path="/write" element={<WritePage />} />
             <Route path="/detail/:id" element={<DetailPage />} />
             <Route path="/signup" element={<SignUpPage />} />
