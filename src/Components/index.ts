@@ -22,3 +22,4 @@ export { default as SignUpForm } from "./SignUp/SignUpForm/SignUpForm";
 export { default as Section1 } from "./Promotion/Section1/Section1";
 export { default as Section2 } from "./Promotion/Section2/Section2";
 export { default as Section3 } from "./Promotion/Section3/Section3";
+export { default as Section4 } from "./Promotion/Section4/Section4";
