@@ -12,9 +12,15 @@ export const Positioner = css`
   overflow: hidden;
 `;
 
+export const TextWrapper = css`
+  margin-right: 8%;
+`;
 export const MainText = css`
-  font-size: ${theme.fonts.h4};
+  font-size: ${theme.fonts.h3};
   font-weight: 700;
+`;
+export const SubText = css`
+  font-size: ${theme.fonts.h5};
 `;
 
 export const ImgWrapper = css`
@@ -43,7 +49,7 @@ export const Img2 = css`
   z-index: 2;
   top: 55%;
   animation-name: ${floating};
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-duration: leaner;
   animation-direction: alternate;
   animation-fill-mode: forwards;
@@ -66,7 +72,7 @@ export const Img4 = css`
   z-index: 4;
   top: 27%;
   animation-name: ${floating2};
-  animation-duration: 2s;
+  animation-duration: 1.5s;
   animation-duration: leaner;
   animation-direction: alternate;
   animation-fill-mode: forwards;

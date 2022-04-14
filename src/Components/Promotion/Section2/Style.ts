@@ -13,7 +13,7 @@ export const Positioner = css`
 `;
 
 export const MainWarpper = css`
-  width: 1300px;
+  width: 1400px;
   display: flex;
   justify-content: space-between;
 `;
@@ -25,8 +25,11 @@ export const MainSectionWrapper = css`
 `;
 
 export const MainSection = css`
-  font-size: ${theme.fonts.h4};
+  font-size: ${theme.fonts.h3};
   font-weight: 700;
+`;
+export const SubText = css`
+  font-size: ${theme.fonts.h5};
 `;
 
 export const floating = keyframes`

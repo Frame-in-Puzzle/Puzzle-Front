@@ -13,10 +13,10 @@ export const Positioner = css`
 `;
 
 export const MainWarpper = css`
-  width: 1300px;
+  width: 1500px;
   display: flex;
   justify-content: space-between;
-  margin-left: 10%;
+  margin-left: 7%;
 `;
 
 export const MainSectionWrapper = css`
@@ -27,9 +27,10 @@ export const MainSectionWrapper = css`
 
 export const MainSection = css`
   color: #fff;
-  font-size: ${theme.fonts.h4};
+  font-size: ${theme.fonts.h3};
   font-weight: 700;
 `;
+
 export const ButtonWrapper = css`
   width: 290px;
   display: flex;
@@ -43,8 +44,8 @@ export const floating = keyframes`
       right: -300px;
     }
     to{
-      top: 200px;
-      right: 80px;
+      top: 150px;
+      right: -10px;
     }
  `;
 
