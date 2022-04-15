@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
 import * as S from "./Style";
-import * as I from "../../Assets/index";
 import PostItem from "../PostItem/PostItem";
 import { apiClient } from "../../Lib/Api/apiClient";
 import useSWR from "swr";
@@ -16,15 +15,19 @@ import {
 } from "../../Atoms";
 import { getTagPost } from "../../Lib/Api/post/post";
 import { selected } from "../../Type/types";
+import useInfiniteScroll, {
+  useInfiniteScrollType,
+} from "../../Hooks/useInfiniteScroll";
+import { getPost } from "../../Lib/Api/post/post";
 
-type post = {
+export type post = {
   boardId: number;
   image_url: string;
   status: string;
   title: string;
 };
 
-interface PostProps {
+export interface PostProps {
   data: { content: post[] };
 }
 
