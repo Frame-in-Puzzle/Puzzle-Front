@@ -1,13 +1,20 @@
 /** @jsxImportSource @emotion/react */
-import React from "react";
+import React, { useRef } from "react";
 import * as S from "./Style";
 import * as I from "../../../Assets/";
+import { useTargetOnScreen } from "../../../Hooks/useTargetOnScreen";
 
 const Section2 = () => {
+  const { containerRef, isVisible } = useTargetOnScreen({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
+
   return (
-    <div css={S.Positioner}>
+    <div css={S.Positioner} ref={containerRef}>
       <div css={S.MainWarpper}>
-        <div css={S.ManWarpper}>
+        <div css={S.ManWarpper[isVisible]}>
           <I.PromotionManImg />
         </div>
         <div css={S.MainSectionWrapper}>

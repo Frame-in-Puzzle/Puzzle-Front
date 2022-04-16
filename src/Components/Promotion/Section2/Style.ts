@@ -40,12 +40,19 @@ export const floating = keyframes`
     to{
      transform: translateX(0)
     }
+    
+
  `;
 
-export const ManWarpper = css`
-  animation-name: ${floating};
-  animation-duration: 2s;
-  animation-duration: leaner;
-  animation-direction: alternate;
-  animation-fill-mode: forwards;
-`;
+export const ManWarpper = {
+  true: css`
+    animation-name: ${floating};
+    animation-duration: 3s;
+    animation-duration: leaner;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  `,
+  false: css`
+    opacity: 0;
+  `,
+};
