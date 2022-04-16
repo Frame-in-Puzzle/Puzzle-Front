@@ -49,11 +49,16 @@ export const floating = keyframes`
     }
  `;
 
-export const RoketWarpper = css`
-  position: absolute;
-  animation-name: ${floating};
-  animation-duration: 2s;
-  animation-duration: leaner;
-  animation-direction: alternate;
-  animation-fill-mode: forwards;
-`;
+export const RoketWarpper = {
+  true: css`
+    position: absolute;
+    animation-name: ${floating};
+    animation-duration: 2s;
+    animation-duration: leaner;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  `,
+  false: css`
+    opacity: 0;
+  `,
+};

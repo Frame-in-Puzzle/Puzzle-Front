@@ -3,10 +3,16 @@ import React from "react";
 import * as S from "./Style";
 import { Button } from "../..";
 import * as I from "../../../Assets";
+import { useTargetOnScreen } from "../../../Hooks/useTargetOnScreen";
 
 const Section1 = () => {
+  const { containerRef, isVisible } = useTargetOnScreen({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
-    <div css={S.Positioner}>
+    <div css={S.Positioner} ref={containerRef}>
       <div css={S.MainWarpper}>
         <div css={S.MainSectionWrapper}>
           <div css={S.MainSection}>
@@ -36,7 +42,7 @@ const Section1 = () => {
           </div>
         </div>
         <I.PromotionImg1 />
-        <div css={S.RoketWarpper}>
+        <div css={S.RoketWarpper[isVisible]}>
           <I.RoketImg />
         </div>
       </div>
