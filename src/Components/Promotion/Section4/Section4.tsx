@@ -1,10 +1,16 @@
 /** @jsxImportSource @emotion/react */
+import { useTargetOnScreen } from "../../../Hooks/useTargetOnScreen";
 import * as S from "./Style";
 
 function Section4() {
+  const { containerRef, isVisible } = useTargetOnScreen({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
-    <div css={S.Positioner}>
-      <div css={S.MainTextWrapper}>
+    <div css={S.Positioner} ref={containerRef}>
+      <div css={S.MainTextWrapper[isVisible]}>
         <div css={S.MainText}>PUZZLE 를 왜 사용해야 할까요?</div>
         <div css={S.SubText}>
           프로젝트를 전시하고 나와 맞는 새로운 프로젝트를 찾아볼 수 있어요.

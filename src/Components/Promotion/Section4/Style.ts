@@ -25,13 +25,18 @@ export const floating = keyframes`
     }
  `;
 
-export const MainTextWrapper = css`
-  animation-name: ${floating};
-  animation-duration: 1.5s;
-  animation-duration: leaner;
-  animation-direction: alternate;
-  animation-fill-mode: forwards;
-`;
+export const MainTextWrapper = {
+  true: css`
+    animation-name: ${floating};
+    animation-duration: 1.5s;
+    animation-duration: leaner;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  `,
+  false: css`
+    opacity: 0;
+  `,
+};
 
 export const TextWrapper = css`
   width: 900px;
