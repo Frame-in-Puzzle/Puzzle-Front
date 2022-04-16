@@ -1,10 +1,16 @@
 /** @jsxImportSource @emotion/react */
 import * as S from "./Style";
 import * as I from "../../../Assets/index";
+import { useTargetOnScreen } from "../../../Hooks/useTargetOnScreen";
 
 function Section3() {
+  const { containerRef, isVisible } = useTargetOnScreen({
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  });
   return (
-    <div css={S.Positioner}>
+    <div css={S.Positioner} ref={containerRef}>
       <div css={S.TextWrapper}>
         <div css={S.MainText}>
           쉽고, 간편하게 <br />
@@ -19,9 +25,9 @@ function Section3() {
       </div>
       <div css={S.ImgWrapper}>
         <I.BackImg1 css={S.Img1} />
-        <I.BackImg2 css={S.Img2} />
+        <I.BackImg2 css={S.Img2[isVisible]} />
         <img src="img/BackImg3.png" alt="" css={S.Img3} />
-        <I.BackImg4 css={S.Img4} />
+        <I.BackImg4 css={S.Img4[isVisible]} />
       </div>
     </div>
   );

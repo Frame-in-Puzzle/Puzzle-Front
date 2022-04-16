@@ -44,16 +44,21 @@ export const floating = keyframes`
     }
  `;
 
-export const Img2 = css`
-  position: absolute;
-  z-index: 2;
-  top: 55%;
-  animation-name: ${floating};
-  animation-duration: 1.5s;
-  animation-duration: leaner;
-  animation-direction: alternate;
-  animation-fill-mode: forwards;
-`;
+export const Img2 = {
+  true: css`
+    position: absolute;
+    z-index: 2;
+    top: 55%;
+    animation-name: ${floating};
+    animation-duration: 1.5s;
+    animation-duration: leaner;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  `,
+  false: css`
+    opacity: 0;
+  `,
+};
 export const Img3 = css`
   position: absolute;
   z-index: 3;
@@ -67,13 +72,18 @@ export const floating2 = keyframes`
      transform: translateX(60%)
     }
  `;
-export const Img4 = css`
-  position: absolute;
-  z-index: 4;
-  top: 27%;
-  animation-name: ${floating2};
-  animation-duration: 1.5s;
-  animation-duration: leaner;
-  animation-direction: alternate;
-  animation-fill-mode: forwards;
-`;
+export const Img4 = {
+  true: css`
+    position: absolute;
+    z-index: 4;
+    top: 27%;
+    animation-name: ${floating2};
+    animation-duration: 1.5s;
+    animation-duration: leaner;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+  `,
+  false: css`
+    opacity: 0;
+  `,
+};
