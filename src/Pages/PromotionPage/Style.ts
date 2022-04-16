@@ -1,18 +1,17 @@
 import { css } from "@emotion/react";
 import { Style } from "../../Components/Input/Style";
 
-export const parent = css`
-  /* make the container overflow vertically */
-  height: 100vh;
-  overflow-y: auto;
-
-  /* define scroll snap behaviour */
+export const container = css`
   scroll-snap-type: y mandatory;
+  overflow: scroll;
+  html,
+  body {
+    height: 100vh;
+    overflow: hidden;
+  }
 `;
 
-export const child = css`
-  /* adjust based on desired behaviour */
-  scroll-snap-align: start; /* start or center or end */
-
-  /* add for a slideshow-like feel */
+export const area = css`
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 `;

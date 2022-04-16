@@ -6,7 +6,6 @@ import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/Heade
 import { useLogin } from "../../Hooks/useLogin";
 import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
 import { Section1, Section2, Section3, Section4 } from "../../Components/index";
-import * as S from "./Style";
 
 const PromotionPage = () => {
   const isLogin = useLogin();
