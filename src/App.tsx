@@ -6,7 +6,7 @@ import { RecoilRoot } from "recoil";
 import Mainpage from "./Pages/Mainpage/Mainpage";
 import { ProfileCheckPage } from "./Pages";
 import Profilepage from "./Pages/Profilepage/Profilepage";
-import TestPage from "./Pages/TestPage/TestPage";
+import PromotionPage from "./Pages/PromotionPage/PromotionPage";
 import WritePage from "./Pages/WritePage/WritePage";
 import { DetailPage, SignUpPage, CallbackPage } from "./Pages";
 import { DndProvider } from "react-dnd";
@@ -19,10 +19,10 @@ function App() {
         <ThemeProvider theme={theme}>
           <Global styles={GlobalStyle} />
           <Routes>
-            <Route path="/" element={<TestPage />} />
+            <Route path="/" element={<PromotionPage />} />
             <Route path="/main" element={<Mainpage />} />
             <Route path="/profile/:sub" element={<ProfileCheckPage />} />
-            <Route path="/profile" element={<Profilepage />} />
+            <Route path="/profilesetting" element={<Profilepage />} />
             <Route path="/write" element={<WritePage />} />
             <Route path="/detail/:id" element={<DetailPage />} />
             <Route path="/signup" element={<SignUpPage />} />
