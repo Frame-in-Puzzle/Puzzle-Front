@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import * as S from "./Style";
 import * as I from "../../../Assets";
 import { DropDownList, TagItem } from "../../../Components";
+import { useDecode } from "../../../Hooks/useDecode";
 
 type Title = {
   title: string;
@@ -16,18 +17,17 @@ interface TitleProps {
 }
 
 const DetailTitle: React.FC<TitleProps> = ({ TitleObj }) => {
+  const { sub } = useDecode();
   const [isOpen, setIsOpen] = useState(false);
-  const toggling = () => setIsOpen(!isOpen);
   return (
     <div css={S.Positioner}>
       <div css={S.TitleContainer}>
         <h1 css={S.Title}>{TitleObj.title}</h1>
-        <I.BurgerMenu onClick={toggling} cursor="pointer" />
-        {isOpen && (
-          <div css={S.ListStyle}>
+        {sub === TitleObj.name && (
+          <ul css={S.List}>
             <li>게시물 수정</li>
             <li>게시물 삭제</li>
-          </div>
+          </ul>
         )}
       </div>
       <div>

@@ -1,10 +1,13 @@
 import { css } from "@emotion/react";
 
 export const Positioner = css`
+  padding: 4% 6%;
+`;
+
+export const Container = css`
   display: grid;
   grid-template-columns: repeat(4, 325px);
   grid-column-gap: 30px;
-  padding: 4% 6%;
   justify-content: space-between;
   row-gap: 50px;
 
@@ -18,4 +21,8 @@ export const Positioner = css`
     grid-template-columns: repeat(1, 325px);
     justify-content: center;
   } */
+`;
+
+export const Tag = css`
+  margin-bottom: 1rem;
 `;

@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { selected } from "../Type/types";
 
 export const isSelected = atom<string>({
   key: "isSelected",
@@ -10,22 +11,27 @@ export const isPreview = atom<boolean>({
   default: false,
 });
 
-export const purposeSelected = atom<string>({
+export const tagModalState = atom<boolean>({
+  key: "tagModalState",
+  default: false,
+});
+
+export const purposeSelected = atom<selected>({
   key: "purposeSelected",
-  default: "전체",
+  default: { name: "선택", value: "choice" },
 });
 
-export const stateSelected = atom<string>({
+export const stateSelected = atom<selected>({
   key: "stateSelected",
-  default: "전체",
+  default: { name: "선택", value: "choice" },
 });
 
-export const fieldSelected = atom<string[]>({
+export const fieldSelected = atom<selected[]>({
   key: "fieldSelected",
-  default: ["전체"],
+  default: [{ name: "전체", value: "ALL" }],
 });
 
-export const languageSelected = atom<string[]>({
+export const languageSelected = atom<selected[]>({
   key: "languageSelected",
   default: [],
 });

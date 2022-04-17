@@ -1,6 +1,11 @@
 import { css } from "@emotion/react";
 import { theme } from "../../../Styles/theme";
 
+type selected = {
+  name: string;
+  value: string;
+};
+
 export const TagSearch = css`
   top: 0;
   left: 0;

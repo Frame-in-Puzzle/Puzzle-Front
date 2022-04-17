@@ -2,31 +2,41 @@
 import React from "react";
 import * as S from "./Style";
 import { TagItem, Button } from "../";
+import { useDecode } from "../../Hooks/useDecode";
+import { patchAttend } from "../../Lib/Api/attend/attend";
+import { useParams } from "react-router";
+import { mutate } from "swr";
 
-type ApplyItem = {
-  Image: string;
+type Attend = {
+  attendStatus: string;
+  githubId: string;
+  id: number;
+  imageUrl: string;
+  languages: string[];
   name: string;
-  date: string;
-  tag: string[];
 };
 
-interface ApplyItemProps {
-  applyObj: ApplyItem;
+interface AttendProps {
+  attend: Attend;
+  writer: string;
 }
 
-const ApplyItem: React.FC<ApplyItemProps> = ({ applyObj }) => {
+const ApplyItem: React.FC<AttendProps> = ({ attend, writer }) => {
+  const { sub } = useDecode();
+  const { id } = useParams();
+
   return (
     <div css={S.Positioner}>
       <div css={S.ApplyContainer}>
         <div css={S.InfoContainer}>
-          <img src={applyObj.Image} alt="" css={S.Image} />
+          <img src={attend.imageUrl} alt="" css={S.Image} />
           <div css={S.InfoWrapper}>
             <div css={S.Info}>
-              <span css={S.Name}>{applyObj.name}</span>
-              <span css={S.Date}>{applyObj.date}</span>
+              <span css={S.Name}>{attend.name}</span>
+              <span css={S.Date}>{}</span>
             </div>
             <div>
-              {applyObj.tag.map((item, key) => (
+              {attend.languages.map((item, key) => (
                 <TagItem theme="LightGrayTag" key={key}>
                   {item}
                 </TagItem>
@@ -35,24 +45,41 @@ const ApplyItem: React.FC<ApplyItemProps> = ({ applyObj }) => {
           </div>
         </div>
         <div css={S.ButtonWrapper}>
-          <Button
-            theme="GrayButtonWithWhiteTextGrayHover"
-            size="Small"
-            fontSize="h6"
-            fontWeight="400"
-            isShadow="No"
-          >
-            거절
-          </Button>
-          <Button
-            theme="BlackButtonWith5radius"
-            size="Small"
-            fontSize="h6"
-            fontWeight="400"
-            isShadow="No"
-          >
-            수락
-          </Button>
+          {sub === writer &&
+            (attend.attendStatus === "WAIT" ? (
+              <>
+                <Button
+                  theme="GrayButtonWithWhiteTextGrayHover"
+                  size="Small"
+                  fontSize="h6"
+                  fontWeight="400"
+                  isShadow="No"
+                  onClick={() => {
+                    patchAttend(id, attend.id, "REFUSE");
+                    mutate(`/attend/board/${id}`);
+                  }}
+                >
+                  거절
+                </Button>
+                <Button
+                  theme="BlackButtonWith5radius"
+                  size="Small"
+                  fontSize="h6"
+                  fontWeight="400"
+                  isShadow="No"
+                  onClick={() => {
+                    patchAttend(id, attend.id, "ACCEPT");
+                    mutate(`/attend/board/${id}`);
+                  }}
+                >
+                  수락
+                </Button>
+              </>
+            ) : attend.attendStatus === "ACCEPT" ? (
+              <span css={S.attend}>수락되었습니다.</span>
+            ) : (
+              <span css={S.attend}>거절되었습니다.</span>
+            ))}
         </div>
       </div>
       <div css={S.Line}></div>
