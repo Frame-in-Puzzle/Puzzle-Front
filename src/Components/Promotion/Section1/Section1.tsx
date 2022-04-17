@@ -4,6 +4,7 @@ import * as S from "./Style";
 import { Button } from "../..";
 import * as I from "../../../Assets";
 import { useTargetOnScreen } from "../../../Hooks/useTargetOnScreen";
+import { useNavigate } from "react-router";
 
 const Section1 = () => {
   const { containerRef, isVisible } = useTargetOnScreen({
@@ -11,6 +12,8 @@ const Section1 = () => {
     rootMargin: "0px",
     threshold: 0.1,
   });
+  const navigate = useNavigate();
+
   return (
     <div css={S.Positioner} ref={containerRef}>
       <div css={S.MainWarpper}>
@@ -27,6 +30,7 @@ const Section1 = () => {
               size="Medium"
               isShadow="No"
               fontWeight="600"
+              onClick={() => navigate("/write")}
             >
               새 글 쓰기
             </Button>
@@ -36,6 +40,7 @@ const Section1 = () => {
               size="Medium"
               isShadow="No"
               fontWeight="600"
+              onClick={() => navigate("/main")}
             >
               프로젝트 탐색
             </Button>
