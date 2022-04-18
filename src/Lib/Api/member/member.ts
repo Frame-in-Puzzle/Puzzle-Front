@@ -35,6 +35,6 @@ export const putUserInformation = async (
   return { data };
 };
 
-export const deleteUsertoken = async () => {
-  await apiClient.delete("/user/delete");
+export const logoutUser = async () => {
+  await apiClient.delete("/user/logout");
 };
