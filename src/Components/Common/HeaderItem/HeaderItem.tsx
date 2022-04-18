@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, DropDownList } from "../..";
 import { useDecode } from "../../../Hooks/useDecode";
-import { getUser, deleteUsertoken } from "../../../Lib/Api/member/member";
+import { getUser, logoutUser } from "../../../Lib/Api/member/member";
 import { ProfileWrapper } from "../../../Styles/GlobalStyle";
 import * as I from "../../../Assets/index";
 import * as S from "./style";
@@ -21,8 +21,8 @@ const HeaderItem = () => {
 
   const [dropState, setDropState] = useState(false);
 
-  const deleteuser = () => {
-    deleteUsertoken();
+  const logout = () => {
+    logoutUser();
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     navigate("/");
@@ -59,8 +59,8 @@ const HeaderItem = () => {
         {dropState && (
           <DropDownList theme="profile" width="160px">
             <li onClick={() => navigate(`/profile/${sub}`)}>내 퍼즐</li>
-            <li onClick={() => navigate("/profilesetting")}>프로필 설정</li>
-            <li onClick={() => deleteuser()}>로그아웃</li>
+            <li onClick={() => navigate("/profile/setting")}>프로필 설정</li>
+            <li onClick={() => logout()}>로그아웃</li>
           </DropDownList>
         )}
       </div>
