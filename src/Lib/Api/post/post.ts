@@ -4,7 +4,7 @@ import { languageList } from "../../Data/List";
 
 export const getPost = async (page?: number) => {
   try {
-    const { data } = await apiClient.get(`/board/all/page=${page}`);
+    const { data } = await apiClient.get(`/board/all?page=${page}`);
     return data;
   } catch (e: any) {
     alert(e);
