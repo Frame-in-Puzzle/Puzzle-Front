@@ -43,7 +43,12 @@ export const languageSelected = atom<selected[]>({
   default: [],
 });
 
-export const isDragging = atom<boolean>({
-  key: "isDragging",
+export const isLoading = atom<boolean>({
+  key: "isLoading",
   default: false,
+});
+
+export const isPaging = atom<number>({
+  key: "isPaging",
+  default: 0,
 });
