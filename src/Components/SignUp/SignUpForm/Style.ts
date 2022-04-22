@@ -16,7 +16,6 @@ export const Title = css`
 
 export const TitleWrapper = css`
   margin-top: 5%;
-
   input {
     color: #000;
   }
