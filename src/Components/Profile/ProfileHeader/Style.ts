@@ -17,15 +17,11 @@ export const Line = css`
   border: 1px solid #a5a5a5;
 `;
 
-export const EditImage = css`
-  margin-top: 0.4%;
-  margin-left: 98%;
-`;
-
 export const ItemContainer = css`
   width: 100%;
   height: 100%;
   display: flex;
+  margin-top: 3%;
 `;
 
 export const ImageWrapper = css`
@@ -42,13 +38,6 @@ export const ImageWrapper = css`
   }
 `;
 
-export const ButtonWrapper = css`
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  height: 10%;
-`;
 export const UploadBtn = css`
   ${theme.buttons.Medium};
   margin-top: 10%;
@@ -59,39 +48,79 @@ export const UploadBtn = css`
   font-weight: 600;
 `;
 
-export const DeleteBtn = css`
-  ${theme.buttons.Medium};
-  margin-top: 3%;
-  border-radius: 10px;
-  color: #717171;
-  background-color: transparent;
-  font-size: ${theme.fonts.h5};
-  font-weight: 600;
-
-  &:hover {
-    background-color: #f7f7f7;
-    color: #717171;
-    transition: 0.2s;
-  }
-`;
-
 export const VerticalLine = css`
   border: 1px solid #a5a5a5;
   margin-left: 3%;
 `;
 
 export const TextWrapper = css`
-  margin-top: 5%;
   margin-left: 2.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  input {
+    color: #000;
+  }
 `;
 
-export const Name = css`
-  font-size: ${theme.fonts.h3};
-  font-weight: bold;
-`;
-
-export const Description = css`
+export const textarea = css`
   font-size: ${theme.fonts.h4};
-  color: #707070;
-  margin-top: 7%;
+  font-weight: 500;
+  width: 577px;
+  height: 135px;
+  border: solid 2px #888;
+  resize: none;
+  border-radius: 10px;
+  padding: 2%;
+`;
+
+export const EmailInput = css`
+  margin-top: 120px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3%;
+  input {
+    color: #000;
+  }
+`;
+
+export const Title = css`
+  font-size: ${theme.fonts.h4};
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  margin-right: 3%;
+`;
+
+export const FiledWrapper = css`
+  margin-top: 3%;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3%;
+`;
+
+export const Language = css`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 8%;
+  z-index: 10000;
+`;
+
+export const ImageBtn = css`
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+`;
+
+export const ButtonWrapper = css`
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+`;
+
+export const Text = css`
+  color: #a5a5a5;
+  margin-top: 2%;
 `;
