@@ -3,12 +3,17 @@ import React, { useEffect, useState } from "react";
 import * as S from "./Style";
 import * as I from "../../../Assets/index";
 import { Button, DropDown, Input, TagItem } from "../..";
-import { getUser } from "../../../Lib/Api/member/member";
+import {
+  getUser,
+  putUserProfile,
+  withdrawalUser,
+} from "../../../Lib/Api/member/member";
 import { useDecode } from "../../../Hooks/useDecode";
 import { fieldList, languageList } from "../../../Lib/Data/List";
 import { useNavigate } from "react-router";
 import { selected } from "../../../Type/types";
 import { FiX } from "react-icons/fi";
+import { on } from "cluster";
 
 interface UserInfo {
   data: {
@@ -26,6 +31,7 @@ const ProfileHeader = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [bio, setBio] = useState<string>("");
+  const [fileImage, setFileImage] = useState("");
   const [imageUrl, setImageUrl] = useState<string>("");
   const [fieldSelect, setFieldSelect] = useState<string>("선택");
   const [languageSelect, setLanguageSelect] = useState<string[]>([]);
@@ -40,6 +46,10 @@ const ProfileHeader = () => {
 
   const navigate = useNavigate();
 
+  const onLoadImg = (e: any) => {
+    setFileImage(URL.createObjectURL(e.target.files[0]));
+  };
+
   const handleSelect = (select: string) => {
     if (!languageSelect.includes(select)) {
       setLanguageSelect([...languageSelect, select]);
@@ -50,6 +60,7 @@ const ProfileHeader = () => {
   const handleDelete = (state: string[], setState: any, select: string) => {
     setState([...state.filter((el) => el !== select)]);
   };
+  console.log(languageSelect);
 
   const fieldData = (field: string) => {
     return JSON.parse(
@@ -58,7 +69,7 @@ const ProfileHeader = () => {
         .replace("]", ""),
     );
   };
-  console.log(fieldData("FRONTEND"));
+
   useEffect(() => {
     getUser(sub).then((res) => {
       setName(res.data.name);
@@ -69,6 +80,17 @@ const ProfileHeader = () => {
       setLanguageSelect(res.data.language);
     });
   }, []);
+
+  const onSubmit = () => {
+    putUserProfile(name, email, imageUrl, bio, fieldSelect, languageSelect);
+  };
+
+  const onWithdrawal = () => {
+    withdrawalUser();
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    navigate("/");
+  };
 
   const mappingLanguageList = (currentField: string) => {
     switch (currentField) {
@@ -155,9 +177,9 @@ const ProfileHeader = () => {
       <hr css={S.Line} />
       <div css={S.ItemContainer}>
         <div css={S.ImageWrapper}>
-          <img src={imageUrl} />
+          <img src={fileImage ? fileImage : imageUrl} />
           <div css={S.ImageBtn}>
-            <button css={S.UploadBtn}>이미지 업로드</button>
+            <input type="file" accept="image/*" onChange={onLoadImg}></input>
           </div>
         </div>
         <hr css={S.VerticalLine} />
@@ -218,16 +240,18 @@ const ProfileHeader = () => {
           {mappingLanguageList(currentField.value)}
         </DropDown>
       </div>
-      {languageSelect.map((language, idx) => (
-        <TagItem theme="WhiteTag" key={idx}>
-          {language}
-          <FiX
-            onClick={() =>
-              handleDelete(languageSelect, setLanguageSelect, language)
-            }
-          />
-        </TagItem>
-      ))}
+      <div css={S.tag}>
+        {languageSelect.map((language, idx) => (
+          <TagItem theme="WhiteTag" key={idx}>
+            {language}
+            <FiX
+              onClick={() =>
+                handleDelete(languageSelect, setLanguageSelect, language)
+              }
+            />
+          </TagItem>
+        ))}
+      </div>
       <hr css={S.Line} />
       <div css={S.ButtonWrapper}>
         <Button
@@ -236,7 +260,7 @@ const ProfileHeader = () => {
           size="Medium"
           isShadow="No"
           fontWeight="600"
-          // onClick={onSubmit}
+          onClick={onSubmit}
         >
           업데이트
         </Button>
@@ -246,6 +270,7 @@ const ProfileHeader = () => {
           size="Medium"
           isShadow="No"
           fontWeight="600"
+          onClick={onWithdrawal}
         >
           회원탈퇴
         </Button>
