@@ -35,6 +35,29 @@ export const putUserInformation = async (
   return { data };
 };
 
+export const putUserProfile = async (
+  name: string,
+  email: string,
+  imageUrl: string,
+  bio: string,
+  field: string,
+  language: string[],
+) => {
+  const { data } = await apiClient.put("/profile/update", {
+    name: name,
+    email: email,
+    imageUrl: imageUrl,
+    bio: bio,
+    field: field,
+    language: language,
+  });
+  return { data };
+};
+
 export const logoutUser = async () => {
   await apiClient.delete("/user/logout");
+};
+
+export const withdrawalUser = async () => {
+  await apiClient.delete("/user/delete");
 };
