@@ -102,8 +102,7 @@ export const FiledWrapper = css`
 export const Language = css`
   display: flex;
   flex-direction: row;
-  margin-bottom: 8%;
-  z-index: 10000;
+  z-index: 5;
 `;
 
 export const ImageBtn = css`
@@ -111,6 +110,10 @@ export const ImageBtn = css`
   justify-content: center;
   text-align: center;
   align-items: center;
+`;
+
+export const tag = css`
+  margin: 1% 9.5%;
 `;
 
 export const ButtonWrapper = css`
