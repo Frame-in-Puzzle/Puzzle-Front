@@ -2,9 +2,9 @@ import { memo } from "react";
 import * as S from "./Style";
 import ReactLoading from "react-loading";
 
-const Loader = () => {
+const Loader = (ref: any) => {
   return (
-    <div css={S.LoaderWrapper}>
+    <div css={S.LoaderWrapper} ref={ref}>
       <ReactLoading type="spin" color="#434343" />
     </div>
   );
