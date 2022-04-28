@@ -38,14 +38,25 @@ export const ImageWrapper = css`
   }
 `;
 
+export const UploadWrapper = css`
+  display: flex;
+  margin-top: 1%;
+  margin-left: 9%;
+  height: 0;
+`;
+
 export const UploadBtn = css`
-  ${theme.buttons.Medium};
-  margin-top: 10%;
+  width: 170px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
   border-radius: 10px;
-  background-color: #000000;
-  color: #ffffff;
   font-size: ${theme.fonts.h5};
+  color: #fff;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 export const VerticalLine = css`
