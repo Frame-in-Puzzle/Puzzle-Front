@@ -1,11 +1,16 @@
 /** @jsxImportSource @emotion/react */
-import React, { useEffect, useState } from "react";
+import React, {
+  RefObject,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import * as S from "./Style";
 import PostItem from "../PostItem/PostItem";
 import { apiClient } from "../../Lib/Api/apiClient";
-import useSWR from "swr";
 import TagSelector from "../../Templates/Tag/TagSelector";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import {
   fieldSelected,
   languageSelected,
@@ -14,11 +19,9 @@ import {
   tagModalState,
 } from "../../Atoms";
 import { getTagPost } from "../../Lib/Api/post/post";
-import { selected } from "../../Type/types";
-import useInfiniteScroll, {
-  useInfiniteScrollType,
-} from "../../Hooks/useInfiniteScroll";
-import { getPost } from "../../Lib/Api/post/post";
+import Loader from "../Common/Loader/Loader";
+import useSWR from "swr";
+import { disconnect } from "process";
 
 export type post = {
   boardId: number;
@@ -28,14 +31,16 @@ export type post = {
 };
 
 export interface PostProps {
-  data: { content: post[] };
+  data: { content: post[]; totalPages: number | any };
 }
 
 const Post = () => {
-  const { data, error } = useSWR<PostProps>("/board/all", apiClient.get);
+  const [page, setPage] = useState<number>(0);
+  const [loading, setLoading] = useState(false);
   const [contents, setContents] = useState<post[]>([]);
-  const [isTagSearched, setIsTagSearched] = useState(false);
+  const pageEnd = useRef<HTMLHeadingElement | any>();
 
+  const [isTagSearched, setIsTagSearched] = useState(false);
   const setModalState = useSetRecoilState(tagModalState);
   const purposeSelect = useRecoilValue(purposeSelected);
   const stateSelect = useRecoilValue(stateSelected);
@@ -63,8 +68,44 @@ const Post = () => {
     }
   };
 
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
+  const callback = (entries: any) => {
+    if (entries[0].isIntersecting) {
+      loadMore();
+    }
+  };
+
+  const observer = new IntersectionObserver(callback, {
+    threshold: 1,
+    root: null,
+    rootMargin: "0px",
+  });
+
+  const fetchContents = async (pageNumber: number) => {
+    const res = await apiClient.get(`/board/all?page=${pageNumber}`);
+    setContents((prev) => [...prev, ...res.data.content]);
+    setLoading(true);
+    if (pageNumber + 1 > res.data.totalPages) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchContents(page);
+  }, [page]);
+
+  const loadMore = () => {
+    setPage((prev) => prev + 1);
+    setLoading(false);
+    observer.unobserve(pageEnd.current);
+    observer.disconnect();
+  };
+
+  useEffect(() => {
+    if (loading) {
+      observer.observe(pageEnd.current);
+    }
+  }, [loading]);
+
   return (
     <div css={S.Positioner}>
       <TagSelector onSubmit={onSubmit} />
@@ -77,16 +118,18 @@ const Post = () => {
                 status={status}
                 title={title}
                 key={idx}
+                ref={pageEnd}
               />
             ))
-          : data.data.content.map(
-              ({ boardId, image_url, status, title }, idx) => (
+          : contents.map(
+              ({ boardId, image_url, status, title }: post, idx: number) => (
                 <PostItem
                   boardId={boardId}
                   image_url={image_url}
                   status={status}
                   title={title}
                   key={idx}
+                  ref={pageEnd}
                 />
               ),
             )}
