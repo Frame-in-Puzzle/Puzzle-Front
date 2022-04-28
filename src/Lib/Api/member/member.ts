@@ -38,7 +38,6 @@ export const putUserInformation = async (
 export const putUserProfile = async (
   name: string,
   email: string,
-  imageUrl: string,
   bio: string,
   field: string,
   language: string[],
@@ -46,10 +45,18 @@ export const putUserProfile = async (
   const { data } = await apiClient.put("/profile/update", {
     name: name,
     email: email,
-    imageUrl: imageUrl,
     bio: bio,
     field: field,
     language: language,
+  });
+  return { data };
+};
+
+export const putimgUpdate = async (files: string) => {
+  const formData = new FormData();
+  formData.append("file", files);
+  const data = await apiClient.put("/profile/image/update", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
   });
   return { data };
 };
