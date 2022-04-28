@@ -5,6 +5,7 @@ import * as I from "../../../Assets/index";
 import { Button, DropDown, Input, TagItem } from "../..";
 import {
   getUser,
+  putimgUpdate,
   putUserProfile,
   withdrawalUser,
 } from "../../../Lib/Api/member/member";
@@ -27,13 +28,13 @@ interface UserInfo {
 }
 const ProfileHeader = () => {
   const { sub } = useDecode();
+  const navigate = useNavigate();
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [bio, setBio] = useState<string>("");
-  const [fileImage, setFileImage] = useState("");
   const [imageUrl, setImageUrl] = useState<string>("");
-  const [fieldSelect, setFieldSelect] = useState<string>("선택");
+  const [fieldSelect, setFieldSelect] = useState<string>("");
   const [languageSelect, setLanguageSelect] = useState<string[]>([]);
   const [currentField, setCurrentField] = useState<selected>({
     name: "선택",
@@ -44,10 +45,9 @@ const ProfileHeader = () => {
     value: "선택",
   });
 
-  const navigate = useNavigate();
-
-  const onLoadImg = (e: any) => {
-    setFileImage(URL.createObjectURL(e.target.files[0]));
+  const onLoadImg = async (e: any) => {
+    const data = await putimgUpdate(e.target.files[0]);
+    setImageUrl(data.data.data);
   };
 
   const handleSelect = (select: string) => {
@@ -60,7 +60,6 @@ const ProfileHeader = () => {
   const handleDelete = (state: string[], setState: any, select: string) => {
     setState([...state.filter((el) => el !== select)]);
   };
-  console.log(languageSelect);
 
   const fieldData = (field: string) => {
     return JSON.parse(
@@ -82,7 +81,7 @@ const ProfileHeader = () => {
   }, []);
 
   const onSubmit = () => {
-    putUserProfile(name, email, imageUrl, bio, fieldSelect, languageSelect);
+    putUserProfile(name, email, bio, currentField.value, languageSelect);
   };
 
   const onWithdrawal = () => {
@@ -177,9 +176,17 @@ const ProfileHeader = () => {
       <hr css={S.Line} />
       <div css={S.ItemContainer}>
         <div css={S.ImageWrapper}>
-          <img src={fileImage ? fileImage : imageUrl} />
-          <div css={S.ImageBtn}>
-            <input type="file" accept="image/*" onChange={onLoadImg}></input>
+          <img src={imageUrl} />
+          <div css={S.UploadWrapper}>
+            <label css={S.UploadBtn} htmlFor="file">
+              이미지 업로드
+            </label>
+            <input
+              type="file"
+              id="file"
+              accept="image/*"
+              onChange={onLoadImg}
+            ></input>
           </div>
         </div>
         <hr css={S.VerticalLine} />
