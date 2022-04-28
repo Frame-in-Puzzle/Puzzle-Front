@@ -70,6 +70,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:6.2.1"],
             ["react-router-dom", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:6.2.1"],
             ["react-scripts", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:4.0.3"],
+            ["react-toastify", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:8.2.0"],
             ["recoil", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:0.6.1"],
             ["swr", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:1.2.2"],
             ["typescript", "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"],
@@ -21820,6 +21821,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-router", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:6.2.1"],
             ["react-router-dom", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:6.2.1"],
             ["react-scripts", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:4.0.3"],
+            ["react-toastify", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:8.2.0"],
             ["recoil", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:0.6.1"],
             ["swr", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:1.2.2"],
             ["typescript", "patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"],
@@ -22798,6 +22800,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@types/react",
+            "react"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["react-toastify", [
+        ["npm:8.2.0", {
+          "packageLocation": "./.yarn/cache/react-toastify-npm-8.2.0-3f638b6659-670f1176fb.zip/node_modules/react-toastify/",
+          "packageDependencies": [
+            ["react-toastify", "npm:8.2.0"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:8.2.0", {
+          "packageLocation": "./.yarn/__virtual__/react-toastify-virtual-9d0058a442/0/cache/react-toastify-npm-8.2.0-3f638b6659-670f1176fb.zip/node_modules/react-toastify/",
+          "packageDependencies": [
+            ["react-toastify", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:8.2.0"],
+            ["@types/react", "npm:17.0.38"],
+            ["@types/react-dom", "npm:17.0.11"],
+            ["clsx", "npm:1.1.1"],
+            ["react", "npm:18.0.0-rc.0"],
+            ["react-dom", "virtual:e521f2f4937a1cdc64763e5f327602671d34c7e1f555708ebbdf29eec8f2e26110f521ba2f58533072716afe466a54cf0d3212d85a288e3bb48e80facbb15999#npm:18.0.0-rc.0"]
+          ],
+          "packagePeers": [
+            "@types/react-dom",
+            "@types/react",
+            "react-dom",
             "react"
           ],
           "linkType": "HARD",
