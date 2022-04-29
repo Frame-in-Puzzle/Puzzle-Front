@@ -25,7 +25,7 @@ export const patchAttend = async (attendId: number, attendStatus: string) => {
   }
 };
 
-export const getAttendStatus = async (boardId: string) => {
+export const getAttendStatus = async (boardId: string | undefined) => {
   try {
     const { data } = await apiClient.get(`/attend/status/board/${boardId}
     `);
