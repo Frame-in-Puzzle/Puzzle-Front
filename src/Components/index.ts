@@ -8,7 +8,6 @@ export { default as ToggleButton } from "./Common/ToggleButton/ToggleButton";
 export { default as ProfileSetting } from "./Profile/ProfileHeader/ProfileHeader";
 export { default as ProfileCheckHeader } from "./ProfileHeader/ProfileHeader";
 export { default as WriteSelectItem } from "./Write/WriteSelectItem/WriteSelectItem";
-export { default as ProfileSelectBox } from "./Profile/ProfileSelectBox/ProfileSelectBox";
 export { default as WriteTextForm } from "./Write/WriteTextForm/WriteTextForm";
 export { default as DropDown } from "./DropDown/DropDown";
 export { default as DropDownList } from "./DropDownList/DropDownList";
