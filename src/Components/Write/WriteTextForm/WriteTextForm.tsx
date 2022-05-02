@@ -14,7 +14,7 @@ import { BsCodeSlash } from "react-icons/bs";
 import { FiLink2 } from "react-icons/fi";
 import { useRemark } from "react-remark";
 import { useRecoilState } from "recoil";
-import { isDragging, isPreview } from "../../../Atoms";
+import { isPreview } from "../../../Atoms";
 import { useBeforeunload } from "react-beforeunload";
 import { postBoard, s3ImageUpload } from "../../../Lib/Api/post/post";
 import Input from "../../Input/Input";

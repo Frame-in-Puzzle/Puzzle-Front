@@ -2,10 +2,10 @@ import { apiClient } from "../apiClient";
 import { selected } from "../../../Type/types";
 import { languageList } from "../../Data/List";
 
-export const getPost = async () => {
+export const getPost = async (page?: number) => {
   try {
-    const { data } = await apiClient.get("/board/all");
-    return { data };
+    const { data } = await apiClient.get(`/board/all?page=${page}`);
+    return data;
   } catch (e: any) {
     alert(e);
   }
