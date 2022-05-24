@@ -42,96 +42,8 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   const [markdownValue, setMarkdownValue] = useState("");
   const [title, setTitle] = useState("");
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
-  const [drag, setDrag] = useState<boolean>(false);
   const navigate = useNavigate();
   const innerRef: any = useRef(null);
-  const [files, setFiles] = useState<IFileTypes[]>([]);
-  const fileId = useRef<number>(0);
-  const dragRef = useRef<HTMLLabelElement | null>(null);
-
-  const onChangeFiles = useCallback(
-    (e: ChangeEvent<HTMLInputElement> | any): void => {
-      let selectFiles: File[] = [];
-      let tempFiles: IFileTypes[] = files;
-      if (e.type === "drop") {
-        selectFiles = e.dataTransfer.files;
-        s3ImageUpload(selectFiles).then(() => {
-          console.log("success");
-        });
-      } else {
-        selectFiles = e.target.files;
-      }
-
-      for (const file of selectFiles) {
-        tempFiles = [
-          ...tempFiles,
-          {
-            id: fileId.current++,
-            object: file,
-          },
-        ];
-      }
-
-      setFiles(tempFiles);
-    },
-    [files],
-  );
-
-  const handleDragIn = useCallback((e: DragEvent): void => {
-    e.preventDefault();
-    e.stopPropagation();
-  }, []);
-
-  const handleDragOut = useCallback((e: DragEvent): void => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    setDrag(false);
-  }, []);
-
-  const handleDragOver = useCallback((e: DragEvent): void => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (e.dataTransfer!.files) {
-      setDrag(true);
-    }
-  }, []);
-
-  const handleDrop = useCallback(
-    (e: DragEvent): void => {
-      e.preventDefault();
-      e.stopPropagation();
-
-      onChangeFiles(e);
-      setDrag(false);
-    },
-    [onChangeFiles],
-  );
-
-  const initDragEvents = useCallback((): void => {
-    if (dragRef.current !== null) {
-      dragRef.current.addEventListener("dragenter", handleDragIn);
-      dragRef.current.addEventListener("dragleave", handleDragOut);
-      dragRef.current.addEventListener("dragover", handleDragOver);
-      dragRef.current.addEventListener("drop", handleDrop);
-    }
-  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
-
-  const resetDragEvents = useCallback((): void => {
-    if (dragRef.current !== null) {
-      dragRef.current.removeEventListener("dragenter", handleDragIn);
-      dragRef.current.removeEventListener("dragleave", handleDragOut);
-      dragRef.current.removeEventListener("dragover", handleDragOver);
-      dragRef.current.removeEventListener("drop", handleDrop);
-    }
-  }, [handleDragIn, handleDragOut, handleDragOver, handleDrop]);
-
-  useEffect(() => {
-    initDragEvents();
-
-    return () => resetDragEvents();
-  }, [initDragEvents, resetDragEvents]);
 
   useBeforeunload((e: any) => {
     e.preventDefault();
@@ -322,13 +234,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         <hr css={S.Line} />
         {preview === false ? (
           // {drag === false ? (
-          <div
-            onSubmit={handleSubmit}
-            onDrop={(e: any) => handleDrop(e)}
-            onDragOver={(e: any) => handleDragOver(e)}
-            onDragEnter={(e: any) => handleDragIn(e)}
-            onDragLeave={(e: any) => handleDragOut(e)}
-          >
+          <div onSubmit={handleSubmit}>
             <textarea
               css={S.TextArea}
               onChange={({ currentTarget }) => {
