@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import Button from "../../Button/Button";
+import Button from "../Button/Button";
 import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
 import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
@@ -14,12 +14,13 @@ import { BsCodeSlash } from "react-icons/bs";
 import { FiLink2 } from "react-icons/fi";
 import { useRemark } from "react-remark";
 import { useRecoilState } from "recoil";
-import { isPreview } from "../../../Atoms";
+import { isPreview } from "../../Atoms";
 import { useBeforeunload } from "react-beforeunload";
-import { postBoard, s3ImageUpload } from "../../../Lib/Api/post/post";
-import Input from "../../Input/Input";
-import WriteSelectItem from "../WriteSelectItem/WriteSelectItem";
+import { postBoard, s3ImageUpload } from "../../Lib/Api/post/post";
+import Input from "../Input/Input";
 import { useNavigate } from "react-router-dom";
+import TagSelector from "../../Templates/Tag/TagSelector";
+
 interface WriteProps {
   onClick?: Function;
   data?: {
@@ -31,10 +32,6 @@ interface WriteProps {
     status: ["모집중", "모집완료"];
     title: string;
   };
-}
-interface IFileTypes {
-  id: number;
-  object: File;
 }
 
 const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
@@ -192,7 +189,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         }}
         value={title}
       />
-      <WriteSelectItem />
+      <TagSelector onSubmit={function (): void {}} />
       <div css={S.ContentsContainer}>
         <nav css={S.NavigationBar}>
           <Button
