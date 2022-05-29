@@ -32,7 +32,7 @@ export const postBoard = async (
   return { data };
 };
 
-export const s3ImageUpload = async (files: File[]) => {
+export const s3ImageUpload = async (files: any) => {
   const { data } = await apiClient.post(
     "/board/create-url",
     { files: files },
