@@ -1,11 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, {
-  ChangeEvent,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useRef, useState } from "react";
 import Button from "../Button/Button";
 import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
@@ -16,20 +10,21 @@ import { useRemark } from "react-remark";
 import { useRecoilState } from "recoil";
 import { isPreview } from "../../Atoms";
 import { useBeforeunload } from "react-beforeunload";
-import { postBoard, s3ImageUpload } from "../../Lib/Api/post/post";
 import Input from "../Input/Input";
 import { useNavigate } from "react-router-dom";
 import TagSelector from "../../Templates/Tag/TagSelector";
+import axios from "axios";
+import { baseURL } from "../../Shared/config";
 
 interface WriteProps {
   onClick?: Function;
   data?: {
     contents: string;
-    fieldList: ["BACKEND", "FRONTEND"];
+    fieldList: string[];
     fileUrlList: any;
-    languageList: ["SPRING", "REACT"];
-    purpose: ["프로젝트", "대회", "서비스", "스터디"];
-    status: ["모집중", "모집완료"];
+    languageList: string[];
+    purpose: string[];
+    status: string[];
     title: string;
   };
 }
@@ -41,6 +36,23 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const navigate = useNavigate();
   const innerRef: any = useRef(null);
+  const [files, setFiles] = useState("");
+  const [imageValue, setImageValue] = useState("");
+
+  const onLoadFile = (e: any) => {
+    const file = e.target.files;
+    console.log(file);
+    setFiles(file);
+  };
+
+  const handleClick = (e: any) => {
+    const formData = new FormData();
+    formData.append("files", files[0]);
+    axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
+      setImageValue(res.data);
+    });
+    onToolbarClicked("link");
+  };
 
   useBeforeunload((e: any) => {
     e.preventDefault();
@@ -56,18 +68,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
     } else if (markdownValue === "" || null) {
       alert("내용을 입력해주세요.");
     } else {
-      postBoard(
-        markdownValue,
-        ["BACKEND", "FRONTEND"],
-        ["SPRING", "REACT"],
-        "PROJECT",
-        "RECRUITMENT",
-        title,
-        [],
-      ).then(() => {
-        alert("글이 등록되었어요");
-        navigate("/main");
-      });
+      console.log("ㅋㅋ");
     }
   };
 
@@ -99,6 +100,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         break;
       case "link":
         innerRef.current.focus();
+        innerRef.current.value += `![](${imageValue})`;
         break;
       case "checkbox":
         innerRef.current.focus();
@@ -161,7 +163,14 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
     {
       id: "Link",
       icon: (
-        <FiLink2 css={S.Markdown} onClick={() => onToolbarClicked("link")} />
+        <>
+          <input
+            type="file"
+            accept="image/jpg,impge/png,image/jpeg,image/gif"
+            onChange={onLoadFile}
+          />
+          <button onClick={handleClick}>전송</button>
+        </>
       ),
     },
     {
@@ -189,48 +198,50 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         }}
         value={title}
       />
-      <TagSelector onSubmit={function (): void {}} />
+      <div css={S.CheckProjectContainer}>
+        <p>프로젝트 : </p>
+        <TagSelector onSubmit={function (): void {}} />
+      </div>
       <div css={S.ContentsContainer}>
         <nav css={S.NavigationBar}>
-          <Button
-            children="Write"
-            theme={
-              preview === false
-                ? "BlackButtonWithWhiteText"
-                : "WhiteButtonWithBlackText"
-            }
-            isShadow="Yes"
-            size="Small"
-            fontSize="h6"
-            fontWeight="600"
-            onClick={() => setPreview(false)}
-          />
-          <Button
-            children="Preview"
-            theme={
-              preview === false
-                ? "WhiteButtonWithBlackText"
-                : "BlackButtonWithWhiteText"
-            }
-            isShadow="Yes"
-            size="Small"
-            fontSize="h6"
-            fontWeight="600"
-            onClick={() => setPreview(true)}
-          />
-          <div css={S.MarkdownContainer}>
+          <div css={S.NavButtonWrapper}>
+            <Button
+              children="Write"
+              theme={
+                preview === false
+                  ? "BlackButtonWithWhiteText"
+                  : "WhiteButtonWithBlackText"
+              }
+              isShadow="Yes"
+              size="Small"
+              fontSize="h6"
+              fontWeight="600"
+              onClick={() => setPreview(false)}
+            />
+            <Button
+              children="Preview"
+              theme={
+                preview === false
+                  ? "WhiteButtonWithBlackText"
+                  : "BlackButtonWithWhiteText"
+              }
+              isShadow="Yes"
+              size="Small"
+              fontSize="h6"
+              fontWeight="600"
+              onClick={() => setPreview(true)}
+            />
+          </div>
+          <div css={S.MarkdownWrapper}>
             {MarkdownImg.map((item) => (
               <div css={S.ToolbarBlock}>
-                <div css={S.ToolbarItem} onClick={() => onClick(item.id)}>
-                  {item.icon}
-                </div>
+                <div onClick={() => onClick(item.id)}>{item.icon}</div>
               </div>
             ))}
           </div>
         </nav>
         <hr css={S.Line} />
         {preview === false ? (
-          // {drag === false ? (
           <div onSubmit={handleSubmit}>
             <textarea
               css={S.TextArea}
@@ -243,24 +254,12 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
             />
           </div>
         ) : (
-          //  ) : (
-          //   <div css={S.InputPositioner}>
-          //   <input type="file" id="fileUpload" multiple={true} />
-          //   <label
-          //     className={drag ? "DragDrop-File-Dragging" : "DragDrop-File"}
-          //     htmlFor="fileUpload"
-          //     ref={dragRef}
-          //   >
-          //     <div>파일 첨부</div>
-          //   </label>
-          // </div>
-          // )}
           <div css={S.TextArea} className="preview">
             {markdownSource}
           </div>
         )}
       </div>
-      <div css={S.ButtonContainer}>
+      <div css={S.ButtonWrapper}>
         <Button
           theme="GrayButtonWithBlackTextNoHover"
           children="취소"
