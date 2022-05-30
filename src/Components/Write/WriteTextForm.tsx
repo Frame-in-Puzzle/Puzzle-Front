@@ -254,7 +254,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
             />
           </div>
         ) : (
-          <div css={S.TextArea} className="preview">
+          <div css={S.PreviewArea} className="preview">
             {markdownSource}
           </div>
         )}

@@ -62,7 +62,23 @@ export const TextArea = css`
   resize: none;
   width: 100%;
   height: 1200px;
+  padding: 50px;
   font-size: ${theme.fonts.h4};
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+export const PreviewArea = css`
+  resize: none;
+  width: 100%;
+  height: 1200px;
+  font-size: ${theme.fonts.h4};
+  text-align: center;
+  padding: 50px;
+  align-items: center;
+  justify-content: center;
 
   &:focus {
     outline: none;
