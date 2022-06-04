@@ -13,7 +13,7 @@ import { useBeforeunload } from "react-beforeunload";
 import Input from "../Input/Input";
 import { useNavigate } from "react-router-dom";
 import TagSelector from "../../Templates/Tag/TagSelector";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { baseURL } from "../../Shared/config";
 
 interface WriteProps {
@@ -35,41 +35,16 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   const [title, setTitle] = useState("");
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const navigate = useNavigate();
+  const imageRef = useRef<HTMLInputElement>(null);
   const innerRef: any = useRef(null);
-  const [files, setFiles] = useState("");
-  const [imageValue, setImageValue] = useState("");
 
-  const onLoadFile = (e: any) => {
-    const file = e.target.files;
-    console.log(file);
-    setFiles(file);
-  };
-
-  const handleClick = (e: any) => {
+  const onLoadFile = async (e: any) => {
     const formData = new FormData();
-    formData.append("files", files[0]);
-    axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
-      setImageValue(res.data);
+    formData.append("files", e.target.files[0]);
+    await axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
+      innerRef.current.focus();
+      innerRef.current.value += `![](${res.data})`;
     });
-    onToolbarClicked("link");
-  };
-
-  useBeforeunload((e: any) => {
-    e.preventDefault();
-  });
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-  };
-
-  const handlePost = () => {
-    if (title === "" || null) {
-      alert("제목을 입력해주세요.");
-    } else if (markdownValue === "" || null) {
-      alert("내용을 입력해주세요.");
-    } else {
-      console.log("ㅋㅋ");
-    }
   };
 
   const onToolbarClicked = (markdown: string) => {
@@ -98,16 +73,37 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         innerRef.current.focus();
         innerRef.current.value += "` ` ";
         break;
-      case "link":
-        innerRef.current.focus();
-        innerRef.current.value += `![](${imageValue})`;
-        break;
       case "checkbox":
         innerRef.current.focus();
         innerRef.current.value += "- [ ] ";
         break;
       default:
         break;
+    }
+  };
+
+  const handleClick = () => {
+    // 이미지 아이콘 클릭시
+    imageRef.current?.click();
+  };
+
+  useBeforeunload((e: any) => {
+    // 새로고침 시
+    e.preventDefault();
+  });
+
+  const handleSubmit = (e: any) => {
+    // textarea
+    e.preventDefault();
+  };
+
+  const handlePost = () => {
+    if (title === "" || null) {
+      alert("제목을 입력해주세요.");
+    } else if (markdownValue === "" || null) {
+      alert("내용을 입력해주세요.");
+    } else {
+      console.log("ㅋㅋ");
     }
   };
 
@@ -168,8 +164,12 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
             type="file"
             accept="image/jpg,impge/png,image/jpeg,image/gif"
             onChange={onLoadFile}
+            css={S.FileIconInput}
+            ref={imageRef}
           />
-          <button onClick={handleClick}>전송</button>
+          <button onClick={handleClick} css={S.FileIconButton}>
+            <FiLink2 css={S.Markdown} />
+          </button>
         </>
       ),
     },
