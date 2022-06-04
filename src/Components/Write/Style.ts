@@ -58,11 +58,18 @@ export const FileIconInput = css`
   display: none;
 `;
 
+export const FileIconButton = css`
+  background: none;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+`;
+
 export const TextArea = css`
   resize: none;
   width: 100%;
   height: 1200px;
-  padding: 50px;
+  padding: 20px;
   font-size: ${theme.fonts.h4};
 
   &:focus {
@@ -75,10 +82,7 @@ export const PreviewArea = css`
   width: 100%;
   height: 1200px;
   font-size: ${theme.fonts.h4};
-  text-align: center;
-  padding: 50px;
-  align-items: center;
-  justify-content: center;
+  padding: 20px;
 
   &:focus {
     outline: none;
