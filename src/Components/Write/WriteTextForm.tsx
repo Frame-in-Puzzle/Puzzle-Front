@@ -44,6 +44,8 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
     await axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
       innerRef.current.focus();
       innerRef.current.value += `![](${res.data})`;
+      setMarkdownValue(markdownValue + `![](${res.data})`);
+      setMarkdownSource(markdownValue + `![](${res.data})`);
     });
   };
 
@@ -52,30 +54,44 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
       case "heading":
         innerRef.current.focus();
         innerRef.current.value += "# ";
+        setMarkdownValue(markdownValue + "# ");
+        setMarkdownSource(markdownValue + "# ");
         break;
       case "bold":
         innerRef.current.focus();
         innerRef.current.value += "** ** ";
+        setMarkdownValue(markdownValue + "** ** ");
+        setMarkdownSource(markdownValue + "** ** ");
         break;
       case "italic":
         innerRef.current.focus();
         innerRef.current.value += "*** *** ";
+        setMarkdownValue(markdownValue + "*** *** ");
+        setMarkdownSource(markdownValue + "*** *** ");
         break;
       case "list":
         innerRef.current.focus();
         innerRef.current.value += "- ";
+        setMarkdownValue(markdownValue + "- ");
+        setMarkdownSource(markdownValue + "- ");
         break;
       case "numberlist":
         innerRef.current.focus();
         innerRef.current.value += "1. ";
+        setMarkdownValue(markdownValue + "1. ");
+        setMarkdownSource(markdownValue + "1. ");
         break;
       case "code":
         innerRef.current.focus();
         innerRef.current.value += "` ` ";
+        setMarkdownValue(markdownValue + "` ` ");
+        setMarkdownSource(markdownValue + "` ` ");
         break;
       case "checkbox":
         innerRef.current.focus();
         innerRef.current.value += "- [ ] ";
+        setMarkdownValue(markdownValue + "- [ ] ");
+        setMarkdownSource(markdownValue + "- [ ] ");
         break;
       default:
         break;
