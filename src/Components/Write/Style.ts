@@ -50,6 +50,8 @@ export const NavButtonWrapper = css`
 export const MarkdownWrapper = css`
   width: 100%;
   display: flex;
+  justify-content: flex-end;
+  gap: 20px;
 `;
 
 export const ToolbarBlock = css``;
