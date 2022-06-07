@@ -2,7 +2,7 @@
 # Manual changes might be lost - proceed with caution!
 
 __metadata:
-  version: 5
+  version: 6
   cacheKey: 8
 
 "@babel/code-frame@npm:7.10.4":
@@ -4032,6 +4032,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@toast-ui/editor@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "@toast-ui/editor@npm:3.1.5"
+  dependencies:
+    dompurify: ^2.3.3
+    prosemirror-commands: ^1.1.9
+    prosemirror-history: ^1.1.3
+    prosemirror-inputrules: ^1.1.3
+    prosemirror-keymap: ^1.1.4
+    prosemirror-model: ^1.14.1
+    prosemirror-state: ^1.3.4
+    prosemirror-view: ^1.18.7
+  checksum: 1e0ddd810747825e67b29da8dccbdd7b94f270c60e95da4fd0a0d48d578d34ac31c0fc63ed3b5bf17496bb4a4ed5fc128a952f86f290fed40f9ffa62ab325fba
+  languageName: node
+  linkType: hard
+
+"@toast-ui/react-editor@npm:^3.1.5":
+  version: 3.1.5
+  resolution: "@toast-ui/react-editor@npm:3.1.5"
+  dependencies:
+    "@toast-ui/editor": ^3.1.5
+  peerDependencies:
+    react: ^17.0.1
+  checksum: 3481ff4646956b2522c4436e4ab1688752d97d43ededa81cda459a68090fab3c408a392532184675043ddc45fb545d2dd2dacda6617459507571586e44e7db2f
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -4950,6 +4977,15 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 9d0de73b73cb6ea8ccd8263a8144d9e2c4b6af90ea0c429997538af0ebbe83c5addecee814b2a7f91f7f615d0bd1547cc7137b3fa236ce058adc64feccee850b
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^8.5.0":
+  version: 8.7.1
+  resolution: "acorn@npm:8.7.1"
+  bin:
+    acorn: bin/acorn
+  checksum: aca0aabf98826717920ac2583fdcad0a6fbe4e583fdb6e843af2594e907455aeafe30b1e14f1757cd83ce1776773cf8296ffc3a4acf13f0bd3dfebcf1db6ae80
   languageName: node
   linkType: hard
 
@@ -8094,6 +8130,13 @@ __metadata:
   dependencies:
     domelementtype: ^2.2.0
   checksum: ad782fef984eca5a6fdd4ce70b90c38aff335ae4d6a51223ac82bd371b6674614efdcfff2dbb1126a7395634357906781f179e4ec028c7c578bb7f2beef8a4a5
+  languageName: node
+  linkType: hard
+
+"dompurify@npm:^2.3.3":
+  version: 2.3.6
+  resolution: "dompurify@npm:2.3.6"
+  checksum: 4b2bbf6bc68ebd776aec4a533cef74a5ae30391eed528f3df748af71da318afdc298b6f40449bef093b7454ffd2ae82656636560474de5a3b34316b762c85b12
   languageName: node
   linkType: hard
 
@@ -13933,6 +13976,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"orderedmap@npm:^1.1.0":
+  version: 1.1.5
+  resolution: "orderedmap@npm:1.1.5"
+  checksum: cd6478cede7bd9d4d781024ae0014a2a668a7687c0dad1a9e1a1bde109ed48e56991b7dd27ddbb1a9a5cf3f50f51918e0ce978e643ad74a8af8079799d80a1e1
+  languageName: node
+  linkType: hard
+
 "original@npm:^1.0.0":
   version: 1.0.2
   resolution: "original@npm:1.0.2"
@@ -15539,6 +15589,87 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prosemirror-commands@npm:^1.1.9":
+  version: 1.2.2
+  resolution: "prosemirror-commands@npm:1.2.2"
+  dependencies:
+    prosemirror-model: ^1.0.0
+    prosemirror-state: ^1.0.0
+    prosemirror-transform: ^1.0.0
+  checksum: 76b7e15751471523fef76926f89926f53fe318c504913fc2f532b72cbab1b9262027ac84d6c2cc1488fbf3749948b52090747e31af45a6fe15047a266b0dc991
+  languageName: node
+  linkType: hard
+
+"prosemirror-history@npm:^1.1.3":
+  version: 1.2.0
+  resolution: "prosemirror-history@npm:1.2.0"
+  dependencies:
+    prosemirror-state: ^1.2.2
+    prosemirror-transform: ^1.0.0
+    rope-sequence: ^1.3.0
+  checksum: 9d1bedfd6a39aa007e96abbb57fd14d1397f78f8266ff2863ed3e3e2d3861305765cf1a41b587aebb5c532eec4b17d2fbe1c0c8a27c9c71185226cc13cf942b9
+  languageName: node
+  linkType: hard
+
+"prosemirror-inputrules@npm:^1.1.3":
+  version: 1.1.3
+  resolution: "prosemirror-inputrules@npm:1.1.3"
+  dependencies:
+    prosemirror-state: ^1.0.0
+    prosemirror-transform: ^1.0.0
+  checksum: 25b51840e738bdd677b3c44d802b891f724e9bbe21168a3ecf721ab0a83b1ee338e11df93ff49aa43035e3006e83a2d6352cdf5a9898a3adbabb8e0f4cda78f8
+  languageName: node
+  linkType: hard
+
+"prosemirror-keymap@npm:^1.1.4":
+  version: 1.1.5
+  resolution: "prosemirror-keymap@npm:1.1.5"
+  dependencies:
+    prosemirror-state: ^1.0.0
+    w3c-keyname: ^2.2.0
+  checksum: b558a1c2c3107a49a388206c3cec7fe89126fc55f3a51beffc1e2c8b07d06938cc369d865415e6a5e6ba55651157c7c650e5e08568f29882d7f973e8c099bcbf
+  languageName: node
+  linkType: hard
+
+"prosemirror-model@npm:^1.0.0, prosemirror-model@npm:^1.14.1, prosemirror-model@npm:^1.16.0":
+  version: 1.16.1
+  resolution: "prosemirror-model@npm:1.16.1"
+  dependencies:
+    orderedmap: ^1.1.0
+  checksum: 76718aafbfad0639393e127b3b1b95f9d99b0fb9ec72c2f207e445d175f06a2711ea10b6035075c4ed9cd5e00f4a72aec01e1439c954ecfee19897fa3584fa11
+  languageName: node
+  linkType: hard
+
+"prosemirror-state@npm:^1.0.0, prosemirror-state@npm:^1.2.2, prosemirror-state@npm:^1.3.4":
+  version: 1.3.4
+  resolution: "prosemirror-state@npm:1.3.4"
+  dependencies:
+    prosemirror-model: ^1.0.0
+    prosemirror-transform: ^1.0.0
+  checksum: 088748bca02620ac7c6510dc49c9890593fd5077fc347c9f08f25e6932454bd149df6cc2740d760dedf56059311aa0f6ea1c3e2e56043ad7682ae159b797c90e
+  languageName: node
+  linkType: hard
+
+"prosemirror-transform@npm:^1.0.0, prosemirror-transform@npm:^1.1.0":
+  version: 1.4.2
+  resolution: "prosemirror-transform@npm:1.4.2"
+  dependencies:
+    prosemirror-model: ^1.0.0
+  checksum: 6029760a5a144b77054601885f25af02d8d6f2971ddd98a1d16b584cc96ed1a7d3400ebc92f0a5cab3c9904e2a918fbb09504aad22272f2740b51324dc88599d
+  languageName: node
+  linkType: hard
+
+"prosemirror-view@npm:^1.18.7":
+  version: 1.23.12
+  resolution: "prosemirror-view@npm:1.23.12"
+  dependencies:
+    prosemirror-model: ^1.16.0
+    prosemirror-state: ^1.0.0
+    prosemirror-transform: ^1.1.0
+  checksum: a0e0787cd09fc319325244e9f901ccc6b1d2a13ed2b402ce742125f3daa2e73105d11dfc8bf3248432deff474a8316d264e5ac3cbc217947fcc948c31c11b7d8
+  languageName: node
+  linkType: hard
+
 "proxy-addr@npm:~2.0.5":
   version: 2.0.7
   resolution: "proxy-addr@npm:2.0.7"
@@ -15646,6 +15777,7 @@ __metadata:
     "@testing-library/jest-dom": ^5.11.4
     "@testing-library/react": ^11.1.0
     "@testing-library/user-event": ^12.1.10
+    "@toast-ui/react-editor": ^3.1.5
     "@types/jest": ^26.0.15
     "@types/node": ^12.0.0
     "@types/react": ^17.0.38
@@ -15664,9 +15796,11 @@ __metadata:
     react-dnd-html5-backend: ^15.1.2
     react-dom: rc
     react-icons: ^4.3.1
+    react-intersection-observer: ^8.33.1
+    react-loading: ^2.0.3
     react-remark: ^2.1.0
     react-router: ^6.2.1
-    react-router-dom: ^6.2.1
+    react-router-dom: ^6.3.0
     react-scripts: 4.0.3
     react-toastify: ^8.2.0
     recoil: ^0.6.1
@@ -16062,6 +16196,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-intersection-observer@npm:^8.33.1":
+  version: 8.33.1
+  resolution: "react-intersection-observer@npm:8.33.1"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
+  checksum: 5feb0df01dd64f1fa0b8300fb4fc12db95350c1ae2514f66f0652371f65e5501758a662746000dc2584d24dcce07139590e5375d6c9920a60b282af83468d0c4
+  languageName: node
+  linkType: hard
+
 "react-is@npm:17.0.2, react-is@npm:^17.0.1, react-is@npm:^17.0.2":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
@@ -16073,6 +16216,16 @@ __metadata:
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f
+  languageName: node
+  linkType: hard
+
+"react-loading@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "react-loading@npm:2.0.3"
+  peerDependencies:
+    prop-types: ^15.6.0
+    react: ">=0.14.0"
+  checksum: a2b24b94c1988c1418a3d714c5d95dd13407f43e6ac59f350ae54ad75dd613bfea0abb59c8530900821806b72596e57555a700f9541bd12d9ac88387cce919fa
   languageName: node
   linkType: hard
 
@@ -16144,16 +16297,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router-dom@npm:^6.2.1":
-  version: 6.2.1
-  resolution: "react-router-dom@npm:6.2.1"
+"react-router-dom@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "react-router-dom@npm:6.3.0"
   dependencies:
     history: ^5.2.0
-    react-router: 6.2.1
+    react-router: 6.3.0
   peerDependencies:
     react: ">=16.8"
     react-dom: ">=16.8"
-  checksum: fa0edc69fddf0cb1313bcb3dbd5eb2b2ff24a75ee03ba928995e16a6a251585750f91d966612e868eb68a5aebc4a5240be40fd96c4acf1d8d48d33f54ad3f4e2
+  checksum: 77603a654f8a8dc7f65535a2e5917a65f8d9ffcb06546d28dd297e52adcc4b8a84377e0115f48dca330b080af2da3e78f29d590c89307094d36927d2b1751ec3
   languageName: node
   linkType: hard
 
@@ -16168,7 +16321,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-router@npm:6.2.1, react-router@npm:^6.2.1":
+"react-router@npm:6.3.0":
+  version: 6.3.0
+  resolution: "react-router@npm:6.3.0"
+  dependencies:
+    history: ^5.2.0
+  peerDependencies:
+    react: ">=16.8"
+  checksum: 7be673f5e72104be01e6ab274516bdb932efd93305243170690f6560e3bd1035dd1df3d3c9ce1e0f452638a2529f43a1e77dcf0934fc8031c4783da657be13ca
+  languageName: node
+  linkType: hard
+
+"react-router@npm:^6.2.1":
   version: 6.2.1
   resolution: "react-router@npm:6.2.1"
   dependencies:
@@ -16980,6 +17144,13 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 3a02731c20c71321fae647c9c9cab0febee0580c6af029fdcd5dd6f424b8c85119d92c8554c6837327fd323c2458e92d955bbebc90ca6bed87cc626695e7c31f
+  languageName: node
+  linkType: hard
+
+"rope-sequence@npm:^1.3.0":
+  version: 1.3.2
+  resolution: "rope-sequence@npm:1.3.2"
+  checksum: 4169421051f0a96246792fb7211ad2f6ce106ca9348e9210b32142d532372f424dfc330e9bfc5c9610fbe7d7aecc295e923dbcae7a751477b7010b6d95775b31
   languageName: node
   linkType: hard
 
@@ -18778,11 +18949,11 @@ __metadata:
 
 "typescript@patch:typescript@^4.1.2#~builtin<compat/typescript>":
   version: 4.5.2
-  resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=493e53"
+  resolution: "typescript@patch:typescript@npm%3A4.5.2#~builtin<compat/typescript>::version=4.5.2&hash=bda367"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 53838d56aba6fcc947d63aa0771e5d966b1b648fddafed6e221d7f38c71219c4e036ece8cfe9e35ed80cf5a35ff4eb958934c993f99c3233773ec4f9ccd53f69
+  checksum: e25e689eba64f7da7cfc43f8ea76cac7176b56caba42655f0a4cb29c0b7c36e67ca54f33df95902859f56108464245d8b45bcdfe21e3d66d9560feb8db780246
   languageName: node
   linkType: hard
 
@@ -19360,6 +19531,13 @@ __metadata:
   dependencies:
     browser-process-hrtime: ^1.0.0
   checksum: ec3c2dacbf8050d917bbf89537a101a08c2e333b4c19155f7d3bedde43529d4339db6b3d049d9610789cb915f9515f8be037e0c54c079e9d4735c50b37ed52b9
+  languageName: node
+  linkType: hard
+
+"w3c-keyname@npm:^2.2.0":
+  version: 2.2.4
+  resolution: "w3c-keyname@npm:2.2.4"
+  checksum: 890180452bdd7d25f05deb97b3c0839911264432a7c5dd8dc4c9d9b6384237a66d66b7c2a145440b607826d5aa61cd90098cfffcf50b50c0e4c2259b0d208038
   languageName: node
   linkType: hard
 

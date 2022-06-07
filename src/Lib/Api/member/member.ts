@@ -35,6 +35,36 @@ export const putUserInformation = async (
   return { data };
 };
 
+export const putUserProfile = async (
+  name: string,
+  email: string,
+  bio: string,
+  field: string,
+  language: string[],
+) => {
+  const { data } = await apiClient.put("/profile/update", {
+    name: name,
+    email: email,
+    bio: bio,
+    field: field,
+    language: language,
+  });
+  return { data };
+};
+
+export const putimgUpdate = async (files: string) => {
+  const formData = new FormData();
+  formData.append("file", files);
+  const data = await apiClient.put("/profile/image/update", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+  return { data };
+};
+
 export const logoutUser = async () => {
   await apiClient.delete("/user/logout");
+};
+
+export const withdrawalUser = async () => {
+  await apiClient.delete("/user/delete");
 };
