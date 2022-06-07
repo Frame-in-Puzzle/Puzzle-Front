@@ -1,3 +1,4 @@
+import { useLogin } from "./useLogin";
 import jwt from "jwt-decode";
 
 type user = {
@@ -8,8 +9,11 @@ type user = {
 };
 
 export const useDecode = () => {
+  const isLogin = useLogin();
   const accesstoken: string = localStorage.getItem("accessToken") ?? "";
-  const { sub, iat, exp, auth }: user = jwt(accesstoken);
+  const { sub, iat, exp, auth }: user = isLogin
+    ? jwt(accesstoken)
+    : { sub: "", iat: 0, exp: 0, auth: [] };
 
   return { sub, iat, exp, auth };
 };

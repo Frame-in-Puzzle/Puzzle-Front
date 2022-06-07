@@ -16,6 +16,7 @@ export { default as ApplyItem } from "./ApplyItem/ApplyItem";
 export { default as TagModal } from "./Tags/TagModal/TagModal";
 export { default as SignUpHeader } from "./SignUp/SignUpHeader/SignUpHeader";
 export { default as SignUpForm } from "./SignUp/SignUpForm/SignUpForm";
+export { default as SigninModal } from "./SigInModal/SiginModal";
 export { default as Section1 } from "./Promotion/Section1/Section1";
 export { default as Section2 } from "./Promotion/Section2/Section2";
 export { default as Section3 } from "./Promotion/Section3/Section3";
