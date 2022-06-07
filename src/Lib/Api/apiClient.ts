@@ -1,5 +1,6 @@
 import axios from "axios";
 import { baseURL } from "../../Shared/config";
+import { refreshToken } from "./refreshToken";
 
 export const apiClient = axios.create({
   baseURL: baseURL,
@@ -10,3 +11,5 @@ export const apiClient = axios.create({
     "Access-Control-Allow-Methods": "GET,POST,DELETE,PATCH,PUT,OPTIONS",
   },
 });
+
+apiClient.interceptors.request.use(refreshToken);

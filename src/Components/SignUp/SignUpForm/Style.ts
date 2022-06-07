@@ -16,7 +16,6 @@ export const Title = css`
 
 export const TitleWrapper = css`
   margin-top: 5%;
-
   input {
     color: #000;
   }
@@ -24,14 +23,7 @@ export const TitleWrapper = css`
 
 export const DropDown = css`
   margin-top: 5%;
-
   z-index: 5;
-`;
-
-export const DropWarpper = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 `;
 
 export const Tag = css`

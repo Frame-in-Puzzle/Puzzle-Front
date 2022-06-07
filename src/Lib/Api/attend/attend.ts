@@ -13,13 +13,9 @@ export const postAttend = async (boardId: string | undefined) => {
   }
 };
 
-export const patchAttend = async (
-  boardId: string | undefined,
-  attendId: number,
-  attendStatus: string,
-) => {
+export const patchAttend = async (attendId: number, attendStatus: string) => {
   try {
-    const { data } = await apiClient.patch(`/attend/${boardId}`, {
+    const { data } = await apiClient.patch(`/attend/${attendId}`, {
       attendId: attendId,
       attendStatus: attendStatus,
     });
@@ -27,4 +23,12 @@ export const patchAttend = async (
   } catch (e: any) {
     alert(e);
   }
+};
+
+export const getAttendStatus = async (boardId: string | undefined) => {
+  try {
+    const { data } = await apiClient.get(`/attend/status/board/${boardId}
+    `);
+    return { data };
+  } catch (e) {}
 };

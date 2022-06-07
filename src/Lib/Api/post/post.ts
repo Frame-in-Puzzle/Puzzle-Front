@@ -2,10 +2,10 @@ import { apiClient } from "../apiClient";
 import { selected } from "../../../Type/types";
 import { languageList } from "../../Data/List";
 
-export const getPost = async () => {
+export const getPost = async (page?: number) => {
   try {
-    const { data } = await apiClient.get("/board/all");
-    return { data };
+    const { data } = await apiClient.get(`/board/all?page=${page}`);
+    return data;
   } catch (e: any) {
     alert(e);
   }
@@ -32,7 +32,7 @@ export const postBoard = async (
   return { data };
 };
 
-export const s3ImageUpload = async (files: File[]) => {
+export const s3ImageUpload = async (files: any) => {
   const { data } = await apiClient.post(
     "/board/create-url",
     { files: files },

@@ -35,7 +35,7 @@ const SignUpForm: React.FC = () => {
   const [bio, setBio] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
   const [fieldSelect, setFieldSelect] = useState<string>("선택");
-  const [languageSelect, setLanguageSelect] = useState<string[]>(["선택"]);
+  const [languageSelect, setLanguageSelect] = useState<string[]>([]);
   const [currentLanguage, setCurrentLanguage] = useState<selected>({
     name: "선택",
     value: "선택",
@@ -44,7 +44,6 @@ const SignUpForm: React.FC = () => {
     name: "선택",
     value: "선택",
   });
-  console.log(languageSelect);
 
   const navigate = useNavigate();
 

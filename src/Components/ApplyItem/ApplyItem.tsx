@@ -22,8 +22,8 @@ interface AttendProps {
 }
 
 const ApplyItem: React.FC<AttendProps> = ({ attend, writer }) => {
-  const { sub } = useDecode();
   const { id } = useParams();
+  const { sub } = useDecode();
 
   return (
     <div css={S.Positioner}>
@@ -54,9 +54,9 @@ const ApplyItem: React.FC<AttendProps> = ({ attend, writer }) => {
                   fontSize="h6"
                   fontWeight="400"
                   isShadow="No"
-                  onClick={() => {
-                    patchAttend(id, attend.id, "REFUSE");
-                    mutate(`/attend/board/${id}`);
+                  onClick={async () => {
+                    await patchAttend(attend.id, "REFUSE");
+                    await mutate(`/attend/board/${id}`);
                   }}
                 >
                   거절
@@ -67,9 +67,9 @@ const ApplyItem: React.FC<AttendProps> = ({ attend, writer }) => {
                   fontSize="h6"
                   fontWeight="400"
                   isShadow="No"
-                  onClick={() => {
-                    patchAttend(id, attend.id, "ACCEPT");
-                    mutate(`/attend/board/${id}`);
+                  onClick={async () => {
+                    await patchAttend(attend.id, "ACCEPT");
+                    await mutate(`/attend/board/${id}`);
                   }}
                 >
                   수락

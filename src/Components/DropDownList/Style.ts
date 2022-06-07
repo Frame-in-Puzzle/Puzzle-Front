@@ -12,6 +12,7 @@ export const ListStyle = css`
   flex-direction: column;
   list-style: none;
   border-radius: 5px;
+  z-index: 100;
   li {
     margin-top: 15px;
     cursor: pointer;
