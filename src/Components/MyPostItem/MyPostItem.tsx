@@ -3,7 +3,7 @@ import React from "react";
 import * as S from "./Style";
 import * as I from "../../Assets/index";
 import { FiX } from "react-icons/fi";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import { TagItem } from "..";
 import { deletePost } from "../../Lib/Api/post/post";
 import { mutate } from "swr";

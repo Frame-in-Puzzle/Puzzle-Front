@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { forwardRef } from "react";
 import * as S from "./Style";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 type PostProps = {
   boardId: number;

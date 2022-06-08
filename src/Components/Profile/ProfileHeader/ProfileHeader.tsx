@@ -11,7 +11,7 @@ import {
 } from "../../../Lib/Api/member/member";
 import { useDecode } from "../../../Hooks/useDecode";
 import { fieldList, languageList } from "../../../Lib/Data/List";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import { selected } from "../../../Type/types";
 import { FiX } from "react-icons/fi";
 import { on } from "cluster";

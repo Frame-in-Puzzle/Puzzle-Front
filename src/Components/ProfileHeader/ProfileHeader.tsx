@@ -7,7 +7,7 @@ import { ImMail } from "react-icons/im";
 import { useDecode } from "../../Hooks/useDecode";
 import { languageList } from "../../Lib/Data/List";
 import { TagItem } from "..";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { apiClient } from "../../Lib/Api/apiClient";
 

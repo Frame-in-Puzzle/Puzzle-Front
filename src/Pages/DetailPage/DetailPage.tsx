@@ -9,7 +9,7 @@ import {
   DetailWriter,
   DetailApply,
 } from "../../Templates";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import useSWR from "swr";
 import { apiClient } from "../../Lib/Api/apiClient";
 import axios from "axios";
@@ -17,7 +17,6 @@ import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
 import { useLogin } from "../../Hooks/useLogin";
 import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
 import Sign from "../../Components/SigInModal/SiginModal";
-
 
 interface BoardProps {
   data: {

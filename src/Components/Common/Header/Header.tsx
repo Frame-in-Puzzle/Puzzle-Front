@@ -4,7 +4,7 @@ import * as S from "./Style";
 import * as I from "../../../Assets";
 import { useDecode } from "../../../Hooks/useDecode";
 import { getUser } from "../../../Lib/Api/member/member";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   theme: "NoneLogin" | "Login" | "Write";
