@@ -36,7 +36,7 @@ const DetailWriter: React.FC<DetailWriter> = ({ name, githubId }) => {
 
   useEffect(() => {
     GithubInfo(githubId).then((res) => setUser(res.data));
-    getAttendStatus(id).then((res: any) => setAttendStatus(res.data));
+    getAttendStatus(id).then((res) => setAttendStatus(res?.data));
   }, []);
 
   const requestAttend = async () => {

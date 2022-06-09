@@ -6,7 +6,7 @@ import { getUser, logoutUser } from "../../../Lib/Api/member/member";
 import { ProfileWrapper } from "../../../Styles/GlobalStyle";
 import * as I from "../../../Assets/index";
 import * as S from "./style";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import { apiClient } from "../../../Lib/Api/apiClient";
 interface UserInfo {
