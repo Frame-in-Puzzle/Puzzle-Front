@@ -4,7 +4,7 @@ import * as S from "./Style";
 import * as I from "../../Assets";
 import useSWR from "swr";
 import { apiClient } from "../../Lib/Api/apiClient";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 type mypost = {
   boardId: number;

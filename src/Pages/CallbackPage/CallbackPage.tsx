@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { postGithubLogin } from "../../Lib/Api/member/member";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const CallbackPage = () => {
   const navigate = useNavigate();

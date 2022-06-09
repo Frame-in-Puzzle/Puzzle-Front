@@ -4,7 +4,7 @@ import * as S from "./Style";
 import { Button } from "../..";
 import * as I from "../../../Assets";
 import { useTargetOnScreen } from "../../../Hooks/useTargetOnScreen";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const Section1 = () => {
   const { containerRef, isVisible } = useTargetOnScreen({

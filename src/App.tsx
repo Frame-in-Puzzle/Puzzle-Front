@@ -1,7 +1,7 @@
 import GlobalStyle from "./Styles/GlobalStyle";
 import { Global, ThemeProvider } from "@emotion/react";
 import { theme } from "./Styles/theme";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import Mainpage from "./Pages/Mainpage/Mainpage";
 import { ProfileCheckPage } from "./Pages";
@@ -21,7 +21,7 @@ if (typeof window !== "undefined") {
 function App() {
   return (
     <RecoilRoot>
-      <BrowserRouter>
+      <Router>
         <ThemeProvider theme={theme}>
           <Global styles={GlobalStyle} />
           <ToastContainer
@@ -40,7 +40,7 @@ function App() {
             <Route path="/callback" element={<CallbackPage />} />
           </Routes>
         </ThemeProvider>
-      </BrowserRouter>
+      </Router>
     </RecoilRoot>
   );
 }
