@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import { Button, DropDown, Input, TagItem } from "../..";
 import { useDecode } from "../../../Hooks/useDecode";
