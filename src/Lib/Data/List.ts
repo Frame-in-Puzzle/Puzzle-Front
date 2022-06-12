@@ -12,7 +12,7 @@ export const fieldList: selected[] = [
 
 export const purposeList: selected[] = [
   { name: "프로젝트", value: "PROJECT" },
-  { name: "대회", value: "CONTEST" },
+  { name: "대회", value: "COMPETITION" },
   { name: "서비스", value: "SERVICE" },
   { name: "스터디", value: "STUDY" },
 ];

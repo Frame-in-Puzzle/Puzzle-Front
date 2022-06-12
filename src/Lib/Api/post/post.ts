@@ -13,12 +13,12 @@ export const getPost = async (page?: number) => {
 
 export const postBoard = async (
   contents: string,
-  fieldList: string[],
-  languageList: string[],
+  fieldList: string[] | string,
+  languageList: string[] | string,
   purpose: string,
   status: string,
   title: string,
-  fileUrlList: any,
+  fileUrlList?: any,
 ) => {
   const { data } = await apiClient.post("/board", {
     contents: contents,

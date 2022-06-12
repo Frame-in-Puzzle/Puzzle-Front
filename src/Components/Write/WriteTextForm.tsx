@@ -4,17 +4,25 @@ import Button from "../Button/Button";
 import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
 import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
-import { BsCodeSlash } from "react-icons/bs";
+
 import { FiLink2 } from "react-icons/fi";
 import { useRemark } from "react-remark";
-import { useRecoilState } from "recoil";
-import { isPreview } from "../../Atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useBeforeunload } from "react-beforeunload";
 import Input from "../Input/Input";
 import { useNavigate } from "react-router-dom";
 import TagSelector from "../../Templates/Tag/TagSelector";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { baseURL } from "../../Shared/config";
+import { postBoard } from "../../Lib/Api/post/post";
+import {
+  fieldSelected,
+  isPreview,
+  languageSelected,
+  purposeSelected,
+  stateSelected,
+  tagModalState,
+} from "../../Atoms";
 
 interface WriteProps {
   onClick?: Function;
@@ -33,20 +41,41 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
   const [title, setTitle] = useState("");
+  const [imageValue, setImageValue] = useState([""]);
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const navigate = useNavigate();
   const imageRef = useRef<HTMLInputElement>(null);
   const innerRef: any = useRef(null);
+  const [purposeSelect, setPurposeSelect] = useRecoilState(purposeSelected);
+  const [stateSelect, setStateSelect] = useRecoilState(stateSelected);
+  const [fieldSelect, setFieldSelect] = useRecoilState(fieldSelected);
+  const [languageSelect, setLanguageSelect] = useRecoilState(languageSelected);
+  const [modalState, setModalState] = useRecoilState(tagModalState);
+  const FieldArr: any = fieldSelect.map((item, idx) => {
+    return item.value;
+  });
+  const LanguageArr: any = languageSelect.map((item, idx) => {
+    return item.value;
+  });
 
   const onLoadFile = async (e: any) => {
     const formData = new FormData();
     formData.append("files", e.target.files[0]);
     await axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
+      setImageValue(res.data);
       innerRef.current.focus();
       innerRef.current.value += `![](${res.data})`;
       setMarkdownValue(markdownValue + `![](${res.data})`);
       setMarkdownSource(markdownValue + `![](${res.data})`);
     });
+  };
+
+  const onModalSubmit = () => {
+    setPurposeSelect(purposeSelect);
+    setStateSelect(stateSelect);
+    setFieldSelect(fieldSelect);
+    setLanguageSelect(languageSelect);
+    setModalState(false);
   };
 
   const onToolbarClicked = (markdown: string) => {
@@ -118,8 +147,31 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
       alert("제목을 입력해주세요.");
     } else if (markdownValue === "" || null) {
       alert("내용을 입력해주세요.");
+    } else if (fieldSelect === []) {
+      alert("분야를 선택해주세요.");
+    } else if (languageSelect === []) {
+      alert("언어를 선택해주세요.");
+    } else if (purposeSelect.name === "선택") {
+      alert("목적을 선택해주세요.");
+    } else if (stateSelect.name === "선택") {
+      alert("상태를 선택해주세요.");
     } else {
-      console.log("ㅋㅋ");
+      postBoard(
+        markdownValue,
+        FieldArr,
+        LanguageArr,
+        purposeSelect.value,
+        stateSelect.value,
+        title,
+        imageValue,
+      ).then(() => {
+        alert("등록되었어요.");
+        setFieldSelect([{ name: "전체", value: "ALL" }]);
+        setLanguageSelect([]);
+        setPurposeSelect({ name: "선택", value: "choice" });
+        setStateSelect({ name: "선택", value: "choice" });
+        navigate("/main");
+      });
     }
   };
 
@@ -164,21 +216,12 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
       ),
     },
     {
-      id: "Code",
-      icon: (
-        <BsCodeSlash
-          css={S.Markdown}
-          onClick={() => onToolbarClicked("code")}
-        />
-      ),
-    },
-    {
       id: "Link",
       icon: (
         <>
           <input
             type="file"
-            accept="image/jpg,impge/png,image/jpeg,image/gif"
+            accept="image/jpg,image/png,image/jpeg,image/gif"
             onChange={onLoadFile}
             css={S.FileIconInput}
             ref={imageRef}
@@ -216,7 +259,11 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
       />
       <div css={S.CheckProjectContainer}>
         <p>프로젝트 : </p>
-        <TagSelector onSubmit={function (): void {}} />
+        <TagSelector
+          onSubmit={() => {
+            onModalSubmit();
+          }}
+        />
       </div>
       <div css={S.ContentsContainer}>
         <nav css={S.NavigationBar}>
@@ -292,9 +339,7 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
           fontSize="h5"
           fontWeight="600"
           isShadow="No"
-          onClick={() => {
-            handlePost();
-          }}
+          onClick={handlePost}
         />
       </div>
     </div>
