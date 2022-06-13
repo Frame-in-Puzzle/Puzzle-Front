@@ -2,10 +2,8 @@
 import React, { useRef, useState } from "react";
 import Button from "../Button/Button";
 import * as S from "./Style";
-import { BiHeading, BiBold, BiItalic, BiCheckboxChecked } from "react-icons/bi";
+import { BiHeading, BiBold, BiItalic, BiImageAdd } from "react-icons/bi";
 import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
-
-import { FiLink2 } from "react-icons/fi";
 import { useRemark } from "react-remark";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useBeforeunload } from "react-beforeunload";
@@ -24,20 +22,7 @@ import {
   tagModalState,
 } from "../../Atoms";
 
-interface WriteProps {
-  onClick?: Function;
-  data?: {
-    contents: string;
-    fieldList: string[];
-    fileUrlList: any;
-    languageList: string[];
-    purpose: string[];
-    status: string[];
-    title: string;
-  };
-}
-
-const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
+const WriteTextForm: React.FC = () => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
   const [title, setTitle] = useState("");
@@ -64,8 +49,8 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
     await axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
       setImageValue(res.data);
       innerRef.current.focus();
-      innerRef.current.value += `![](${res.data})`;
-      setMarkdownValue(markdownValue + `![](${res.data})`);
+      innerRef.current.value += `\n ![](${res.data})\n`;
+      setMarkdownValue(markdownValue + `\n![](${res.data})`);
       setMarkdownSource(markdownValue + `![](${res.data})`);
     });
   };
@@ -115,12 +100,6 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
         innerRef.current.value += "` ` ";
         setMarkdownValue(markdownValue + "` ` ");
         setMarkdownSource(markdownValue + "` ` ");
-        break;
-      case "checkbox":
-        innerRef.current.focus();
-        innerRef.current.value += "- [ ] ";
-        setMarkdownValue(markdownValue + "- [ ] ");
-        setMarkdownSource(markdownValue + "- [ ] ");
         break;
       default:
         break;
@@ -227,18 +206,9 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
             ref={imageRef}
           />
           <button onClick={handleClick} css={S.FileIconButton}>
-            <FiLink2 css={S.Markdown} />
+            <BiImageAdd css={S.Markdown} />
           </button>
         </>
-      ),
-    },
-    {
-      id: "CheckBox",
-      icon: (
-        <BiCheckboxChecked
-          css={S.Markdown}
-          onClick={() => onToolbarClicked("checkbox")}
-        />
       ),
     },
   ];
@@ -297,8 +267,8 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
           </div>
           <div css={S.MarkdownWrapper}>
             {MarkdownImg.map((item) => (
-              <div css={S.ToolbarBlock}>
-                <div onClick={() => onClick(item.id)}>{item.icon}</div>
+              <div>
+                <div onClick={() => item.id}>{item.icon}</div>
               </div>
             ))}
           </div>
@@ -317,30 +287,32 @@ const WriteTextForm: React.FC<WriteProps> = ({ onClick = () => {} }) => {
             />
           </div>
         ) : (
-          <div css={S.PreviewArea} className="preview">
-            {markdownSource}
+          <div css={S.PreviewWrapper}>
+            <div css={S.PreviewArea} className="preview">
+              {markdownSource}
+            </div>
           </div>
         )}
-      </div>
-      <div css={S.ButtonWrapper}>
-        <Button
-          theme="GrayButtonWithBlackTextNoHover"
-          children="취소"
-          size="Regular"
-          fontSize="h5"
-          fontWeight="400"
-          isShadow="No"
-          onClick={() => navigate("/main")}
-        />
-        <Button
-          theme="BlackButtonWithWithTextNoHover"
-          children="글 등록"
-          size="Regular"
-          fontSize="h5"
-          fontWeight="600"
-          isShadow="No"
-          onClick={handlePost}
-        />
+        <div css={S.ButtonWrapper}>
+          <Button
+            theme="GrayButtonWithBlackTextNoHover"
+            children="취소"
+            size="Regular"
+            fontSize="h5"
+            fontWeight="400"
+            isShadow="No"
+            onClick={() => navigate("/main")}
+          />
+          <Button
+            theme="BlackButtonWithWithTextNoHover"
+            children="글 등록"
+            size="Regular"
+            fontSize="h5"
+            fontWeight="600"
+            isShadow="No"
+            onClick={handlePost}
+          />
+        </div>
       </div>
     </div>
   );
