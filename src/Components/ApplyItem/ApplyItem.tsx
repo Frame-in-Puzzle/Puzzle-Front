@@ -4,7 +4,7 @@ import * as S from "./Style";
 import { TagItem, Button } from "../";
 import { useDecode } from "../../Hooks/useDecode";
 import { patchAttend } from "../../Lib/Api/attend/attend";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { mutate } from "swr";
 
 type Attend = {

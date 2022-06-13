@@ -1,5 +1,5 @@
 /** @jsxImportSource @emotion/react */
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./Style";
 import { Button, DropDown, TagItem } from "../..";
 import { FiX } from "react-icons/fi";
@@ -188,6 +188,19 @@ const TagModal: React.FC<TagSearch> = ({ onSubmit }) => {
         );
     }
   };
+
+  const escOff = (e: any) => {
+    if (e.key === "Escape") {
+      setModalState(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", escOff);
+    return () => {
+      window.removeEventListener("keydown", escOff);
+    };
+  }, []);
 
   return (
     <div css={S.TagSearch}>
