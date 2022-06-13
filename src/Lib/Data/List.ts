@@ -47,7 +47,7 @@ export const languageList = {
   iOS: [{ name: "Swift", value: "SWIFT" }],
   Game: [
     { name: "Unity", value: "UNITY" },
-    { name: "C#", value: "C#" },
+    { name: "C#", value: "CSHARP" },
     { name: "Unreal Engine", value: "UNREALENGINE" },
   ],
 };
