@@ -9,6 +9,7 @@ import { getUser, putUserInformation } from "../../../Lib/Api/member/member";
 import { fieldList, languageList } from "../../../Lib/Data/List";
 import * as S from "./Style";
 import { selected } from "../../../Type/types";
+import { toast } from "react-toastify";
 
 interface UserInfo {
   data: {
@@ -244,7 +245,16 @@ const SignUpForm: React.FC = () => {
       </div>
       <div css={S.TitleWrapper}>
         <div css={S.Title}>세부언어</div>
-        <DropDown theme="purpose" width="550px" selected={currentLanguage}>
+        <DropDown
+          theme="purpose"
+          width="550px"
+          selected={currentLanguage}
+          onClick={() => {
+            if (fieldSelect === "선택") {
+              toast.warning("분야를 먼저 선택해주세요");
+            }
+          }}
+        >
           {mappingLanguageList(fieldSelect)}
         </DropDown>
       </div>
