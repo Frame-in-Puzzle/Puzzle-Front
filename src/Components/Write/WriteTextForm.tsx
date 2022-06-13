@@ -21,6 +21,7 @@ import {
   stateSelected,
   tagModalState,
 } from "../../Atoms";
+import { GlobalMarkdownValue } from "../../Atoms/AtomContainer";
 
 const WriteTextForm: React.FC = () => {
   const [markdownSource, setMarkdownSource] = useRemark();
@@ -36,6 +37,8 @@ const WriteTextForm: React.FC = () => {
   const [fieldSelect, setFieldSelect] = useRecoilState(fieldSelected);
   const [languageSelect, setLanguageSelect] = useRecoilState(languageSelected);
   const [modalState, setModalState] = useRecoilState(tagModalState);
+  const [globalMarkdownValue, setGlobalMarkdownValue] =
+    useRecoilState<any>(GlobalMarkdownValue);
   const FieldArr: any = fieldSelect.map((item, idx) => {
     return item.value;
   });
@@ -139,6 +142,7 @@ const WriteTextForm: React.FC = () => {
         imageValue,
       ).then(() => {
         alert("등록되었어요.");
+        setGlobalMarkdownValue(markdownSource);
         setFieldSelect([{ name: "전체", value: "ALL" }]);
         setLanguageSelect([]);
         setPurposeSelect({ name: "선택", value: "choice" });
