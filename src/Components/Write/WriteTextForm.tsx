@@ -5,7 +5,7 @@ import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiImageAdd } from "react-icons/bi";
 import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
 import { useRemark } from "react-remark";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { useBeforeunload } from "react-beforeunload";
 import Input from "../Input/Input";
 import { useNavigate } from "react-router-dom";
@@ -49,9 +49,9 @@ const WriteTextForm: React.FC = () => {
     await axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
       setImageValue(res.data);
       innerRef.current.focus();
-      innerRef.current.value += `\n ![](${res.data})\n`;
+      innerRef.current.value += `\n![](${res.data})\n`;
       setMarkdownValue(markdownValue + `\n![](${res.data})`);
-      setMarkdownSource(markdownValue + `![](${res.data})`);
+      setMarkdownSource(markdownValue + `\n![](${res.data})`);
     });
   };
 
@@ -67,21 +67,21 @@ const WriteTextForm: React.FC = () => {
     switch (markdown) {
       case "heading":
         innerRef.current.focus();
-        innerRef.current.value += "# ";
-        setMarkdownValue(markdownValue + "# ");
-        setMarkdownSource(markdownValue + "# ");
+        innerRef.current.value += "\n# ";
+        setMarkdownValue(markdownValue + "\n# ");
+        setMarkdownSource(markdownValue + "\n# ");
         break;
       case "bold":
         innerRef.current.focus();
-        innerRef.current.value += "** ** ";
-        setMarkdownValue(markdownValue + "** ** ");
-        setMarkdownSource(markdownValue + "** ** ");
+        innerRef.current.value += "\n** ** ";
+        setMarkdownValue(markdownValue + "\n** ** ");
+        setMarkdownSource(markdownValue + "\n** ** ");
         break;
       case "italic":
         innerRef.current.focus();
-        innerRef.current.value += "*** *** ";
-        setMarkdownValue(markdownValue + "*** *** ");
-        setMarkdownSource(markdownValue + "*** *** ");
+        innerRef.current.value += "\n*** *** ";
+        setMarkdownValue(markdownValue + "\n*** *** ");
+        setMarkdownSource(markdownValue + "\n*** *** ");
         break;
       case "list":
         innerRef.current.focus();
@@ -91,9 +91,9 @@ const WriteTextForm: React.FC = () => {
         break;
       case "numberlist":
         innerRef.current.focus();
-        innerRef.current.value += "1. ";
-        setMarkdownValue(markdownValue + "1. ");
-        setMarkdownSource(markdownValue + "1. ");
+        innerRef.current.value += "\n1. ";
+        setMarkdownValue(markdownValue + "\n1. ");
+        setMarkdownSource(markdownValue + "\n1. ");
         break;
       default:
         break;
