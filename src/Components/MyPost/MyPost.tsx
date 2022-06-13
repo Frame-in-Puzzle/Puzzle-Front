@@ -27,7 +27,6 @@ const MyPost = () => {
     `/profile/${sub}/board/?page=0`,
     apiClient.get,
   );
-  console.log(data?.data.content);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <div>loading...</div>;
