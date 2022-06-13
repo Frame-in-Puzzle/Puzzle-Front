@@ -84,11 +84,14 @@ export const PreviewWrapper = css`
 `;
 
 export const PreviewArea = css`
-  float: left;
+  width: 100%;
   resize: none;
   font-size: ${theme.fonts.h4};
-  padding: 40px;
+  padding: 20px;
 
+  li {
+    margin-left: 22px;
+  }
   &:focus {
     outline: none;
   }

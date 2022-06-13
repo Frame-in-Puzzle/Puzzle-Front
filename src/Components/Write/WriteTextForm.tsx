@@ -85,21 +85,15 @@ const WriteTextForm: React.FC = () => {
         break;
       case "list":
         innerRef.current.focus();
-        innerRef.current.value += "- ";
-        setMarkdownValue(markdownValue + "- ");
-        setMarkdownSource(markdownValue + "- ");
+        innerRef.current.value += `\n- `;
+        setMarkdownValue(markdownValue + `\n- `);
+        setMarkdownSource(markdownValue + `\n- `);
         break;
       case "numberlist":
         innerRef.current.focus();
         innerRef.current.value += "1. ";
         setMarkdownValue(markdownValue + "1. ");
         setMarkdownSource(markdownValue + "1. ");
-        break;
-      case "code":
-        innerRef.current.focus();
-        innerRef.current.value += "` ` ";
-        setMarkdownValue(markdownValue + "` ` ");
-        setMarkdownSource(markdownValue + "` ` ");
         break;
       default:
         break;
