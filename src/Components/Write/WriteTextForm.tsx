@@ -26,7 +26,7 @@ const WriteTextForm: React.FC = () => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
   const [title, setTitle] = useState("");
-  const [imageValue, setImageValue] = useState([""]);
+  const [imageValue, setImageValue] = useState<string[]>([]);
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const navigate = useNavigate();
   const imageRef = useRef<HTMLInputElement>(null);
@@ -47,7 +47,7 @@ const WriteTextForm: React.FC = () => {
     const formData = new FormData();
     formData.append("files", e.target.files[0]);
     await axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
-      setImageValue(res.data);
+      setImageValue([...imageValue, res.data]);
       innerRef.current.focus();
       innerRef.current.value += `\n![](${res.data})\n`;
       setMarkdownValue(markdownValue + `\n![](${res.data})`);
