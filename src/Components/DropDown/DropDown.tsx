@@ -23,6 +23,7 @@ interface DropDownProps {
   width: string | number;
   children: React.ReactNode;
   selected: selected;
+  onClick?: () => void;
 }
 
 const DropDown: React.FC<DropDownProps> = ({
@@ -30,12 +31,13 @@ const DropDown: React.FC<DropDownProps> = ({
   theme,
   children,
   selected,
+  onClick,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
 
   return (
-    <div css={[{ width }]}>
+    <div css={[{ width }]} onClick={onClick}>
       <div css={S.DropDownStyle} onClick={toggling}>
         {selected.name}
         <DownArrow />
