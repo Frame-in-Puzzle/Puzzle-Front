@@ -9,8 +9,6 @@ import Profilepage from "./Pages/Profilepage/Profilepage";
 import PromotionPage from "./Pages/PromotionPage/PromotionPage";
 import WritePage from "./Pages/WritePage/WritePage";
 import { DetailPage, SignUpPage, CallbackPage } from "./Pages";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
 import { ToastContainer, toast, Slide } from "react-toastify";
 import { injectStyle } from "react-toastify/dist/inject-style";
 
