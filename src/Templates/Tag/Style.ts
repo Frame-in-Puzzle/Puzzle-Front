@@ -6,6 +6,8 @@ export const Positioner = css`
   box-shadow: 0px 0px 13px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   margin-bottom: 3rem;
+  padding: 0.25rem;
+  cursor: pointer;
 `;
 
 export const Purpose = css`

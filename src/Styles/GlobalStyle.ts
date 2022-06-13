@@ -2,8 +2,11 @@ import { css } from "@emotion/react";
 
 const GlobalStyle = css`
   @font-face {
-    font-family: "Poppins";
-    src: url("../Fonts/Poppins-Black.ttf");
+    font-family: "Noto Sans CJK KR";
+    font-style: normal;
+    src: url("../Fonts/NotoSansKR-Regular.woff2") format("woff2"),
+      url("../Fonts/NotoSansKR-Regular.woff") format("woff"),
+      url("../Fonts/NotoSansKR-Regular.otf") format("truetype");
   }
 
   * {
@@ -11,12 +14,13 @@ const GlobalStyle = css`
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    font-family: "Noto Sans CJK KR";
+    font-style: normal;
   }
 
   body {
     width: 100%;
     height: 100vh;
-    font-family: "Poppins";
   }
 `;
 
