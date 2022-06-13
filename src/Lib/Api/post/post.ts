@@ -18,7 +18,7 @@ export const postBoard = async (
   purpose: string,
   status: string,
   title: string,
-  fileUrlList?: any,
+  fileUrlList?: string[],
 ) => {
   const { data } = await apiClient.post("/board", {
     contents: contents,
@@ -29,20 +29,6 @@ export const postBoard = async (
     status: status,
     title: title,
   });
-  return { data };
-};
-
-export const s3ImageUpload = async (files: any) => {
-  const { data } = await apiClient.post(
-    "/board/create-url",
-    { files: files },
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    },
-  );
-
   return { data };
 };
 
