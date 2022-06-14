@@ -23,14 +23,14 @@ export const Container = css`
 
 export const Title = css`
   width: 100%;
-  height: 13%;
+  height: 10%;
   font-weight: bold;
   font-style: italic;
   font-size: ${theme.fonts.h4};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal;
+  white-space: nowrap;
   line-height: 1.2;
 `;
 
