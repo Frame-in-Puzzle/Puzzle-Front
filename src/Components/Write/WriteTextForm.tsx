@@ -21,12 +21,16 @@ import {
   stateSelected,
   tagModalState,
 } from "../../Atoms";
+import PreviewModal from "./Modal/PreviewModal";
+import { isPreviewModal } from "../../Atoms/AtomContainer";
 
 const WriteTextForm: React.FC = () => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
   const [title, setTitle] = useState("");
   const [imageValue, setImageValue] = useState<string[]>([]);
+  const [previewModalState, setPreviewModalState] =
+    useRecoilState(isPreviewModal);
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const navigate = useNavigate();
   const imageRef = useRef<HTMLInputElement>(null);
@@ -208,107 +212,112 @@ const WriteTextForm: React.FC = () => {
   ];
 
   return (
-    <div css={S.Positioner}>
-      <Input
-        type="text"
-        theme="WritePageInput"
-        fontSize="h1"
-        placeholder="프로젝트 이름을 입력하세요"
-        fontWeight="600"
-        width="100%"
-        onChange={(currentTarget) => {
-          setTitle(currentTarget.target.value);
-        }}
-        value={title}
-      />
-      <div css={S.CheckProjectContainer}>
-        <p>프로젝트 : </p>
-        <TagSelector
-          onSubmit={() => {
-            onModalSubmit();
+    <>
+      <div css={S.Positioner}>
+        <Input
+          type="text"
+          theme="WritePageInput"
+          fontSize="h1"
+          placeholder="프로젝트 이름을 입력하세요"
+          fontWeight="600"
+          width="100%"
+          onChange={(currentTarget) => {
+            setTitle(currentTarget.target.value);
           }}
+          value={title}
         />
-      </div>
-      <div css={S.ContentsContainer}>
-        <nav css={S.NavigationBar}>
-          <div css={S.NavButtonWrapper}>
-            <Button
-              children="Write"
-              theme={
-                preview === false
-                  ? "BlackButtonWithWhiteText"
-                  : "WhiteButtonWithBlackText"
-              }
-              isShadow="Yes"
-              size="Small"
-              fontSize="h6"
-              fontWeight="600"
-              onClick={() => setPreview(false)}
-            />
-            <Button
-              children="Preview"
-              theme={
-                preview === false
-                  ? "WhiteButtonWithBlackText"
-                  : "BlackButtonWithWhiteText"
-              }
-              isShadow="Yes"
-              size="Small"
-              fontSize="h6"
-              fontWeight="600"
-              onClick={() => setPreview(true)}
-            />
-          </div>
-          <div css={S.MarkdownWrapper}>
-            {MarkdownImg.map((item) => (
-              <div>
-                <div onClick={() => item.id}>{item.icon}</div>
-              </div>
-            ))}
-          </div>
-        </nav>
-        <hr css={S.Line} />
-        {preview === false ? (
-          <div onSubmit={handleSubmit}>
-            <textarea
-              css={S.TextArea}
-              onChange={({ currentTarget }) => {
-                setMarkdownSource(currentTarget.value);
-                setMarkdownValue(currentTarget.value);
-              }}
-              value={markdownValue}
-              ref={innerRef}
-            />
-          </div>
-        ) : (
-          <div css={S.PreviewWrapper}>
-            <div css={S.PreviewArea} className="preview">
-              {markdownSource}
-            </div>
-          </div>
-        )}
-        <div css={S.ButtonWrapper}>
-          <Button
-            theme="GrayButtonWithBlackTextNoHover"
-            children="취소"
-            size="Regular"
-            fontSize="h5"
-            fontWeight="400"
-            isShadow="No"
-            onClick={() => navigate("/main")}
-          />
-          <Button
-            theme="BlackButtonWithWithTextNoHover"
-            children="글 등록"
-            size="Regular"
-            fontSize="h5"
-            fontWeight="600"
-            isShadow="No"
-            onClick={handlePost}
+        <div css={S.CheckProjectContainer}>
+          <p>프로젝트 : </p>
+          <TagSelector
+            onSubmit={() => {
+              onModalSubmit();
+            }}
           />
         </div>
+        <div css={S.ContentsContainer}>
+          <nav css={S.NavigationBar}>
+            <div css={S.NavButtonWrapper}>
+              <Button
+                children="Write"
+                theme={
+                  preview === false
+                    ? "BlackButtonWithWhiteText"
+                    : "WhiteButtonWithBlackText"
+                }
+                isShadow="Yes"
+                size="Small"
+                fontSize="h6"
+                fontWeight="600"
+                onClick={() => setPreview(false)}
+              />
+              <Button
+                children="Preview"
+                theme={
+                  preview === false
+                    ? "WhiteButtonWithBlackText"
+                    : "BlackButtonWithWhiteText"
+                }
+                isShadow="Yes"
+                size="Small"
+                fontSize="h6"
+                fontWeight="600"
+                onClick={() => setPreview(true)}
+              />
+            </div>
+            <div css={S.MarkdownWrapper}>
+              {MarkdownImg.map((item) => (
+                <div>
+                  <div onClick={() => item.id}>{item.icon}</div>
+                </div>
+              ))}
+            </div>
+          </nav>
+          <hr css={S.Line} />
+          {preview === false ? (
+            <div onSubmit={handleSubmit}>
+              <textarea
+                css={S.TextArea}
+                onChange={({ currentTarget }) => {
+                  setMarkdownSource(currentTarget.value);
+                  setMarkdownValue(currentTarget.value);
+                }}
+                value={markdownValue}
+                ref={innerRef}
+              />
+            </div>
+          ) : (
+            <div css={S.PreviewWrapper}>
+              <div css={S.PreviewArea} className="preview">
+                {markdownSource}
+              </div>
+            </div>
+          )}
+          <div css={S.ButtonWrapper}>
+            <Button
+              theme="GrayButtonWithBlackTextNoHover"
+              children="취소"
+              size="Regular"
+              fontSize="h5"
+              fontWeight="400"
+              isShadow="No"
+              onClick={() => navigate("/main")}
+            />
+            <Button
+              theme="BlackButtonWithWithTextNoHover"
+              children="글 등록"
+              size="Regular"
+              fontSize="h5"
+              fontWeight="600"
+              isShadow="No"
+              onClick={() => {
+                setPreviewModalState(true);
+              }}
+            />
+          </div>
+        </div>
       </div>
-    </div>
+      {previewModalState && <PreviewModal onSubmit={handlePost} />}
+    </>
   );
 };
 

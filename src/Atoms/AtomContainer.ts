@@ -18,6 +18,11 @@ export const isPreview = atom<boolean>({
   default: false,
 });
 
+export const isPreviewModal = atom<boolean>({
+  key: "isPreviewModal",
+  default: false,
+});
+
 export const tagModalState = atom<boolean>({
   key: "tagModalState",
   default: false,
