@@ -18,11 +18,6 @@ export const isPreview = atom<boolean>({
   default: false,
 });
 
-export const GlobalMarkdownValue = atom<string>({
-  key: "GlobalMarkdownValue",
-  default: "",
-});
-
 export const tagModalState = atom<boolean>({
   key: "tagModalState",
   default: false,
