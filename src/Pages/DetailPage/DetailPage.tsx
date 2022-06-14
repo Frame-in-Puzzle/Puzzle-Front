@@ -17,8 +17,6 @@ import HeaderItem from "../../Components/Common/HeaderItem/HeaderItem";
 import { useLogin } from "../../Hooks/useLogin";
 import HeaderNotLoginItem from "../../Components/Common/HeaderNotLoginItem/HeaderNotLoginItem";
 import Sign from "../../Components/SigInModal/SiginModal";
-import { useRecoilState } from "recoil";
-import { GlobalMarkdownValue } from "../../Atoms/AtomContainer";
 
 interface BoardProps {
   data: {
@@ -47,9 +45,6 @@ const DetailPage = () => {
 
   const [modalState, setModalState] = useState(false);
 
-  const [globalMarkdownValue, setGlobalMarkdownValue] =
-    useRecoilState<any>(GlobalMarkdownValue);
-
   const closeModal = (e: Event) => {
     e.preventDefault();
     setModalState(false);
@@ -76,7 +71,7 @@ const DetailPage = () => {
           tag: board.data.fields,
         }}
       />
-      <DetailContent contents={globalMarkdownValue} />
+      <DetailContent contents={board.data.contents} />
       <DetailWriter name={board.data.name} githubId={board.data.githubId} />
       <DetailApply board_idx={board.data.id} writer={board.data.githubId} />
     </>
