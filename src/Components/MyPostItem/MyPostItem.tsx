@@ -13,20 +13,20 @@ type MyPostProps = {
   boardId: number;
   title: string;
   thumbnail: any;
-  contents: string;
   fields: string[];
   date: string;
   status: string;
+  introduce: string;
 };
 
 const MyPostItem: React.FC<MyPostProps> = ({
   boardId,
   title,
   thumbnail,
-  contents,
   fields,
   date,
   status,
+  introduce,
 }) => {
   const deletepost = async () => {
     await deletePost(boardId);
@@ -53,11 +53,11 @@ const MyPostItem: React.FC<MyPostProps> = ({
           navigate(`/detail/${boardId}`);
         }}
       >
-        <div css={S.Image}>{thumbnail}</div>
+        <img css={S.Image} src={thumbnail} />
 
         <div css={S.rightbox}>
           <span css={S.Title}>{title}</span>
-          <p css={S.content}>{contents}</p>
+          <p css={S.content}>{introduce}</p>
           <div>
             {fields.map((fields, idx) => (
               <TagItem theme="WhiteTag" key={idx}>

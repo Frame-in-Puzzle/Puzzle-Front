@@ -33,6 +33,7 @@ export const Image = css`
   margin-left: 2%;
   margin-right: 4%;
   margin-top: 2%;
+  border-radius: 12px;
 `;
 
 export const Icon = css`
