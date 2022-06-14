@@ -7,4 +7,8 @@ export const Positioner = css`
     width: 100%;
     padding: 0 1rem;
   }
+
+  li {
+    margin-left: 15px;
+  }
 `;
