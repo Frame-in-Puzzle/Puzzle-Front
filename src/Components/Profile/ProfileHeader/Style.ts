@@ -32,9 +32,9 @@ export const ImageWrapper = css`
   img {
     width: 250px;
     height: 250px;
-    border-radius: 250px;
-    border: 3px solid #ffffff;
     box-sizing: border-box;
+    border-radius: 50%;
+    border: solid #e5e5e5 4px;
   }
 `;
 
