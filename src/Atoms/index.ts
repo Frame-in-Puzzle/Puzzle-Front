@@ -8,7 +8,8 @@ import {
   tagModalState,
   isPaging,
   isLoading,
-  isPreviewModal,
+  isIntroduce,
+  postTitle,
 } from "./AtomContainer";
 
 export {
@@ -21,5 +22,6 @@ export {
   tagModalState,
   isPaging,
   isLoading,
-  isPreviewModal,
+  isIntroduce,
+  postTitle,
 };

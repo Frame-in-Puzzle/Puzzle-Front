@@ -14,6 +14,7 @@ type mypost = {
   fields: string[];
   date: string;
   status: string;
+  introduce: string;
 };
 
 interface MyPostProps {
@@ -38,14 +39,14 @@ const MyPost = () => {
       </div>
       {data.data.content.map(
         (
-          { boardId, title, thumbnail, contents, fields, date, status },
+          { boardId, title, thumbnail, introduce, fields, date, status },
           idx,
         ) => (
           <MyPostItem
             boardId={boardId}
             title={title}
             thumbnail={thumbnail === null ? <I.MyPostDefaultImg /> : thumbnail}
-            contents={contents}
+            introduce={introduce}
             fields={fields}
             date={date}
             status={status === "RECRUITMENT" ? "모집중" : "모집완료"}

@@ -13,13 +13,23 @@ export const isSelected = atom<string>({
   default: "선택",
 });
 
+export const postTitle = atom<string>({
+  key: "postTitle",
+  default: "",
+});
+
+export const previewModalValue = atom<string>({
+  key: "previewModalValue",
+  default: "",
+});
+
 export const isPreview = atom<boolean>({
   key: "isPreviewed",
   default: false,
 });
 
-export const isPreviewModal = atom<boolean>({
-  key: "isPreviewModal",
+export const isIntroduce = atom<boolean>({
+  key: "isIntroduce",
   default: false,
 });
 

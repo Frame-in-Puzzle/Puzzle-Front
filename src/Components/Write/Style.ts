@@ -84,8 +84,8 @@ export const PreviewWrapper = css`
 `;
 
 export const PreviewArea = css`
+  overflow-y: scroll;
   white-space: pre;
-  overflow: auto;
   width: 100%;
   resize: none;
   font-size: ${theme.fonts.h4};
@@ -93,6 +93,10 @@ export const PreviewArea = css`
 
   li {
     margin-left: 23px;
+  }
+
+  img {
+    width: 100%;
   }
 
   &:focus {

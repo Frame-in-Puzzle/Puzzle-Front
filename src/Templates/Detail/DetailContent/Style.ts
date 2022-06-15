@@ -11,4 +11,8 @@ export const Positioner = css`
   li {
     margin-left: 15px;
   }
+
+  img {
+    width: 1200px;
+  }
 `;

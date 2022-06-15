@@ -88,19 +88,24 @@ export const ContentsContainer = css`
   height: 100%;
 `;
 
+export const MainTitle = css`
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 2.5;
+`;
+
 export const TextArea = css`
   width: 100%;
   height: 70%;
   resize: none;
   background-color: #f5f5f5;
   border-radius: 10px;
+  padding: 0.75rem 1rem;
   ::placeholder {
     color: #929292;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
-    line-height: 30px;
-    padding: 2%;
   }
 `;
 

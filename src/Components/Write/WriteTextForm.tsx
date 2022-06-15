@@ -1,11 +1,11 @@
 /** @jsxImportSource @emotion/react */
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Button from "../Button/Button";
 import * as S from "./Style";
 import { BiHeading, BiBold, BiItalic, BiImageAdd } from "react-icons/bi";
 import { AiOutlineUnorderedList, AiOutlineOrderedList } from "react-icons/ai";
 import { useRemark } from "react-remark";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useBeforeunload } from "react-beforeunload";
 import Input from "../Input/Input";
 import { useNavigate } from "react-router-dom";
@@ -22,15 +22,18 @@ import {
   tagModalState,
 } from "../../Atoms";
 import PreviewModal from "./Modal/PreviewModal";
-import { isPreviewModal } from "../../Atoms/AtomContainer";
+import {
+  isIntroduce,
+  postTitle,
+  previewModalValue,
+} from "../../Atoms/AtomContainer";
 
 const WriteTextForm: React.FC = () => {
   const [markdownSource, setMarkdownSource] = useRemark();
   const [markdownValue, setMarkdownValue] = useState("");
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useRecoilState(postTitle);
   const [imageValue, setImageValue] = useState<string[]>([]);
-  const [previewModalState, setPreviewModalState] =
-    useRecoilState(isPreviewModal);
+  const [previewModalState, setPreviewModalState] = useRecoilState(isIntroduce);
   const [preview, setPreview] = useRecoilState<boolean>(isPreview);
   const navigate = useNavigate();
   const imageRef = useRef<HTMLInputElement>(null);
@@ -40,12 +43,25 @@ const WriteTextForm: React.FC = () => {
   const [fieldSelect, setFieldSelect] = useRecoilState(fieldSelected);
   const [languageSelect, setLanguageSelect] = useRecoilState(languageSelected);
   const [modalState, setModalState] = useRecoilState(tagModalState);
-  const FieldArr: any = fieldSelect.map((item, idx) => {
+  const [introduce, setIntroduce] = useRecoilState(previewModalValue);
+  const setPreviewModal = useSetRecoilState(isIntroduce);
+  const FieldArr: any = fieldSelect.map((item) => {
     return item.value;
   });
-  const LanguageArr: any = languageSelect.map((item, idx) => {
+  const LanguageArr: any = languageSelect.map((item) => {
     return item.value;
   });
+
+  useEffect(() => {
+    setFieldSelect([{ name: "전체", value: "ALL" }]);
+    setLanguageSelect([]);
+    setPurposeSelect({ name: "선택", value: "choice" });
+    setStateSelect({ name: "선택", value: "choice" });
+    setIntroduce("");
+    setTitle("");
+    setIntroduce("");
+    setPreviewModal(false);
+  }, []);
 
   const onLoadFile = async (e: any) => {
     const formData = new FormData();
@@ -132,10 +148,13 @@ const WriteTextForm: React.FC = () => {
       alert("목적을 선택해주세요.");
     } else if (stateSelect.name === "선택") {
       alert("상태를 선택해주세요.");
+    } else if (introduce === "") {
+      alert("소개 글을 작성해주세요.");
     } else {
       postBoard(
         markdownValue,
         FieldArr,
+        introduce,
         LanguageArr,
         purposeSelect.value,
         stateSelect.value,
@@ -147,6 +166,10 @@ const WriteTextForm: React.FC = () => {
         setLanguageSelect([]);
         setPurposeSelect({ name: "선택", value: "choice" });
         setStateSelect({ name: "선택", value: "choice" });
+        setIntroduce("");
+        setTitle("");
+        setIntroduce("");
+        setPreviewModal(false);
         navigate("/main");
       });
     }

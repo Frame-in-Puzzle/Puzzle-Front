@@ -14,6 +14,7 @@ export const getPost = async (page?: number) => {
 export const postBoard = async (
   contents: string,
   fieldList: string[] | string,
+  introduce: string,
   languageList: string[] | string,
   purpose: string,
   status: string,
@@ -24,6 +25,7 @@ export const postBoard = async (
     contents: contents,
     fieldList: fieldList,
     fileUrlList: fileUrlList,
+    introduce: introduce,
     languageList: languageList,
     purpose: purpose,
     status: status,
