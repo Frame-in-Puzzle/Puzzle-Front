@@ -28,10 +28,12 @@ export const DropDown = css`
 
 export const Tag = css`
   margin-top: 1%;
+  padding-bottom: 5%;
 `;
 
 export const ButtonWrapper = css`
   margin-top: 100px;
+  padding-bottom: 100px;
   display: flex;
   width: 300px;
   justify-content: space-between;

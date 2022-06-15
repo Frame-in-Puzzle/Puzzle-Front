@@ -13,36 +13,24 @@ export const getPost = async (page?: number) => {
 
 export const postBoard = async (
   contents: string,
-  fieldList: string[],
-  languageList: string[],
+  fieldList: string[] | string,
+  introduce: string,
+  languageList: string[] | string,
   purpose: string,
   status: string,
   title: string,
-  fileUrlList: any,
+  fileUrlList?: string[],
 ) => {
   const { data } = await apiClient.post("/board", {
     contents: contents,
     fieldList: fieldList,
     fileUrlList: fileUrlList,
+    introduce: introduce,
     languageList: languageList,
     purpose: purpose,
     status: status,
     title: title,
   });
-  return { data };
-};
-
-export const s3ImageUpload = async (files: any) => {
-  const { data } = await apiClient.post(
-    "/board/create-url",
-    { files: files },
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    },
-  );
-
   return { data };
 };
 

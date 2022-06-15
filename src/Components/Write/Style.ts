@@ -54,8 +54,6 @@ export const MarkdownWrapper = css`
   gap: 20px;
 `;
 
-export const ToolbarBlock = css``;
-
 export const FileIconInput = css`
   display: none;
 `;
@@ -79,12 +77,27 @@ export const TextArea = css`
   }
 `;
 
-export const PreviewArea = css`
-  resize: none;
+export const PreviewWrapper = css`
   width: 100%;
   height: 1200px;
+  display: flex;
+`;
+
+export const PreviewArea = css`
+  overflow-y: scroll;
+  white-space: pre;
+  width: 100%;
+  resize: none;
   font-size: ${theme.fonts.h4};
   padding: 20px;
+
+  li {
+    margin-left: 23px;
+  }
+
+  img {
+    width: 100%;
+  }
 
   &:focus {
     outline: none;
