@@ -24,6 +24,8 @@ export const Image = css`
   width: 160px;
   height: 160px;
   border-radius: 50%;
+  cursor: pointer;
+
   @media (max-width: 1200px) {
     width: 80px;
     height: 80px;
@@ -44,6 +46,11 @@ export const RightWrapper = css`
 export const Name = css`
   font-weight: bold;
   font-size: ${theme.fonts.h4};
+  color: #333;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
   @media (max-width: 1200px) {
     font-size: ${theme.fonts.h5};
   }

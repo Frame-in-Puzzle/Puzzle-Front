@@ -1,15 +1,20 @@
 /** @jsxImportSource @emotion/react */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "../../../Components";
 import { useDecode } from "../../../Hooks/useDecode";
-import { postAttend, getAttendStatus } from "../../../Lib/Api/attend/attend";
-import { mutate } from "swr";
+import {
+  postAttend,
+  getAttendStatus,
+  deleteAttend,
+} from "../../../Lib/Api/attend/attend";
+import useSWR, { mutate } from "swr";
 import * as S from "./Style";
 import { SigninModal } from "../../../Components";
 import { toast } from "react-toastify";
-import { useLogin } from "../../..//Hooks/useLogin";
+import { apiClient } from "../../../Lib/Api/apiClient";
+import { useNavigate } from "react-router-dom";
 
 type DetailWriter = {
   name: string;
@@ -19,6 +24,9 @@ type DetailWriter = {
 type GithubType = {
   avatar_url: string;
   bio: string;
+};
+type StatusType = {
+  data: "CAN" | "CANT" | "CANT_CANCEL";
 };
 
 const GithubInfo = async (githubId: string | undefined) => {
@@ -30,13 +38,15 @@ const DetailWriter: React.FC<DetailWriter> = ({ name, githubId }) => {
   const { id } = useParams();
   const [user, setUser] = useState<GithubType>();
   const { sub } = useDecode();
-  const isLogin = useLogin();
   const [modalState, setModalState] = useState<boolean>(false);
-  const [attendStatus, setAttendStatus] = useState<string>("CAN");
+  const { data: attendStatus, error } = useSWR<StatusType>(
+    `/attend/status/board/${id}`,
+    apiClient.get,
+  );
+  const navigate = useNavigate();
 
   useEffect(() => {
     GithubInfo(githubId).then((res) => setUser(res.data));
-    getAttendStatus(id).then((res) => setAttendStatus(res?.data));
   }, []);
 
   const requestAttend = async () => {
@@ -46,30 +56,47 @@ const DetailWriter: React.FC<DetailWriter> = ({ name, githubId }) => {
     } else {
       await postAttend(id);
       await mutate(`/attend/board/${id}`);
+      await mutate(`/attend/status/board/${id}`);
     }
   };
 
-  const deleteAttend = async () => {};
+  const cancelAttend = async () => {
+    if (window.confirm("정말 취소하시겠어요?")) {
+      await deleteAttend(id);
+      await mutate(`/attend/board/${id}`);
+      await mutate(`/attend/status/board/${id}`);
+    }
+  };
 
   const closeModal = () => {
     setModalState(false);
   };
 
+  if (!attendStatus) return <div />;
   return (
     <>
       {modalState && <SigninModal closeModal={closeModal} />}
       <div css={S.Positioner}>
         <div css={S.RightContainer}>
-          <img src={user?.avatar_url} alt="작성자 이미지" css={S.Image} />
+          <img
+            src={user?.avatar_url}
+            alt="작성자 이미지"
+            css={S.Image}
+            onClick={() => {
+              navigate(`/profile/${githubId}`);
+            }}
+          />
           <div css={S.RightWrapper}>
-            <span css={S.Name}>{name}</span>
+            <Link to={`/profile/${githubId}`} css={S.Name}>
+              {name}
+            </Link>
             <span css={S.Description}>{user?.bio}</span>
           </div>
         </div>
         <div css={S.Line}></div>
         <div css={S.Button}>
           {sub !== githubId &&
-            (attendStatus === "CAN" ? (
+            (attendStatus.data === "CAN" ? (
               <Button
                 size="Regular"
                 fontSize="h5"
@@ -81,16 +108,18 @@ const DetailWriter: React.FC<DetailWriter> = ({ name, githubId }) => {
                 신청하기
               </Button>
             ) : (
-              <Button
-                size="Regular"
-                fontSize="h5"
-                isShadow="No"
-                theme="BlackButton"
-                fontWeight="400"
-                onClick={() => requestAttend()}
-              >
-                신청하기
-              </Button>
+              attendStatus.data === "CANT_CANCEL" && (
+                <Button
+                  size="Regular"
+                  fontSize="h5"
+                  isShadow="No"
+                  theme="BlackButton"
+                  fontWeight="400"
+                  onClick={() => cancelAttend()}
+                >
+                  신청취소
+                </Button>
+              )
             ))}
         </div>
       </div>
