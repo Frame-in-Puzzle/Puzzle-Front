@@ -43,7 +43,7 @@ const MyPost = () => {
           idx,
         ) => (
           <MyPostItem
-            boardId={boardId}
+            boardId={boardId.toString()}
             title={title}
             thumbnail={thumbnail === null ? <I.MyPostDefaultImg /> : thumbnail}
             introduce={introduce}

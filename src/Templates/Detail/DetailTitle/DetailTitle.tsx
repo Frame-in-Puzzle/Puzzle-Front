@@ -4,7 +4,10 @@ import * as S from "./Style";
 import * as I from "../../../Assets";
 import { DropDownList, TagItem } from "../../../Components";
 import { useDecode } from "../../../Hooks/useDecode";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { deletePost } from "../../../Lib/Api/post/post";
+import { toast } from "react-toastify";
+import { mutate } from "swr";
 
 type Title = {
   title: string;
@@ -18,8 +21,16 @@ interface TitleProps {
 }
 
 const DetailTitle: React.FC<TitleProps> = ({ TitleObj }) => {
+  const { id } = useParams();
   const { sub } = useDecode();
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const DeletePost = async () => {
+    await deletePost(id);
+    navigate("/main");
+  };
+
   return (
     <div css={S.Positioner}>
       <div css={S.TitleContainer}>
@@ -27,7 +38,13 @@ const DetailTitle: React.FC<TitleProps> = ({ TitleObj }) => {
         {sub === TitleObj.name && (
           <ul css={S.List}>
             <li>게시물 수정</li>
-            <li>게시물 삭제</li>
+            <li
+              onClick={() => {
+                DeletePost();
+              }}
+            >
+              게시물 삭제
+            </li>
           </ul>
         )}
       </div>

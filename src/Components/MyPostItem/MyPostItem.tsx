@@ -10,7 +10,7 @@ import { mutate } from "swr";
 import { useDecode } from "../../Hooks/useDecode";
 
 type MyPostProps = {
-  boardId: number;
+  boardId: string;
   title: string;
   thumbnail: any;
   fields: string[];
