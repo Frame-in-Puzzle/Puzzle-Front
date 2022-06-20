@@ -4,6 +4,7 @@ import * as S from "./Style";
 import * as I from "../../../Assets";
 import { DropDownList, TagItem } from "../../../Components";
 import { useDecode } from "../../../Hooks/useDecode";
+import { Link } from "react-router-dom";
 
 type Title = {
   title: string;
@@ -31,7 +32,9 @@ const DetailTitle: React.FC<TitleProps> = ({ TitleObj }) => {
         )}
       </div>
       <div>
-        <span css={S.Name}>{TitleObj.name}</span>
+        <Link to={`/profile/${TitleObj.name}`} css={S.Name}>
+          {TitleObj.name}
+        </Link>
         <span css={S.Separate}>·</span>
         <span css={S.Date}>
           {TitleObj.date.toString().substring(0, 10).replace(/[*-]/g, ".")}
