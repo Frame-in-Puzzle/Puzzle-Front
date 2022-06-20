@@ -1,6 +1,7 @@
 import { apiClient } from "../apiClient";
 import { selected } from "../../../Type/types";
 import { languageList } from "../../Data/List";
+import { toast } from "react-toastify";
 
 export const getPost = async (page?: number) => {
   try {
@@ -34,8 +35,13 @@ export const postBoard = async (
   return { data };
 };
 
-export const deletePost = async (boardId: number) => {
-  await apiClient.delete(`board/${boardId}`);
+export const deletePost = async (boardId: string | undefined) => {
+  try {
+    await apiClient.delete(`/board/${boardId}`);
+    toast.success("게시글이 삭제 되었어요");
+  } catch (e) {
+    toast.error("게시글 삭제에 실패했어요");
+  }
 };
 
 export const getTagPost = async (

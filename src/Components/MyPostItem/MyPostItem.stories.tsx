@@ -9,7 +9,7 @@ export default {
 } as ComponentMeta<typeof MyPostItem>;
 
 const MyPostObj = {
-  boardId: 1,
+  boardId: "1",
   title: "PUZZLE",
   thumbnail: "",
   introduce: "안녕 난 소개글이야",
