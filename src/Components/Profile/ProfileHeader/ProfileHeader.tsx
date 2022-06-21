@@ -83,6 +83,7 @@ const ProfileHeader = () => {
   const onSubmit = () => {
     toast.success("업데이트 완료");
     putUserProfile(name, email, bio, currentField.value, languageSelect);
+    navigate("/main");
   };
 
   const onWithdrawal = () => {
