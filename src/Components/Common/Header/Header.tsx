@@ -29,7 +29,6 @@ const Header: React.FC<HeaderProps> = ({ children, theme }) => {
       <div css={S.Positioner}>
         <I.PuzzleLogo onClick={() => navigate("/main")}></I.PuzzleLogo>
         <div css={[S.RightContainer[theme]]}>{children}</div>
-        <div></div>
       </div>
     </>
   );
