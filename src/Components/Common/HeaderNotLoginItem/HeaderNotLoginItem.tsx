@@ -1,12 +1,12 @@
 import React, { Dispatch, SetStateAction, useState } from "react";
+import { useSetRecoilState } from "recoil";
 import { Button } from "../..";
+import { modalState } from "../../../Atoms";
 import Sign from "../../../Components/SigInModal/SiginModal";
 
-interface ModalProps {
-  setModalState: Dispatch<SetStateAction<boolean>>;
-}
+const HeaderNotLoginItem: React.FC = () => {
+  const setHeaderModalState = useSetRecoilState(modalState);
 
-const HeaderNotLoginItem: React.FC<ModalProps> = ({ setModalState }) => {
   return (
     <>
       <Button
@@ -15,7 +15,7 @@ const HeaderNotLoginItem: React.FC<ModalProps> = ({ setModalState }) => {
         size="Medium"
         isShadow="No"
         fontWeight="400"
-        onClick={() => setModalState(true)}
+        onClick={() => setHeaderModalState(true)}
       >
         로그인
       </Button>

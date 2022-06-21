@@ -13,24 +13,11 @@ import Sign from "../../Components/SigInModal/SiginModal";
 
 const ProfileCheckPage = () => {
   const isLogin = useLogin();
-
-  const [modalState, setModalState] = useState(false);
-
-  const closeModal = (e: Event) => {
-    e.preventDefault();
-    setModalState(false);
-  };
   return (
     <>
       <Header theme="Login">
-        {isLogin ? (
-          <HeaderItem />
-        ) : (
-          <HeaderNotLoginItem setModalState={setModalState} />
-        )}
+        {isLogin ? <HeaderItem /> : <HeaderNotLoginItem />}
       </Header>
-      {modalState && <Sign closeModal={closeModal} />}
-
       <div css={S.Positioner}>
         <ProfileCheckHeader />
         <MyPost />

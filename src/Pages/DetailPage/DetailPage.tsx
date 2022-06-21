@@ -40,28 +40,15 @@ const DetailPage = () => {
     `/board/${params.id}`,
     apiClient.get,
   );
-
   const isLogin = useLogin();
-
-  const [modalState, setModalState] = useState(false);
-
-  const closeModal = (e: Event) => {
-    e.preventDefault();
-    setModalState(false);
-  };
 
   if (!board) return <div />;
   if (boardError) return <div />;
   return (
     <>
       <Header theme="Login">
-        {isLogin ? (
-          <HeaderItem />
-        ) : (
-          <HeaderNotLoginItem setModalState={setModalState} />
-        )}
+        {isLogin ? <HeaderItem /> : <HeaderNotLoginItem />}
       </Header>
-      {modalState && <Sign closeModal={closeModal} />}
 
       <DetailTitle
         TitleObj={{
