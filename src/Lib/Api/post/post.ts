@@ -2,6 +2,7 @@ import { apiClient } from "../apiClient";
 import { selected } from "../../../Type/types";
 import { languageList } from "../../Data/List";
 import { toast } from "react-toastify";
+import { ParsedQuery } from "query-string";
 
 export const getPost = async (page?: number) => {
   try {
@@ -10,6 +11,15 @@ export const getPost = async (page?: number) => {
   } catch (e: any) {
     alert(e);
   }
+};
+
+export const getDetailPost = async (
+  boardId: string | (string | null)[] | null,
+) => {
+  try {
+    const { data } = await apiClient.get(`/board/${boardId}`);
+    return { data };
+  } catch (e) {}
 };
 
 export const postBoard = async (
@@ -33,6 +43,33 @@ export const postBoard = async (
     title: title,
   });
   return { data };
+};
+
+export const putPost = async (
+  contents: string,
+  fieldList: string[],
+  fileUrlList: string[],
+  introduce: string,
+  languageList: string[],
+  purpose: string,
+  status: string,
+  title: string,
+  id: string | (string | null)[] | null,
+) => {
+  try {
+    const { data } = await apiClient.put(`/board/${id}`, {
+      contents: contents,
+      fieldList: fieldList,
+      fileUrlList: fileUrlList,
+      introduce: introduce,
+      languageList: languageList,
+      purpose: purpose,
+      status: status,
+      title: title,
+    });
+    toast.success("글이 수정되었어요.");
+    return { data };
+  } catch (e) {}
 };
 
 export const deletePost = async (boardId: string | undefined) => {

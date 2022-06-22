@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import TagSelector from "../../Templates/Tag/TagSelector";
 import axios from "axios";
 import { baseURL } from "../../Shared/config";
-import { postBoard } from "../../Lib/Api/post/post";
+import { getDetailPost, postBoard, putPost } from "../../Lib/Api/post/post";
 import {
   fieldSelected,
   isPreview,
@@ -27,6 +27,20 @@ import {
   postTitle,
   previewModalValue,
 } from "../../Atoms/AtomContainer";
+import queryString from "query-string";
+import { apiClient } from "../../Lib/Api/apiClient";
+import useSWR from "swr";
+import {
+  allLanguageList,
+  fieldList,
+  languageList,
+  purposeList,
+  stateList,
+} from "../../Lib/Data/List";
+
+type queryType = {
+  id: string;
+};
 
 const WriteTextForm: React.FC = () => {
   const [markdownSource, setMarkdownSource] = useRemark();
@@ -51,17 +65,49 @@ const WriteTextForm: React.FC = () => {
   const LanguageArr: any = languageSelect.map((item) => {
     return item.value;
   });
+  const query = queryString.parse(window.location.search);
 
   useEffect(() => {
-    setFieldSelect([{ name: "전체", value: "ALL" }]);
-    setLanguageSelect([]);
-    setPurposeSelect({ name: "선택", value: "choice" });
-    setStateSelect({ name: "선택", value: "choice" });
-    setIntroduce("");
-    setTitle("");
-    setIntroduce("");
-    setPreviewModal(false);
+    if (Object.keys(query).length !== 0) {
+      getDetailPost(query.id).then((res) => {
+        setTitle(res?.data.title);
+        setMarkdownSource(res?.data.contents);
+        setMarkdownValue(res?.data.contents);
+        setIntroduce(res?.data.introduce);
+        setPurposeSelect(
+          purposeList.find((currVal) => currVal.value === res?.data.purpose)!,
+        );
+        setStateSelect(
+          stateList.find((currVal) => currVal.value === res?.data.status)!,
+        );
+        setImageValue(res?.data.files);
+        setLanguageSelect(modifyLanguage(res?.data.languages));
+        setFieldSelect(modifyField(res?.data.fields));
+      });
+    } else {
+      setFieldSelect([{ name: "전체", value: "ALL" }]);
+      setLanguageSelect([]);
+      setPurposeSelect({ name: "선택", value: "choice" });
+      setStateSelect({ name: "선택", value: "choice" });
+      setIntroduce("");
+      setTitle("");
+      setIntroduce("");
+      setPreviewModal(false);
+    }
   }, []);
+
+  const modifyField = (select: string[]) => {
+    return select.map(
+      (item, index) => fieldList.find((currVal) => currVal.value === item)!,
+    );
+  };
+
+  const modifyLanguage = (select: string[]) => {
+    return select.map(
+      (item, index) =>
+        allLanguageList.find((currVal) => currVal.value === item)!,
+    );
+  };
 
   const onLoadFile = async (e: any) => {
     const formData = new FormData();
@@ -150,7 +196,7 @@ const WriteTextForm: React.FC = () => {
       alert("상태를 선택해주세요.");
     } else if (introduce === "") {
       alert("소개 글을 작성해주세요.");
-    } else {
+    } else if (Object.keys(query).length === 0) {
       postBoard(
         markdownValue,
         FieldArr,
@@ -162,6 +208,32 @@ const WriteTextForm: React.FC = () => {
         imageValue,
       ).then(() => {
         alert("등록되었어요.");
+        setFieldSelect([{ name: "전체", value: "ALL" }]);
+        setLanguageSelect([]);
+        setPurposeSelect({ name: "선택", value: "choice" });
+        setStateSelect({ name: "선택", value: "choice" });
+        setIntroduce("");
+        setTitle("");
+        setIntroduce("");
+        setPreviewModal(false);
+        navigate("/main");
+      });
+    } else {
+      putPost(
+        markdownValue,
+        fieldSelect.map((item) => {
+          return item.value;
+        }),
+        imageValue,
+        introduce,
+        languageSelect.map((item) => {
+          return item.value;
+        }),
+        purposeSelect.value,
+        stateSelect.value,
+        title,
+        query.id,
+      ).then(() => {
         setFieldSelect([{ name: "전체", value: "ALL" }]);
         setLanguageSelect([]);
         setPurposeSelect({ name: "선택", value: "choice" });
