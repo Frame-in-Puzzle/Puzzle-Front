@@ -9,6 +9,9 @@ import * as S from "./style";
 import { useNavigate } from "react-router-dom";
 import useSWR from "swr";
 import { apiClient } from "../../../Lib/Api/apiClient";
+import HeaderNotLoginItem from "../HeaderNotLoginItem/HeaderNotLoginItem";
+import { modalState } from "../../../Atoms";
+import { useSetRecoilState } from "recoil";
 interface UserInfo {
   data: {
     imageUrl: string;
@@ -20,6 +23,7 @@ const HeaderItem = () => {
   const navigate = useNavigate();
 
   const [dropState, setDropState] = useState(false);
+  const setHeaderModalState = useSetRecoilState(modalState);
 
   const logout = () => {
     logoutUser();
@@ -33,7 +37,9 @@ const HeaderItem = () => {
   };
   const { data, error } = useSWR<UserInfo>(`/profile/${sub}`, apiClient.get);
 
+  if (!data) return <HeaderNotLoginItem />;
   if (!data) return <div />;
+
   return (
     <>
       <div css={S.ImgWrapper}>

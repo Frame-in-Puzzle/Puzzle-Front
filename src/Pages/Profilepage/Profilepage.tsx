@@ -13,24 +13,11 @@ import { useLogin } from "../../Hooks/useLogin";
 const Profilepage = () => {
   const isLogin = useLogin();
 
-  const [modalState, setModalState] = useState(false);
-
-  const closeModal = (e: Event) => {
-    e.preventDefault();
-    setModalState(false);
-  };
-
   return (
     <div css={S.Positioner}>
       <Header theme="Login">
-        {isLogin ? (
-          <HeaderItem />
-        ) : (
-          <HeaderNotLoginItem setModalState={setModalState} />
-        )}
+        {isLogin ? <HeaderItem /> : <HeaderNotLoginItem />}
       </Header>
-      {modalState && <Sign closeModal={closeModal} />}
-
       <ProfileSetting />
     </div>
   );

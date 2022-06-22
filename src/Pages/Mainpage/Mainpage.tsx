@@ -21,11 +21,7 @@ const Mainpage = () => {
   return (
     <>
       <Header theme="Login">
-        {isLogin ? (
-          <HeaderItem />
-        ) : (
-          <HeaderNotLoginItem setModalState={setModalState} />
-        )}
+        {isLogin ? <HeaderItem /> : <HeaderNotLoginItem />}
       </Header>
       {modalState && <Sign closeModal={closeModal} />}
 

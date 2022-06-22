@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FiX } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import useSWR from "swr";
+import { withdrawalUser } from "../../../Lib/Api/member/member";
 import { Button, DropDown, Input, TagItem } from "../..";
 import { useDecode } from "../../../Hooks/useDecode";
 import { getUser, putUserInformation } from "../../../Lib/Api/member/member";
@@ -69,6 +69,9 @@ const SignUpForm: React.FC = () => {
   }, []);
 
   const onCancel = () => {
+    withdrawalUser();
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     navigate("/");
   };
 
@@ -85,7 +88,7 @@ const SignUpForm: React.FC = () => {
       alert("한 줄 소개 을 입력해주세요..");
       return;
     }
-    if (fieldSelect.length === 0) {
+    if (fieldSelect === "선택") {
       alert("분야를 선택해주세요..");
       return;
     }

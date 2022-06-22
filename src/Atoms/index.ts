@@ -10,6 +10,7 @@ import {
   isLoading,
   isIntroduce,
   postTitle,
+  modalState,
 } from "./AtomContainer";
 
 export {
@@ -24,4 +25,5 @@ export {
   isLoading,
   isIntroduce,
   postTitle,
+  modalState,
 };
