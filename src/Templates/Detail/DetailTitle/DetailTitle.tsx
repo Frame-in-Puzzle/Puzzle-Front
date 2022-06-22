@@ -37,7 +37,13 @@ const DetailTitle: React.FC<TitleProps> = ({ TitleObj }) => {
         <h1 css={S.Title}>{TitleObj.title}</h1>
         {sub === TitleObj.name && (
           <ul css={S.List}>
-            <li>게시물 수정</li>
+            <li
+              onClick={() => {
+                navigate(`/write?id=${id}`);
+              }}
+            >
+              게시물 수정
+            </li>
             <li
               onClick={() => {
                 DeletePost();

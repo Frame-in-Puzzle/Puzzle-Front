@@ -51,3 +51,25 @@ export const languageList = {
     { name: "Unreal Engine", value: "UNREALENGINE" },
   ],
 };
+
+export const allLanguageList = [
+  { name: "Javascript", value: "JS" },
+  { name: "Typescript", value: "TS" },
+  { name: "React", value: "REACT" },
+  { name: "Vue", value: "VUE" },
+  { name: "Next", value: "NEXT" },
+  { name: "Java", value: "JAVA" },
+  { name: "Spring", value: "SPRING" },
+  { name: "Spring Boot", value: "SPRINGBOOT" },
+  { name: "Go", value: "GO" },
+  { name: "django", value: "DJANGO" },
+  { name: "express", value: "EXPRESS" },
+  { name: "nest", value: "NEST" },
+  { name: "Pytorch", value: "PYTORCH" },
+  { name: "Tensorflow", value: "TENSORFLOW" },
+  { name: "Kotlin", value: "KOTLIN" },
+  { name: "Swift", value: "SWIFT" },
+  { name: "Unity", value: "UNITY" },
+  { name: "C#", value: "CSHARP" },
+  { name: "Unreal Engine", value: "UNREALENGINE" },
+];
