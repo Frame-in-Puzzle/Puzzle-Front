@@ -270,7 +270,7 @@ const TagModal: React.FC<TagSearch> = ({ onSubmit }) => {
                 ) {
                   return (
                     <TagItem theme="WhiteTag" key={idx}>
-                      {field.name}
+                      {field.name} 전체
                       <FiX
                         onClick={() =>
                           handleDelete(fieldSelect, setFieldSelect, field)

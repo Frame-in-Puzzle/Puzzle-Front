@@ -67,3 +67,8 @@ export const isPaging = atom<number>({
   key: "isPaging",
   default: 0,
 });
+
+export const modalState = atom<boolean>({
+  key: "modalState",
+  default: false,
+});

@@ -31,7 +31,12 @@ export const Title = css`
 
 export const Name = css`
   font-weight: bold;
+  color: #333;
+  text-decoration: none;
   font-size: ${theme.fonts.h5};
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const Date = css`

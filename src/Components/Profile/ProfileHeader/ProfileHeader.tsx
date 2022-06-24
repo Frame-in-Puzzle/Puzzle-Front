@@ -14,7 +14,7 @@ import { fieldList, languageList } from "../../../Lib/Data/List";
 import { useNavigate } from "react-router-dom";
 import { selected } from "../../../Type/types";
 import { FiX } from "react-icons/fi";
-import { on } from "cluster";
+import { toast } from "react-toastify";
 
 interface UserInfo {
   data: {
@@ -81,7 +81,9 @@ const ProfileHeader = () => {
   }, []);
 
   const onSubmit = () => {
+    toast.success("업데이트 완료");
     putUserProfile(name, email, bio, currentField.value, languageSelect);
+    navigate("/main");
   };
 
   const onWithdrawal = () => {
