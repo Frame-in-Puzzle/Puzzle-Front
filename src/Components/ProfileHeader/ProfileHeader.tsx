@@ -18,7 +18,7 @@ interface UserInfo {
     email: string;
     imageUrl: string;
     field: string;
-    language: string[];
+    languages: string[];
     url: string;
   };
 }
@@ -50,7 +50,7 @@ const ProfileHeader: React.FC = () => {
           </div>
           <p css={S.Introduction}>{data.data.bio}</p>
           <div css={S.LanguageWrapper}>
-            {data.data.language.map((language, idx) => (
+            {data.data.languages.map((language, idx) => (
               <TagItem theme="WhiteTag" key={idx}>
                 {language}
               </TagItem>

@@ -23,7 +23,7 @@ interface UserInfo {
     email: string;
     imageUrl: string;
     field: string;
-    language: string[];
+    languages: string[];
   };
 }
 const ProfileHeader = () => {
@@ -76,7 +76,7 @@ const ProfileHeader = () => {
       setBio(res.data.bio);
       setImageUrl(res.data.imageUrl);
       setCurrentField(fieldData(res.data.field));
-      setLanguageSelect(res.data.language);
+      setLanguageSelect(res.data.languages);
     });
   }, []);
 
