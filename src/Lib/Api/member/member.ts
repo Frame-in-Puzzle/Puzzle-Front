@@ -20,7 +20,7 @@ export const putUserInformation = async (
   imageUrl: string,
   bio: string,
   field: string,
-  language: string[],
+  languages: string[],
   url: string,
 ) => {
   const { data } = await apiClient.put("/user/registration", {
@@ -29,7 +29,7 @@ export const putUserInformation = async (
     imageUrl: imageUrl,
     bio: bio,
     field: field,
-    language: language,
+    languages: languages,
     url: url,
   });
   return { data };
@@ -40,14 +40,14 @@ export const putUserProfile = async (
   email: string,
   bio: string,
   field: string,
-  language: string[],
+  languages: string[],
 ) => {
   const { data } = await apiClient.put("/profile/update", {
     name: name,
     email: email,
     bio: bio,
     field: field,
-    language: language,
+    languages: languages,
   });
   return { data };
 };
