@@ -37,6 +37,7 @@ import {
   purposeList,
   stateList,
 } from "../../Lib/Data/List";
+import { toast } from "react-toastify";
 
 type queryType = {
   id: string;
@@ -183,19 +184,19 @@ const WriteTextForm: React.FC = () => {
 
   const handlePost = () => {
     if (title === "" || null) {
-      alert("제목을 입력해주세요.");
+      toast.error("이름을 입력해주세요");
     } else if (markdownValue === "" || null) {
-      alert("내용을 입력해주세요.");
+      toast.error("내용을 입력해주세요.");
     } else if (fieldSelect === []) {
-      alert("분야를 선택해주세요.");
+      toast.error("분야를 선택해주세요.");
     } else if (languageSelect === []) {
-      alert("언어를 선택해주세요.");
+      toast.error("언어를 선택해주세요.");
     } else if (purposeSelect.name === "선택") {
-      alert("목적을 선택해주세요.");
+      toast.error("목적을 선택해주세요.");
     } else if (stateSelect.name === "선택") {
-      alert("상태를 선택해주세요.");
+      toast.error("상태를 선택해주세요.");
     } else if (introduce === "") {
-      alert("소개 글을 작성해주세요.");
+      toast.error("소개 글을 작성해주세요.");
     } else if (Object.keys(query).length === 0) {
       postBoard(
         markdownValue,
@@ -207,7 +208,7 @@ const WriteTextForm: React.FC = () => {
         title,
         imageValue,
       ).then(() => {
-        alert("등록되었어요.");
+        toast.success("등록되었어요.");
         setFieldSelect([{ name: "전체", value: "ALL" }]);
         setLanguageSelect([]);
         setPurposeSelect({ name: "선택", value: "choice" });
