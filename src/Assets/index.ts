@@ -14,3 +14,4 @@ export { default as PromotionManImg } from "./PromotionManImg";
 export { default as BackImg1 } from "./Promotion3BackImg/BackImg1";
 export { default as BackImg2 } from "./Promotion3BackImg/BackImg2";
 export { default as BackImg4 } from "./Promotion3BackImg/BackImg4";
+export { default as DefaultImage } from "./DefaultImage";

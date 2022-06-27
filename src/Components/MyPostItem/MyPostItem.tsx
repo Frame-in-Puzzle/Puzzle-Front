@@ -12,7 +12,7 @@ import { useDecode } from "../../Hooks/useDecode";
 type MyPostProps = {
   boardId: string;
   title: string;
-  thumbnail: any;
+  thumbnail: string;
   fields: string[];
   date: string;
   status: string;
@@ -53,7 +53,11 @@ const MyPostItem: React.FC<MyPostProps> = ({
           navigate(`/detail/${boardId}`);
         }}
       >
-        <img css={S.Image} src={thumbnail} />
+        {thumbnail ? (
+          <img css={S.Image} src={thumbnail} />
+        ) : (
+          <I.MyPostDefaultImg css={S.Image} />
+        )}
 
         <div css={S.rightbox}>
           <span css={S.Title}>{title}</span>

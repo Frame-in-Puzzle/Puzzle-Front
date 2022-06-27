@@ -2,6 +2,7 @@
 import React, { forwardRef } from "react";
 import * as S from "./Style";
 import { useNavigate } from "react-router-dom";
+import * as I from "../../Assets/index";
 
 type PostProps = {
   boardId: number;
@@ -27,7 +28,12 @@ const PostItem: React.FC<PostProps> = forwardRef(
       >
         <div css={S.Container}>
           <span css={S.Title}>{title}</span>
-          <img css={S.Image} src={image_url} />
+          {image_url ? (
+            <img css={S.Image} src={image_url} />
+          ) : (
+            <I.DefaultImage css={S.Image} />
+          )}
+
           <p css={S.State}>{status}</p>
         </div>
       </div>
