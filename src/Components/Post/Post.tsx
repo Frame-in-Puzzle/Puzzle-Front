@@ -25,7 +25,7 @@ import { disconnect } from "process";
 
 export type post = {
   boardId: number;
-  image_url: string;
+  imageUrl: string;
   status: string;
   title: string;
 };
@@ -111,10 +111,10 @@ const Post = () => {
       <TagSelector onSubmit={onSubmit} />
       <div css={S.Container}>
         {isTagSearched
-          ? contents.map(({ boardId, image_url, status, title }, idx) => (
+          ? contents.map(({ boardId, imageUrl, status, title }, idx) => (
               <PostItem
                 boardId={boardId}
-                image_url={image_url}
+                imageUrl={imageUrl}
                 status={status}
                 title={title}
                 key={idx}
@@ -122,10 +122,10 @@ const Post = () => {
               />
             ))
           : contents.map(
-              ({ boardId, image_url, status, title }: post, idx: number) => (
+              ({ boardId, imageUrl, status, title }: post, idx: number) => (
                 <PostItem
                   boardId={boardId}
-                  image_url={image_url}
+                  imageUrl={imageUrl}
                   status={status}
                   title={title}
                   key={idx}

@@ -11,7 +11,7 @@ export default {
 const postObj = {
   boardId: 1,
   title: "PUZZLE",
-  image_url: "",
+  imageUrl: "",
   status: "모집중",
 };
 
@@ -19,7 +19,7 @@ export const postitem: ComponentStory<typeof PostItem> = () => (
   <PostItem
     boardId={postObj.boardId}
     title={postObj.title}
-    image_url={postObj.image_url}
+    imageUrl={postObj.imageUrl}
     status={postObj.status}
   />
 );
