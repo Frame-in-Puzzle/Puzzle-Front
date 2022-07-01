@@ -6,7 +6,7 @@ import * as I from "../../Assets/index";
 
 type PostProps = {
   boardId: number;
-  image_url: string;
+  imageUrl: string;
   status: string;
   title: string;
   ref?: any;
@@ -14,7 +14,7 @@ type PostProps = {
 
 const PostItem: React.FC<PostProps> = forwardRef(
   (
-    { boardId, image_url, status, title },
+    { boardId, imageUrl, status, title },
     ref: React.LegacyRef<HTMLDivElement>,
   ) => {
     const navigate = useNavigate();
@@ -28,8 +28,8 @@ const PostItem: React.FC<PostProps> = forwardRef(
       >
         <div css={S.Container}>
           <span css={S.Title}>{title}</span>
-          {image_url ? (
-            <img css={S.Image} src={image_url} />
+          {imageUrl ? (
+            <img css={S.Image} src={imageUrl} />
           ) : (
             <I.DefaultImage css={S.Image} />
           )}

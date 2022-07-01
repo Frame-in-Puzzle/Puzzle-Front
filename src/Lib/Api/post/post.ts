@@ -24,20 +24,20 @@ export const getDetailPost = async (
 
 export const postBoard = async (
   contents: string,
-  fieldList: string[] | string,
+  fields: string[] | string,
   introduce: string,
-  languageList: string[] | string,
+  languages: string[] | string,
   purpose: string,
   status: string,
   title: string,
-  fileUrlList?: string[],
+  imageUrls?: string[],
 ) => {
   const { data } = await apiClient.post("/board", {
     contents: contents,
-    fieldList: fieldList,
-    fileUrlList: fileUrlList,
+    fields: fields,
+    imageUrls: imageUrls,
     introduce: introduce,
-    languageList: languageList,
+    languages: languages,
     purpose: purpose,
     status: status,
     title: title,

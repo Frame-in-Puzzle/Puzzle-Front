@@ -112,7 +112,7 @@ const WriteTextForm: React.FC = () => {
 
   const onLoadFile = async (e: any) => {
     const formData = new FormData();
-    formData.append("files", e.target.files[0]);
+    formData.append("image", e.target.files[0]);
     await axios.post(`${baseURL}/board/create-url`, formData).then((res) => {
       setImageValue([...imageValue, res.data]);
       innerRef.current.focus();
